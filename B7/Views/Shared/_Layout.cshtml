@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ÖZKINACI OTOMOTİV</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="/ozkinaci/tema/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/ozkinaci/tema/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/ozkinaci/tema/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/ozkinaci/tema/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/ozkinaci/tema/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/ozkinaci/tema/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/ozkinaci/tema/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/ozkinaci/tema/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/ozkinaci/tema/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/ozkinaci/tema/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/ozkinaci/tema/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/ozkinaci/tema/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/ozkinaci/tema/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/ozkinaci/tema/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="~/tema/images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="~/tema/css/materialize.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="headerust">
+        <div class="container">
+            <a href="#" class="sol">0 (216) 305 40 90</a><a href="#" class="sag">info@ozkinaci.com.tr</a>
+            <br class="clearfix" />
+        </div>
+    </div>
+    <div class="preloader-background">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="container">
+            <a href="~/"><img class="logo" src="~/tema/images/logo.jpg" /></a>
+        <div class="headersag">
+                <div class="hdust">
+                </div>
+                <br class="clearfix" />
+                <div id="slide-out" class="sidenav">
+                    <ul class="collapsible">
+                        <li><a href="/" class="menua">ANASAYFA</a></li>
+                       
+                        <li class='drop'>
+                            <a class="collapsible-header oa">
+                                <span>KURUMSAL</span><span class="arrow-down"></span>
+                            </a>
+                            <ul class="collapsible-body">
+                                <li><a href="~/lng-plants">Hakkımızda</a></li>
+                                <li><a href="~/chemical-plants">Genel Politika ve Sertifikalar</a></li>
+                                
+                            </ul>
+                        </li>
+                         <li class='drop'>
+                            <a class="collapsible-header oa"><span>HİZMETLERİMİZ</span><span class="arrow-down"></span></a>
+                            <ul class="collapsible-body">
+                                <li><a href="~/#">Kullanılmış Otomobiller</a></li>
+                                <li><a href="~/#">Otomobil Değerleme</a></li>
+                                <li><a href="~/#">Detaylı Ekspertiz</a></li>
+                                <li><a href="~/#">Oto Bakım Servisi</a></li>
+                                <li><a href="~/#">Finansman / Kredi</a></li>
+                                <li><a href="~/#">Sigorta İşlemleri</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/contact" class="menua">İLETİŞİM</a></li>
+
+                    </ul>
+                </div>
+                <a href="#" data-target="slide-out" class="sidenav-trigger">
+                    <span></span><span></span><span></span>
+                </a>
+            </div>
+           <br class="clearfix" />
+        </div>
+    </header>
+    @RenderBody()
+
+
+    <footer class="border-top  text-muted">
+        <div class="footer">
+            <div class="container">
+               <ul class="footsol">
+                   <li><h3>İLETİŞİM DETAYLARI</h3></li>
+                    <li><i class="fa-solid fa-location-dot"></i> Zümrütevler, Vişne Sk. No:10, 34852 Maltepe/İstanbul, Türkiye</li>
+                    <li><i class="fa-solid fa-phone"></i>Telephone: +90 532 465 54 48</li>
+                    <li><i class="fa-solid fa-envelope"></i>Mail: info@ozkinaci.com</li>
+                    
+               </ul>
+               <ul class="footsol orta">
+                    <li><h3>HİZMETLERİMİZ</h3></li>
+                     <li><a href="~/#">Kullanılmış Otomobiller</a></li>
+                     <li><a href="~/#">Otomobil Değerleme</a></li>
+                     <li><a href="~/#">Detaylı Ekspertiz</a></li>
+                     <li><a href="~/#">Oto Bakım Servisi</a></li>
+                     <li><a href="~/#">Finansman / Kredi</a></li>
+                     <li><a href="~/#">Sigorta İşlemleri</a></li>          
+                    
+               </ul>
+                <ul class="footsol sag">
+                    <li><a href="~/">ANASAYFA</a></li>
+                    <li><a href="#">BLOG</a></li>
+                    <li><a href="#">İLETİŞİM</a></li>
+
+                </ul>
+               <br class="clearfix" />
+            </div>
+
+        </div>
+        <div class="footeralt">
+           <div class="container">
+                &copy; 2023 - Özkınacı
+                
+                <a href="https://www.bycmedia.com/" class="footerlink" target="_blank" alt="Web Design"><img src="~/tema/images/byc.png" /></a>
+            </div>
+
+        </div>
+    </footer>
+    
+    <script src="~/tema/js/jquery-3.6.3.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"  />
+    
+    <script src="~/tema/js/materialize.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            $('.collapsible').collapsible();
+            $('.sidenav').sidenav();
+            if ($(window).width() > 780) {
+                $(".oa").removeClass('collapsible-header');
+            }
+            else {
+                $(".oa").addClass('collapsible-header');
+            }
+          
+            $('.preloader-background').delay(0).fadeOut('slow');
+            $('.preloader-wrapper').delay(0).fadeOut();
+        });
+        $(window).resize(function () {
+            if ($(window).width() > 780) {
+                $(".oa").removeClass('collapsible-header');
+            }
+            else {
+                $(".oa").addClass('collapsible-header');
+            }
+        });
+        $(".drop").hover(
+            function () {
+                if ($(this).find("ul").hasClass("menuacik")) {
+                    $(".karart2").removeClass("gorun");
+                    $(this).find("ul").removeClass("menuacik");
+                } else {
+                    $(this).find("ul").addClass("menuacik");
+                    $(".karart2").addClass("gorun");
+                }
+            }
+        );
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
