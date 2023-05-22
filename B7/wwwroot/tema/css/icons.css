@@ -22,42 +22,80 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 .icon-finanz:before {
-  content: "\e906";
+    content: "\e906";
+    color: #b5b5b5;
 }
+
 .icon-sigorta:before {
-  content: "\e907";
+    content: "\e907";
+    color: #b5b5b5;
 }
+
 .icon-expert:before {
-  content: "\e908";
+    content: "\e908";
+    color: #b5b5b5;
 }
+
 .icon-deger:before {
-  content: "\e909";
+    content: "\e909";
+    color: #b5b5b5;
 }
+
 .icon-fax:before {
-  content: "\e902";
+    content: "\e902";
 }
+
 .icon-phone2:before {
-  content: "\e903";
+    content: "\e903";
 }
+
 .icon-basket:before {
-  content: "\e904";
+    content: "\e904";
 }
+
 .icon-cart:before {
-  content: "\e905";
+    content: "\e905";
 }
+
 .icon-credit-card:before {
-  content: "\e93f";
+    content: "\e93f";
 }
+
+.icon-phone:before {
+    content: "\e942";
+}
+
 .icon-enter:before {
-  content: "\ea13";
+    content: "\ea13";
 }
+
+.icon-facebook2:before {
+    content: "\ea91";
+}
+
+.icon-instagram:before {
+    content: "\ea92";
+}
+
 .icon-whatsapp:before {
-  content: "\ea93";
+    content: "\ea93";
 }
+
+.icon-twitter:before {
+    content: "\ea96";
+}
+
+.icon-linkedin:before {
+    content: "\eac9";
+}
+
 .icon-mail:before {
-  content: "\e901";
+    content: "\e901";
 }
+
 .icon-location:before {
-  content: "\e900";
+    content: "\e900";
 }
+

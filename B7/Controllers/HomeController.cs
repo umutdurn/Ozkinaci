@@ -67,6 +67,11 @@ namespace B7.Controllers
         {
             return View();
         }
+        [Route("otomobil-degerleme")]
+        public IActionResult otomobildeger()
+        {
+            return View();
+        }
         [Route("hakkimizda")]
         public IActionResult Hakkimizda()
         {

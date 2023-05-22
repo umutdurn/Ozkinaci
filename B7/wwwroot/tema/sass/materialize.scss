@@ -81,10 +81,10 @@ body {
 
     a {
         color: #FFFFFF;
-        display:block;
-        font-size:15px;
-        padding:7px 0px; 
-        font-weight:500;
+        display: block;
+        font-size: 15px;
+        padding: 7px 0px;
+        font-weight: 500;
     }
 
     .sol {
@@ -93,6 +93,17 @@ body {
 
     .sag {
         float: right;
+
+        span {
+            margin: 3px 6px 0 19px;
+            display: block;
+            float: left;
+            font-size: 18px;
+        }
+
+        .icon-phone2 {
+            margin: 1px 6px 0 19px;
+        }
     }
 }
 .headersag {
@@ -115,7 +126,7 @@ header {
         display: block;
         float: right;
         left: 0;
-        top: 0;
+        top: 6px;
         margin: 0;
         transform: none !important;
         height: 52px;
@@ -390,7 +401,7 @@ header {
             }
 
             .teklifAl {
-                background: #026aa1;
+                background: #0a66c2;
                 color: #221e1f;
                 border: none;
                 border-left: 3px solid #002b60;
@@ -704,12 +715,16 @@ header {
     }
 }
 .footer {
-    background:#000;
+    background: #000;
     min-height: 200px;
     background-size: cover;
     color: #fff;
     padding: 5px 0 6px 0;
     margin-top: 50px;
+
+    .footsol {
+        font-size: 15px;
+    }
 
     a {
         color: #FFFFFF;
@@ -717,6 +732,13 @@ header {
         &:hover {
             color: #039be5;
         }
+    }
+
+    .social {
+        font-size: 37px;
+        margin: 90px 10px 10px 10px;
+        float: right;
+        display: block;
     }
 
     .orta {
@@ -742,7 +764,7 @@ header {
 
         &:first-child {
             width: 33%;
-            margin-right:7%;
+            margin-right: 7%;
         }
 
 
@@ -760,9 +782,10 @@ header {
         }
 
         h3 {
-            font-size: 29px;
+            font-size: 24px;
             padding: 0 0 5px 0;
             margin: 0;
+            font-weight: 400;
         }
 
         @media screen and (max-width:870px) {
@@ -1059,7 +1082,7 @@ background-image: url('../images/projects/mining-projects.jpg');
 
     @media screen and (max-width:414px) {
         background: none;
-        margin:30px 0px 10px 0px;
+        margin: 30px 0px 10px 0px;
     }
 
     .owl-dots {
@@ -1158,13 +1181,13 @@ background-image: url('../images/projects/mining-projects.jpg');
                 z-index: 999;
 
                 &:hover {
-                    background: #026aa1;
+                    background: #0a66c2;
 
 
                     .kutuDetay {
                         color: #fff;
 
-                        a {
+                        span {
                             color: #fff;
                             border-bottom: 2px solid #fff;
                         }
@@ -1194,7 +1217,7 @@ background-image: url('../images/projects/mining-projects.jpg');
                     content: "";
                     position: absolute;
                     width: 5px;
-                    background: #026AA1;
+                    background: #0a66c2;
                     height: 74px;
                     left: 0px;
                     top: 43px;
@@ -1204,7 +1227,7 @@ background-image: url('../images/projects/mining-projects.jpg');
                     content: "";
                     position: absolute;
                     width: 5px;
-                    background: #026AA1;
+                    background: #0a66c2;
                     height: 74px;
                     right: 0px;
                     top: 43px;
@@ -1217,7 +1240,7 @@ background-image: url('../images/projects/mining-projects.jpg');
 
                 span {
                     font-size: 70px;
-                    color: #026aa1 !important;
+                    color: #0a66c2 !important;
                     font-weight: 200;
                 }
             }
@@ -1232,9 +1255,9 @@ background-image: url('../images/projects/mining-projects.jpg');
                 color: #333;
 
 
-                a {
+                .fiyatal {
                     font-weight: 600;
-                    border-bottom: 2px solid #026aa1;
+                    border-bottom: 2px solid #0a66c2;
                     padding-bottom: 0px;
                     display: inline-block;
                     margin-top: 20px;
@@ -1271,7 +1294,7 @@ background-image: url('../images/projects/mining-projects.jpg');
 
     .title {
         hr {
-            border-bottom: 1px solid #026aa1;
+            border-bottom: 1px solid #0a66c2;
             width: 5%;
             margin: 10px auto 0px auto;
         }
@@ -1296,12 +1319,7 @@ background-image: url('../images/projects/mining-projects.jpg');
             height: auto;
         }
 
-        .textRight {
-            @media screen and (max-width:414px) {
-                margin-top: 0px !important;
-                background: #026aa1 !important;
-            }
-        }
+
 
         .text {
             font-family: "Roboto",sans-serif;
@@ -1314,9 +1332,9 @@ background-image: url('../images/projects/mining-projects.jpg');
             @media screen and (max-width:414px) {
                 float: none;
                 width: 100%;
-                background: #000;
+                background: #0a66c2 !important;
                 padding: 15px;
-                margin-bottom:15px;
+                margin-bottom: 15px;
             }
 
             .textIc {
@@ -1343,6 +1361,13 @@ background-image: url('../images/projects/mining-projects.jpg');
                         font-size: 30px;
                     }
                 }
+            }
+        }
+
+        .textRight {
+            @media screen and (max-width:414px) {
+                margin-top: 0px !important;
+                background: #000 !important;
             }
         }
     }
@@ -1439,48 +1464,97 @@ background-image: url('../images/projects/mining-projects.jpg');
     position:relative;
 }
 .pageHead {
-    text-align:center;
-    img {
-        width: 1920px;
-        object-fit: cover;
-        height: 410px;
+    text-align: center;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 1920px;
+    height: 500px;
+    border-bottom: 5px solid #0a66c2;
+
+    @media screen and (max-width:850px) {
+        height: 100px;
+        background-size: 100%;
+        background-position: 0 bottom;
     }
+}
+.fnskre{
+    background-image: url('../images/finansmankredi.jpg');
 
-    height: 400px;
-    overflow: hidden;
-    border-bottom: 5px solid #026aa1;
-
-    
+}
+.dtexp {
+    background-image: url('../images/detayliexpertiz.jpg');
+    background-position: 0 center;
+}
+.otobkm {
+    background-image: url('../images/otobakimservisi.jpg');
+    background-position: 0 center;
+}
+.sgrt {
+    background-image: url('../images/sigortaislemleri.png');
+    background-position: 0 center;
 }
 .page {
     font-family: "Roboto",sans-serif;
     padding: 50px 0px;
 
+    .fntabl {
+        width: 47%;
+        border: 1px solid rgba(0,0,0,.12);
+        text-align: center;
+        font-weight: 600;
+        float: left;
+        margin: 20px 3% 0 0;
+
+
+        @media screen and (max-width:850px) {
+            width: 100%;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        tr {
+            border: 1px solid rgba(0,0,0,.12);
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid rgba(0,0,0,.12);
+            text-align: center;
+        }
+    }
+
+    .fntabl1 {
+        margin: 20px 0 0 0;
+    }
+
     h1 {
         font-size: 35px;
         margin: 0px 0px 30px 0px;
-        border-left: 5px solid #026aa1;
+        border-left: 5px solid #0a66c2;
         padding-left: 15px;
         font-weight: 700;
     }
 
-    .otobakimKutu{
-        li{
-            display:inline-block;
-            text-align:center;
-            width:21%;
-            margin:20px 1%;
-            span{
-                display:block;
+    .otobakimKutu {
+        li {
+            display: inline-block;
+            text-align: center;
+            width: 21%;
+            margin: 20px 1%;
+
+            span {
+                display: block;
             }
-            border:1px solid #ccc;
-            padding:20px;
 
-            @media screen and (max-width:414px){
+            border: 1px solid #ccc;
+            padding: 20px;
 
-                width:100%;
-                margin:10px 0px;
-
+            @media screen and (max-width:414px) {
+                width: 100%;
+                margin: 10px 0px;
             }
         }
     }
