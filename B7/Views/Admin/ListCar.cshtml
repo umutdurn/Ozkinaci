@@ -1,0 +1,51 @@
+﻿@model List<Advert>
+@{
+    ViewBag.Title = "Araç Modeli Listele";
+    Layout = "_Admin";
+}
+<table id="data-table" class="table is-striped hover display">
+    <thead>
+        <tr>
+            <th>Model Adı</th>
+            <th>Yakıt</th>
+            <th>Vites</th>
+            <th>Renk</th>
+            <th>Düzenle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var advert in Model)
+        {
+            <tr>
+                <td>@advert.CarModel.CarBrand.Name @advert.CarModel.Name</td>
+                <td>
+                    @if (advert.Fuel == 0)
+                    {
+                        @:Dizel
+                    }
+                    else if (advert.Fuel == 1)
+                    {
+                        @:Benzinli
+                    }else
+                    {
+                        @:Elektrikli
+                    }
+                </td>
+                <td>
+                    @if (advert.Gear == 0)
+                    {
+                        @:Otomatik
+                    }
+                    else if (advert.Fuel == 1)
+                    {
+                        @:Vitesli
+                    }
+                </td>
+                <td>@advert.Color</td>
+                <td>Düzenle</td>
+                <td>Sil</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,152 @@
+﻿@{
+    ViewBag.Title = "Araç Ekle";
+    Layout = "_Admin";
+}
+
+<div class="row">
+    <form name="AddAdvert" id="AddCarForm" action="/Admin/AddAdvert" method="post" class="col s12 m10 l12 productform">
+        <div class="row">
+            <div class="input-field">
+                <label for="first_name">Araç Modeli</label>
+                <select name="CarModel" class="browser-default" asp-items="@ViewBag.CarBrand"></select>
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">Vites Çeşidi</label>
+                <select name="Gear" class="browser-default">
+                    <option value="0">Otomatik</option>
+                    <option value="1">Vitesli</option>
+                </select>
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">Yakıt Türü</label>
+                <select name="Fuel" class="browser-default">
+                    <option value="0">Dizel</option>
+                    <option value="1">Benzin</option>
+                    <option value="2">Elektrik</option>
+                </select>
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">Yıl</label>
+                <input type="number" name="Year" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">KM</label>
+                <input type="number" name="Km" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">Max Hız</label>
+                <input type="number" name="MaxSpeed" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">Max Tork</label>
+                <input type="number" name="Tork" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">0-100 Kaç Sn?</label>
+                <input type="number" name="To0100" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">Boş Ağırlık</label>
+                <input type="number" name="EmptyWeight" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">Yakıt Tüketimi</label>
+                <input type="text" name="FuelConsumption" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field uzn">
+                <label for="first_name">Silindir Hacmi</label>
+                <input type="number" name="CylinderVolume" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field uzn">
+                <label for="first_name">Silindir Adedi</label>
+                <input type="number" name="CylinderNumber" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field uzn">
+                <label for="first_name">Supap Adedi</label>
+                <input type="number" name="ValveNumber" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field uzn">
+                <label for="first_name">Kasa Tipi</label>
+                <select name="CaseType" class="browser-default">
+                    <option>Hatchback</option>
+                    <option>Sedan</option>
+                </select>
+            </div>
+            <br class="clearfix" />
+            <div class="input-field uzn">
+                <label for="first_name">Aktarma Türü</label>
+                <input type="text" name="TypeOfTransfer" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field uzn">
+                <label for="first_name">Motor Gücü</label>
+                <input type="text" name="EnginePower" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field uzn">
+                <label for="first_name">Rengi</label>
+                <select name="Color" class="browser-default">
+                    <option>Siyah</option>
+                    <option>Beyaz</option>
+                    <option>Kırmızı</option>
+                    <option>Sarı</option>
+                </select>
+            </div>
+            <br class="clearfix" />
+            <div class="input-field uzn">
+                <label for="first_name">Fiyatı</label>
+                <input type="number" name="Price" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field uzn">
+                <label for="first_name">Ürün Resimleri </label>
+                <div class="dropzndis">
+                    <div class="dropzone-wrapper">
+                        <div class="dropzone-desc">
+                            <i class="fas fa-upload"></i>
+                            <p>Yükleyeceğiniz fotoğrafları sürükleyin veya tıklayıp seçin.</p>
+                        </div>
+                        <input id="Files" type="file" name="img_logo" class="dropzone" multiple />
+                        <div class="row">
+                            <div class="progress">
+                                <div class="progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="table" id="ListofFiles">
+                    </ul>
+                </div>
+            </div>
+            <br class="clearfix" />
+            <div class="input-field ">
+                <label for="first_name"> </label>
+                <input type="submit" value="Add Product" name="AddCarButton" class="btn btn-primary mr-2" />
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts{
+
+    <script type="text/javascript">
+        
+
+
+    </script>
+    <script src="~/admintema/js/jquery.validate.min.js"></script>
+    <script src="~/admintema/js/ckeditor.js"></script>
+    <script src="~/admintema/js/jquery.maskmoney.min.js"></script>
+    <script src="~/admintema/cstmjs/productjs.js"></script>
+}

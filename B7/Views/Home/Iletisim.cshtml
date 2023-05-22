@@ -1,0 +1,207 @@
+﻿@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "İletişim";
+    Layout = "_Layout";
+}
+<style>
+    #commentForm {
+        width: 500px;
+    }
+
+        #commentForm label {
+            width: 250px;
+        }
+
+            #commentForm label.error, #commentForm input.submit {
+                margin-left: 253px;
+            }
+
+    #signupForm {
+        width: 670px;
+    }
+
+        #signupForm label.error {
+            margin-left: 10px;
+            width: auto;
+            display: inline;
+        }
+
+    #newsletter_topics label.error {
+        display: none;
+        margin-left: 103px;
+    }
+</style>
+
+<div class="iletisim">
+    <div class="container">
+        <div class="row">
+            <form method="post" class="col s12 l6 m6 iletisimForm">
+                <h3>İLETİŞİM FORMU</h3>
+                <div class="input">
+                    <span>Ad Soyad </span>
+
+                    <input type="text" name="Adi" class="browser-default" required />
+                </div>
+                <div class="input">
+                    <span>Telefon</span>
+                    <input id="phone" maxlength="14" name="phone" type="text" class="browser-default required phone" tabindex="10" value="">
+                </div>
+                <div class="input">
+                    <span>Mail</span>
+                    <input type="text" name="Email" class="browser-default" required>
+                </div>
+                <div class="input">
+                    <span>Konu</span>
+                    <input type="text" name="Konu" class="browser-default" />
+                </div>
+                <div class="input">
+                    <span>Mesajınız</span>
+                    <textarea name="Mesaj"></textarea>
+                </div>
+                <div class="input">
+                    <input type="button" name="mailSend" class="mehr" value="GÖNDER" />
+                    <span class="mailError"></span>
+                </div>
+            </form>
+            <div class="col s12 m6 l6 iletisimSend">
+                <img src="~/tema/images/ok.png" />
+                <span>
+                    Talebiniz ilgili ekiplerce en kısa sürede kontrol edilerek tarafınıza en kısa sürede geri dönüş yapılacaktır.
+                </span>
+            </div>
+            <div class="col s12 l6 m6">
+                <div class="iletisimBilgileri">
+                    <h3>ADRES</h3>
+                    <p>
+                        <span class="icon-location"></span><b>Adres:</b> Zümrütevler, Vişne Sk. No:10, 34852 Maltepe/İstanbul, Türkiye
+                        <br class="clearfix" />
+                    </p>
+                    <p>
+                        <span class="icon-phone2"></span><span class="yazis">+90 532 465 54 48</span>
+                        <br class="clearfix" />
+                    </p>
+                    <p>
+                        <span class="icon-mail"></span><span class="yazis">
+                            <a href="mailto:info@ozkinaci.com"> info@ozkinaci.com</a>
+                        </span>
+                        <br class="clearfix" />
+                    </p>
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3014.0875703201905!2d29.13977437725936!3d40.93574792388583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac426d132527b%3A0xa494cfef1d8d864b!2zWsO8bXLDvHRldmxlciwgVmnFn25lIFNrLiBObzoxMCwgMzQ4NTIgTWFsdGVwZS_EsHN0YW5idWw!5e0!3m2!1str!2str!4v1683886323716!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/tema/js/jquery.validate.min.js"></script>
+    <script src="~/tema/js/jquery.maskedinput.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=@Configuration["Google:RecaptchaV3SiteKey"]"></script>
+    <script>
+        grecaptcha.ready(function () {
+            grecaptcha.execute("@Configuration["Google:RecaptchaV3SiteKey"]", { action: "contact" })
+                .then(function (token) {
+                    //double check
+                    $('.iletisimForm').prepend('<input type="hidden" name="token" value="' + token + '">');
+                    fetch("/Home/RecaptchaVerify?token=" + token, {
+                        method: "post"
+                    })
+                        .then(r => r.text())
+                        .then(r => {
+                            if (r == "False") {
+
+                                $("[name='mailSend']").prop("disabled", "true");
+                            }
+
+                        })
+                });
+        });
+    </script>
+    <script>
+
+        $(document).ready(function () {
+
+            $(".iletisimSend").hide();
+            $("input.phone").mask("(999) 999-9999");
+
+
+            $(".iletisimForm").validate({
+                rules: {
+                    Adi: {
+                        required: true,
+                        minlength: 2
+                    },
+                    phone: {
+                        required: true
+
+                    },
+                    Email: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    Adi: {
+                        required: "Bu Alan Gereklidir.",
+                        minlength: "İsminiz En Az 2 karakter içermelidir."
+                    },
+                    phone: "Lütfen geçerli bir telefon giriniz.",
+                    Email: "Lütfen Geçerli Bir E-Mail Adresi Giriniz."
+                }
+            });
+
+        })
+
+        // validate signup form on keyup and submit
+        //$(function () {
+        //    $('.iletisimForm').submit(function () {
+        //        if ($(this).valid()) {
+        //            alert('the form is valid');
+        //        }
+        //    });
+        //});
+
+        $("[name='mailSend']").click(function () {
+
+            if ($('.iletisimForm').valid()) {
+                $(".mailError").html("");
+                $("[name='mailSend']").attr("enabled", "false");
+                $("[name='mailSend']").val("Gönderiliyor...");
+
+                var ad = $("[name='Adi']").val();
+                var email = $("[name='Email']").val();
+                var gsm = $("[name='gsm']").val();
+                var konu = $("[name='Konu']").val();
+                var message = $("[name='Mesaj']").val();
+
+                var formData = new FormData();
+                formData.append("ad", ad);
+                formData.append("email", email);
+                formData.append("gsm", gsm);
+                formData.append("message", message);
+                formData.append("konu", konu);
+
+                fetch("/Home/SubmitContactForm", {
+                    method: "POST",
+                    body: formData
+                })
+                    .then(r => r.text())
+                    .then(r => {
+                        if (r == "1") {
+                            $(".iletisimSend").show();
+                            $(".iletisimForm").hide();
+                        } else {
+                            $(".mailError").html(r);
+                            $("[name='mailSend']").attr("enabled", "true");
+                            $("[name='mailSend']").val("Mail Gönder");
+                        }
+                    })
+            }
+
+
+        });
+
+    </script>
+}

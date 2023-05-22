@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Marka Ekle";
+    Layout = "_Admin";
+}
+
+<div class="row">
+    <form name="AddBrand" id="AddBrandForm" action="/Admin/AddToBrand" method="post" class="col s12 m10 l12 productform">
+        <div class="row">
+            <div class="input-field">
+                <label for="first_name">Marka Adı</label>
+                <input type="text" name="Name" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field ">
+                <label for="first_name"> </label>
+                <input type="submit" value="Marka Ekle" name="AddBrandButton" class="btn btn-primary mr-2" />
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts{
+
+    <script type="text/javascript">
+
+
+
+    </script>
+    <script src="~/admintema/js/jquery.validate.min.js"></script>
+    <script src="~/admintema/js/ckeditor.js"></script>
+    <script src="~/admintema/js/jquery.maskmoney.min.js"></script>
+    <script src="~/admintema/cstmjs/productjs.js"></script>
+}

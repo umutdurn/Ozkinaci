@@ -318,10 +318,14 @@ header {
     height: 400px;
     position: relative;
     overflow: hidden;
-    background: #000;
+    background: #ededed;
 
     @media screen and (max-width:820px) {
         height: 450px;
+    }
+
+    @media screen and (max-width:414px) {
+        height: 200px;
     }
 
     .slideText {
@@ -333,6 +337,12 @@ header {
         padding: 30px;
         left: calc(50% - 615px);
         color: #fff;
+
+        @media screen and (max-width:414px) {
+            width: 150px;
+            height: auto;
+            top: 0px !important;
+        }
 
         @media screen and (max-width:820px) {
             top: 10%;
@@ -354,6 +364,8 @@ header {
             font-family: Helvetica,sans-serif;
             color: #fff;
             font-weight: 600;
+
+
 
             @media screen and (max-width:600px) {
                 font-size: 35px;
@@ -378,13 +390,29 @@ header {
             }
 
             .teklifAl {
-                background: #fff;
+                background: #026aa1;
                 color: #221e1f;
-                border-left: 3px solid #008fa7;
+                border: none;
+                border-left: 3px solid #002b60;
                 font-size: 20px;
                 padding: 5px 10px;
                 font-weight: 400;
                 cursor: pointer;
+                color: #fff;
+            }
+
+            @media screen and (max-width:414px) {
+                font-size: 15px;
+
+                .normal {
+                    font-size: 18px;
+                    font-weight: 300;
+                }
+
+                .buyuk {
+                    font-size: 20px;
+                    font-weight: 500;
+                }
             }
         }
 
@@ -419,6 +447,10 @@ header {
                 border: 1px solid #E2231A;
                 color: #E2231A;
             }
+
+            @media screen and (max-width:414px) {
+                font-size: 14px !important;
+            }
         }
     }
 
@@ -431,6 +463,11 @@ header {
             top: 0px;
             width: 100%;
             display: block;
+
+            @media screen and (max-width:414px) {
+                border-radius: 5px;
+                overflow: hidden;
+            }
 
             .syhBck {
                 position: absolute;
@@ -454,6 +491,10 @@ header {
 
                 @media screen and (max-width:820px) {
                     height: 450px;
+                }
+
+                @media screen and (max-width:414px) {
+                    height: 200px;
                 }
             }
         }
@@ -491,7 +532,9 @@ header {
         width: 210px;
         margin-left: -105px;
 
-
+        @media screen and (max-width:414px) {
+            bottom: -5%;
+        }
 
         #ileri, #geri {
             margin: 0 15px 0px 15px;
@@ -661,7 +704,7 @@ header {
     }
 }
 .footer {
-    background-image: url(../images/footerback.jpg);
+    background:#000;
     min-height: 200px;
     background-size: cover;
     color: #fff;
@@ -1012,50 +1055,173 @@ background-image: url('../images/projects/mining-projects.jpg');
 .anasyfKutular {
     background: url(../images/kutularback.png) 30px center repeat-x;
     margin: 50px 0px;
+    width: 100%;
 
-    ul {
-        li {
+    @media screen and (max-width:414px) {
+        background: none;
+        margin:30px 0px 10px 0px;
+    }
+
+    .owl-dots {
+        display: none;
+
+        @media screen and (max-width:414px) {
+            display: block;
+        }
+    }
+
+    .owl-nav {
+        position: absolute;
+        top: 30%;
+        width: 110%;
+        margin-left: -5%;
+        font-size: 80px;
+        z-index: -1;
+
+        @media screen and (max-width:414px) {
+            width: 100%;
+            margin-left: 0px;
+            display: none;
+        }
+
+        .owl-prev {
             float: left;
-            width: 24%;
+            display: block;
+
+            .arrows {
+                border: solid #fff;
+                border-width: 0px 4px 4px 0;
+                display: inline-block;
+                padding: 0px;
+                height: 30px;
+                width: 30px;
+                left: 14px;
+                top: 10px;
+            }
+
+            .right {
+                transform: rotate(-45deg);
+                -webkit-transform: rotate(-45deg);
+                margin-left: 0 !important;
+                left: 8px;
+            }
+
+            .left {
+                transform: rotate(135deg);
+                -webkit-transform: rotate(135deg);
+            }
+        }
+
+        .owl-next {
+            float: right;
+            display: block;
+
+            .arrows {
+                border: solid #fff;
+                border-width: 0px 4px 4px 0;
+                display: inline-block;
+                padding: 0px;
+                height: 30px;
+                width: 30px;
+                left: 14px;
+                top: 10px;
+            }
+
+            .right {
+                transform: rotate(-45deg);
+                -webkit-transform: rotate(-45deg);
+                margin-left: 0 !important;
+                left: 8px;
+            }
+
+            .left {
+                transform: rotate(135deg);
+                -webkit-transform: rotate(135deg);
+            }
+        }
+    }
+
+    .owl-carousel {
+        .item {
             text-align: center;
-            padding: 20px;
-            border-radius: 15px;
-            background: #fff;
-            height: 160px;
-            position: relative;
 
-            &:first-child {
-                margin: 0px 1.3% 0px 0px;
+            .kutu {
+                width: 99%;
+                padding: 20px;
+                border-radius: 15px;
+                background: #fff;
+                height: 160px;
+                position: relative;
+                display: inline-block;
+                cursor: pointer;
+                transition: .5s;
+                z-index: 999;
+
+                &:hover {
+                    background: #026aa1;
+
+
+                    .kutuDetay {
+                        color: #fff;
+
+                        a {
+                            color: #fff;
+                            border-bottom: 2px solid #fff;
+                        }
+                    }
+
+                    .iconKutu {
+
+                        span {
+                            color: #fff !important;
+                        }
+                    }
+
+                    &::before {
+                        background: #fff;
+                    }
+
+                    &::after {
+                        background: #fff;
+                    }
+                }
+
+                @media screen and (max-width:414px) {
+                    width: 100%;
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 5px;
+                    background: #026AA1;
+                    height: 74px;
+                    left: 0px;
+                    top: 43px;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 5px;
+                    background: #026AA1;
+                    height: 74px;
+                    right: 0px;
+                    top: 43px;
+                }
             }
 
-            @media screen and (max-width:912px) {
-                width: 48%;
-                margin-bottom: 10px !important;
-            }
-
-            @media screen and (max-width:414px) {
-                width: 100%;
-                margin-bottom: 10px !important;
-            }
-
-
-
-            &:nth-child(2) {
-                margin-right: .65%;
-            }
-
-            &:nth-child(3) {
-                margin-left: .65%;
-            }
-
-            &:last-child {
-                margin: 0px 0px 0px 1.3%;
-            }
-
-            img {
-                float: left;
+            .iconKutu {
+                float: left !important;
                 margin-top: 10px;
+
+                span {
+                    font-size: 70px;
+                    color: #026aa1 !important;
+                    font-weight: 200;
+                }
             }
+
 
             .kutuDetay {
                 font-family: "Roboto",sans-serif;
@@ -1064,27 +1230,23 @@ background-image: url('../images/projects/mining-projects.jpg');
                 width: calc(100% - 90px);
                 margin-left: 10px;
                 color: #333;
+
+
+                a {
+                    font-weight: 600;
+                    border-bottom: 2px solid #026aa1;
+                    padding-bottom: 0px;
+                    display: inline-block;
+                    margin-top: 20px;
+                    color: #333;
+                    font-size: 15px;
+                    position: absolute;
+                    bottom: 20px;
+                    left: 33%;
+                }
             }
 
-            &::before {
-                content: "";
-                position: absolute;
-                width: 5px;
-                background: #008fa7;
-                height: 74px;
-                left: 0px;
-                top: 43px;
-            }
 
-            &::after {
-                content: "";
-                position: absolute;
-                width: 5px;
-                background: #008fa7;
-                height: 74px;
-                right: 0px;
-                top: 43px;
-            }
 
             span {
                 font-weight: 600;
@@ -1095,41 +1257,49 @@ background-image: url('../images/projects/mining-projects.jpg');
                 margin: 2px 0px;
                 font-size: 13px;
             }
-
-            a {
-                font-weight: 600;
-                border-bottom: 2px solid #008fa7;
-                padding-bottom: 0px;
-                display: inline-block;
-                margin-top: 20px;
-                color: #333;
-                font-size: 15px;
-            }
         }
     }
 }
 .aracAlSatBanner {
     background: #fff;
-    padding: 20px 0px 10px 0px;
+    padding: 20px 0px 0px 0px;
     margin: 120px 0px 50px 0px;
 
-    h2 {
-        padding: 0px;
-        color: #333;
-        font-size: 18px;
-        font-weight: 600;
-        margin: 50px 0px 0px 0px;
-        text-align: center;
+    @media screen and (max-width:414px) {
+        margin: 70px 0px 30px 0px;
+    }
+
+    .title {
+        hr {
+            border-bottom: 1px solid #026aa1;
+            width: 5%;
+            margin: 10px auto 0px auto;
+        }
+
+        h2 {
+            padding: 0px;
+            color: #333;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 50px 0px 0px 0px;
+            text-align: center;
+        }
     }
 
     .banner {
-        background: url(../images/aracalmakistiyorum.png) center top no-repeat;
+        background: url(../images/aracalmakistiyorum.jpg) center top no-repeat;
         height: 110px;
         margin-top: -75px;
 
+        @media screen and (max-width:414px) {
+            background: none;
+            height: auto;
+        }
+
         .textRight {
             @media screen and (max-width:414px) {
-                margin-top: 50px !important;
+                margin-top: 0px !important;
+                background: #026aa1 !important;
             }
         }
 
@@ -1140,9 +1310,19 @@ background-image: url('../images/projects/mining-projects.jpg');
             text-align: center;
             margin-top: 15px;
 
+
+            @media screen and (max-width:414px) {
+                float: none;
+                width: 100%;
+                background: #000;
+                padding: 15px;
+                margin-bottom:15px;
+            }
+
             .textIc {
                 display: inline-block;
                 text-align: left;
+
 
                 span {
                     font-size: 20px;
@@ -1160,7 +1340,7 @@ background-image: url('../images/projects/mining-projects.jpg');
                     font-weight: 500;
 
                     @media screen and (max-width:414px) {
-                        font-size: 18px;
+                        font-size: 30px;
                     }
                 }
             }
@@ -1251,5 +1431,70 @@ background-image: url('../images/projects/mining-projects.jpg');
                 }
             }
         }
+    }
+}
+.inHeader{
+    margin:0px;
+    box-shadow:5px 5px 5px rgba(0,0,0,0.2);
+    position:relative;
+}
+.pageHead {
+    text-align:center;
+    img {
+        width: 1920px;
+        object-fit: cover;
+        height: 410px;
+    }
+
+    height: 400px;
+    overflow: hidden;
+    border-bottom: 5px solid #026aa1;
+
+    
+}
+.page {
+    font-family: "Roboto",sans-serif;
+    padding: 50px 0px;
+
+    h1 {
+        font-size: 35px;
+        margin: 0px 0px 30px 0px;
+        border-left: 5px solid #026aa1;
+        padding-left: 15px;
+        font-weight: 700;
+    }
+
+    .otobakimKutu{
+        li{
+            display:inline-block;
+            text-align:center;
+            width:21%;
+            margin:20px 1%;
+            span{
+                display:block;
+            }
+            border:1px solid #ccc;
+            padding:20px;
+
+            @media screen and (max-width:414px){
+
+                width:100%;
+                margin:10px 0px;
+
+            }
+        }
+    }
+}
+.iletisim {
+    font-family: "Roboto",sans-serif;
+
+    .input{
+        textarea{
+            background:#fff;
+        }
+    }
+    
+    h3 {
+        font-size: 25px;
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Core.Models;
+using Core.Repositories;
 using Core.UnitOfWork;
+using Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,12 @@ namespace Data.UnitOfWork
         {
             _appDbContext = appDbContext;
         }
+
+        private AdvertRepository _advertRepository;
+        private CarModelRepository _carModelRepository;
+
+        public IAdvertRepository Advert => _advertRepository ?? new AdvertRepository(_appDbContext);
+        public ICarModelRepository CarModel => _carModelRepository ?? new CarModelRepository(_appDbContext);
 
         public void Commit()
         {

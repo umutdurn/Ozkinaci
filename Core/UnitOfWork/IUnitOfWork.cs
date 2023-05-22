@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace Core.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
+        public IAdvertRepository Advert { get; }
+        public ICarModelRepository CarModel { get; }
         Task CommitAsync();
         void Commit();
     }

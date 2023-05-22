@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Araç Modeli Ekle";
+    Layout = "_Admin";
+}
+<div class="row">
+    <form name="AddModel" id="AddModelForm" action="/Admin/AddModel" method="post" class="col s12 m10 l12 productform">
+        <div class="row">
+            <div class="input-field">
+                <label for="first_name">Model Adı</label>
+                <input type="text" name="Name" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">Kategori</label>
+                <select name="Category" class="browser-default" asp-items="@ViewBag.Category"></select>
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">Marka</label>
+                <select name="CarBrand" class="browser-default" asp-items="@ViewBag.Brands"></select>
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">Donanım</label>
+                <select name="Equipment" class="browser-default" asp-items="@ViewBag.Equipment"></select>
+            </div>
+            
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">Detayı</label>
+                <textarea type="text" name="Detail" class="browser-default"></textarea>
+            </div>
+            <br class="clearfix" />
+            <div class="input-field ">
+                <label for="first_name"> </label>
+                <input type="submit" value="Model Ekle" name="AddModelButton" class="btn btn-primary mr-2" />
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts{
+
+    <script type="text/javascript">
+
+
+
+    </script>
+    <script src="~/admintema/js/jquery.validate.min.js"></script>
+    <script src="~/admintema/js/ckeditor.js"></script>
+    <script src="~/admintema/js/jquery.maskmoney.min.js"></script>
+}

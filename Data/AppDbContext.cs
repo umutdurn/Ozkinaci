@@ -17,6 +17,9 @@ namespace Data
         public DbSet<CarModel> CarModels { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CarBrand> CarBrands { get; set; }
+        public DbSet<Advert> Advert { get; set; }
+        public DbSet<Equipment> Equipment { get; set; }
+        public DbSet<Gallery> Galleries { get; set; }
 
 
     }

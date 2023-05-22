@@ -1,0 +1,65 @@
+﻿@model List<Category>
+@{
+    ViewBag.Title = "Kategori Listele";
+    Layout = "_Admin";
+}
+<table id="data-table" class="table is-striped hover display">
+    <thead>
+        <tr>
+            <th>Sıra</th>
+            <th>Kategori Adı</th>
+            <th>Düzenle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr id="@category.Id">
+                <td>@category.Order</td>
+                <td>@category.Name</td>
+                <td>Düzenle</td>
+                <td>Sil</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts{
+
+    <script>
+        var table = 0;
+
+        $(document).ready(function () {
+
+            siralama();
+
+        })
+
+        function siralama() {
+
+            table = $('.table').DataTable({
+                rowReorder: {
+                    selector: 'tr'
+                },
+                paging: false,
+                searching: true,
+                info: false,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/tr.json',
+                },
+                "order": [[0, "asc"]]
+            });
+
+            table.on('row-reorder.dt', function (dragEvent, data, nodes) {
+                for (var i = 0, ien = data.length; i < ien; i++) {
+                    var rowData = table.row(data[i].node).id();
+                    fetch("/Admin/UpdateRowCategories?id=" + rowData + "&fromPosition=" + data[i].oldData + "&toPosition=" + data[i].newData, {
+                        method: 'GET'
+                    })
+                }
+            });
+
+        }
+    </script>
+
+    }

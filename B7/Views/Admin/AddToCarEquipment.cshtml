@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Donanım Ekle";
+    Layout = "_Admin";
+}
+<div class="row">
+    <form name="AddEquipment" id="AddEquipmentForm" action="/Admin/AddEquipment" method="post" class="col s12 m10 l12 productform">
+        <div class="row">
+            <div class="input-field">
+                <label for="first_name">Donanım Adı</label>
+                <input type="text" name="Name" class="browser-default" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field ">
+                <label for="first_name"> </label>
+                <input type="submit" value="Donanım Ekle" name="AddEquipmentButton" class="btn btn-primary mr-2" />
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts{
+
+    <script type="text/javascript">
+
+
+
+    </script>
+    <script src="~/admintema/js/jquery.validate.min.js"></script>
+    <script src="~/admintema/js/ckeditor.js"></script>
+    <script src="~/admintema/js/jquery.maskmoney.min.js"></script>
+}

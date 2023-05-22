@@ -36,44 +36,39 @@ namespace B7.Controllers
         {
             return View();
         }
-        
-        [Route("lng-plants")]
-        public IActionResult LNG()
+        [Route("iletisim")]
+        public IActionResult Iletisim()
         {
             return View();
         }
-        [Route("chemical-plants")]
-        public IActionResult chemicalp()
+
+        [Route("kullanilmis-otomobiller")]
+        public IActionResult KullanilmisOtomobiller()
         {
             return View();
         }
-        [Route("mining-industry")]
-        public IActionResult mining()
+        [Route("detayli-expertiz")]
+        public IActionResult DetayliExpertiz()
         {
             return View();
         }
-        [Route("bridge-construction")]
-        public IActionResult bridge()
+        [Route("finansman-kredi")]
+        public IActionResult FinansmanKredi()
         {
             return View();
         }
-        [Route("steel-structures")]
-        public IActionResult steel()
+        [Route("oto-bakim-servisi")]
+        public IActionResult OtoBakimServisi()
         {
             return View();
         }
-        [Route("third-party-inspection")]
-        public IActionResult thirdinspection()
+        [Route("sigorta-islemleri")]
+        public IActionResult Sigortaİslemleri()
         {
             return View();
         }
-        [Route("pre-shipment-inspection")]
-        public IActionResult preship()
-        {
-            return View();
-        }
-        [Route("coating-inspection")]
-        public IActionResult coat()
+        [Route("hakkimizda")]
+        public IActionResult Hakkimizda()
         {
             return View();
         }

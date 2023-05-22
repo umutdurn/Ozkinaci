@@ -23,7 +23,11 @@
     <meta name="theme-color" content="#ffffff">
 
     <link href="~/tema/css/materialize.css" rel="stylesheet" />
-
+    <link href="~/tema/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/tema/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link href="~/tema/css/icons.css" rel="stylesheet" />
 </head>
 <body>
     <div class="headerust">
@@ -47,7 +51,16 @@
             </div>
         </div>
     </div>
-    <header>
+    @{
+        string inHeader = "";
+        string url = Context.Request.Path;
+        if (url != "/")
+        {
+            inHeader = "inHeader";
+        }
+    }
+    
+    <header class="@inHeader">
         <div class="container">
             <a href="~/"><img class="logo" src="~/tema/images/logo.jpg" /></a>
         <div class="headersag">
@@ -63,23 +76,23 @@
                                 <span>KURUMSAL</span><span class="arrow-down"></span>
                             </a>
                             <ul class="collapsible-body">
-                                <li><a href="~/lng-plants">Hakkımızda</a></li>
-                                <li><a href="~/chemical-plants">Genel Politika ve Sertifikalar</a></li>
+                                <li><a href="~/hakkimizda">Hakkımızda</a></li>
+                                <li><a href="#">Genel Politika ve Sertifikalar</a></li>
                                 
                             </ul>
                         </li>
                          <li class='drop'>
                             <a class="collapsible-header oa"><span>HİZMETLERİMİZ</span><span class="arrow-down"></span></a>
                             <ul class="collapsible-body">
-                                <li><a href="~/#">Kullanılmış Otomobiller</a></li>
-                                <li><a href="~/#">Otomobil Değerleme</a></li>
-                                <li><a href="~/#">Detaylı Ekspertiz</a></li>
-                                <li><a href="~/#">Oto Bakım Servisi</a></li>
-                                <li><a href="~/#">Finansman / Kredi</a></li>
-                                <li><a href="~/#">Sigorta İşlemleri</a></li>
+                                <li><a href="~/kullanilmis-otomobiller">Kullanılmış Otomobiller</a></li>
+                                <li><a href="~/otomobil-degerleme">Otomobil Değerleme</a></li>
+                                <li><a href="~/detayli-expertiz">Detaylı Ekspertiz</a></li>
+                                <li><a href="~/oto-bakim-servisi">Oto Bakım Servisi</a></li>
+                                <li><a href="~/finansman-kredi">Finansman / Kredi</a></li>
+                                <li><a href="~/sigorta-islemleri">Sigorta İşlemleri</a></li>
                             </ul>
                         </li>
-                        <li><a href="/contact" class="menua">İLETİŞİM</a></li>
+                        <li><a href="~/iletisim" class="menua">İLETİŞİM</a></li>
 
                     </ul>
                 </div>
@@ -96,8 +109,10 @@
     <footer class="border-top  text-muted">
         <div class="footer">
             <div class="container">
-               <ul class="footsol">
+                <ul class="footsol">
+                    <li><img src="~/tema/images/flogo.png" width="250" /></li>
                    <li><h3>İLETİŞİM DETAYLARI</h3></li>
+                    
                     <li><i class="fa-solid fa-location-dot"></i> Zümrütevler, Vişne Sk. No:10, 34852 Maltepe/İstanbul, Türkiye</li>
                     <li><i class="fa-solid fa-phone"></i>Telephone: +90 532 465 54 48</li>
                     <li><i class="fa-solid fa-envelope"></i>Mail: info@ozkinaci.com</li>
@@ -134,10 +149,8 @@
     </footer>
     
     <script src="~/tema/js/jquery-3.6.3.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"  />
-    
     <script src="~/tema/js/materialize.min.js"></script>
+    <script src="~/tema/js/owl.carousel.min.js"></script>
     
     <script>
         $(document).ready(function () {

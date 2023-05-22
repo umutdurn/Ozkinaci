@@ -18,5 +18,8 @@ namespace Core.Models
         public Category Category { get; set; }
         public CarBrand CarBrand { get; set; }
         public string Detail { get; set; }
+        public Equipment? Equipment { get; set; }
+        public int Order { get; set; }
+
     }
 }

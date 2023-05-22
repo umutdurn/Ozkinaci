@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
 }
 <div class="container">
     <div class="ustslide">
@@ -14,7 +15,7 @@
             </div>
             <ul>
                 <li>
-                    <img src="/tema/images/slider/slide1.jpg">
+                    <img src="~/tema/images/slider/slide1.jpg">
                 </li>
             </ul>
         </div>
@@ -29,7 +30,7 @@
             </div>
             <ul>
                 <li>
-                    <img src="/tema/images/slider/slide1.jpg">
+                    <img src="~/tema/images/slider/slide1.jpg">
                 </li>
             </ul>
         </div>
@@ -44,7 +45,7 @@
             </div>
             <ul>
                 <li>
-                    <img src="/tema/images/slider/slide1.jpg">
+                    <img src="~/tema/images/slider/slide1.jpg">
                 </li>
             </ul>
         </div>
@@ -63,44 +64,86 @@
 </div>
 <div class="anasyfKutular">
     <div class="container">
-        <ul>
-            <li>
-                <img src="/tema/images/anaysficon1.png">
-                <div class="kutuDetay">
-                    <span>Otomobil Değerleme</span>
-                    <p>En iyi fiyat ve en iyi kalite sizler için Özkınaci’ da.</p>
-                    <a href="fiyatal">Fiyat Al</a>
+        <div class="owl-carousel owl-theme">
+            <div class="item">
+                <div class="kutu">
+                    <div class="iconKutu">
+                        <span class="icon-deger"></span>
+                    </div>
+                    <div class="kutuDetay">
+                        <span>Otomobil Değerleme</span>
+                        <p>Aracınızı “Değerinde Satmanın” Güvenilir Yolu.</p>
+                        <a href="fiyatal">Fiyat Al</a>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="clearfix"></div>
-            </li>
-            <li>
-                <img src="/tema/images/anaysficon1.png">
-                <div class="kutuDetay">
-                    <span>Detaylı Expertiz</span>
-                    <p>En iyi fiyat ve en iyi kalite sizler için Özkınaci’ da.</p>
-                    <a href="fiyatal">Fiyat Al</a>
+            </div>
+            <div class="item">
+                <div class="kutu">
+                    <div class="iconKutu">
+                        <span class="icon-expert"></span>
+                    </div>
+                    <div class="kutuDetay">
+                        <span>Detaylı Expertiz</span>
+                        <p>Satışa sunulan her aracın satış sayfasında ekspertiz raporu yer alır.</p>
+                        <a href="fiyatal">Fiyat Al</a>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="clearfix"></div>
-            </li>
-            <li>
-                <img src="/tema/images/anaysficon1.png">
-                <div class="kutuDetay">
-                    <span>Finansman Kredi</span>
-                    <p>En iyi fiyat ve en iyi kalite sizler için Özkınaci’ da.</p>
-                    <a href="fiyatal">Fiyat Al</a>
+            </div>
+            <div class="item">
+                <div class="kutu">
+                    <div class="iconKutu">
+                        <span class="icon-finanz"></span>
+                    </div>
+                    <div class="kutuDetay">
+                        <span>Finansman Kredi</span>
+                        <p>İhtiyaçlarınız belirlenerek tüm finans kuruluşlarından size özel finans çözümleri sunar.</p>
+                        <a href="fiyatal">Fiyat Al</a>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="clearfix"></div>
-            </li>
-            <li>
-                <img src="/tema/images/anaysficon1.png">
-                <div class="kutuDetay">
-                    <span>Sigorta İşlemleri</span>
-                    <p>En iyi fiyat ve en iyi kalite sizler için Özkınaci’ da.</p>
-                    <a href="fiyatal">Fiyat Al</a>
+            </div>
+            <div class="item">
+                <div class="kutu">
+                    <div class="iconKutu">
+                        <span class="icon-sigorta"></span>
+                    </div>
+                    <div class="kutuDetay">
+                        <span>Sigorta</span>
+                        <p>Satın almış olduğunuz araç için, en uygun en kapsamlı poliçeler tarafınıza sunulur.</p>
+                        <a href="fiyatal">Fiyat Al</a>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="clearfix"></div>
-            </li>
-        </ul>
+            </div>
+            <div class="item">
+                <div class="kutu">
+                    <div class="iconKutu">
+                        <span class="icon-sigorta"></span>
+                    </div>
+                    <div class="kutuDetay">
+                        <span>Sigorta</span>
+                        <p>Satın almış olduğunuz araç için, en uygun en kapsamlı poliçeler tarafınıza sunulur.</p>
+                        <a href="fiyatal">Fiyat Al</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="kutu">
+                    <div class="iconKutu">
+                        <span class="icon-sigorta"></span>
+                    </div>
+                    <div class="kutuDetay">
+                        <span>Sigorta İşlemleri</span>
+                        <p>En iyi fiyat ve en iyi kalite sizler için Özkınaci’ da.</p>
+                        <a href="fiyatal">Fiyat Al</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
         <div class="clearfix"></div>
     </div>
 </div>
@@ -125,7 +168,10 @@
             </div>
             <div class="clearfix"></div>
         </div>
-        <h2>Vitrin İlanları</h2>
+        <div class="title">
+            <h2>Vitrin İlanları</h2>
+            <hr />
+        </div>
     </div>
 </div>
 <div class="vitrin">
@@ -135,7 +181,7 @@
             {
                 <div class="arac">
                     <div class="aracFoto">
-                        <img src="/tema/images/denemearac.jpg">
+                        <img src="~/tema/images/denemearac.jpg">
                     </div>
                     <div class="aracBilgiler">
                         <div class="brand"><span class="marka">BMW</span> 2 SERİSİ</div>
@@ -159,7 +205,7 @@
     </div>
 </div>
 @section Scripts{
-<script type="text/javascript">
+    <script type="text/javascript">
         /*Slider*/
 
         $(window).scroll(function () {
@@ -168,7 +214,7 @@
 
         $(document).ready(function () {
 
-    
+
             $(window).trigger('resize');
 
             var interval = 1;
@@ -272,7 +318,25 @@
 
 
         });
-    
-   
-</script>
+
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: true,
+            navText: ["<i class='arrows left'></i>", "<i class='arrows right'></i>"],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        })
+
+    </script>
 }
