@@ -89,6 +89,7 @@ body {
 
     .sol {
         float: left;
+        margin-top: 3px;
     }
 
     .sag {
@@ -540,8 +541,8 @@ header {
         left: 50%;
         bottom: 3%;
         z-index: 99;
-        width: 210px;
-        margin-left: -105px;
+        width: 290px;
+        margin-left: -145px;
 
         @media screen and (max-width:414px) {
             bottom: -5%;
@@ -1491,7 +1492,7 @@ background-image: url('../images/projects/mining-projects.jpg');
     background-position: 0 center;
 }
 .sgrt {
-    background-image: url('../images/sigortaislemleri.png');
+    background-image: url('../images/sigortaislemleri.jpg');
     background-position: 0 center;
 }
 .page {
