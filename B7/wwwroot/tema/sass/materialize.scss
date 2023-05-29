@@ -1469,7 +1469,6 @@ background-image: url('../images/projects/mining-projects.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    max-width: 1920px;
     height: 500px;
     border-bottom: 5px solid #0a66c2;
 
@@ -1481,19 +1480,20 @@ background-image: url('../images/projects/mining-projects.jpg');
 }
 .fnskre{
     background-image: url('../images/finansmankredi.jpg');
+    height:270px;
 
 }
 .dtexp {
     background-image: url('../images/detayliexpertiz.jpg');
-    background-position: 0 center;
+   
 }
 .otobkm {
     background-image: url('../images/otobakimservisi.jpg');
-    background-position: 0 center;
+   
 }
 .sgrt {
     background-image: url('../images/sigortaislemleri.jpg');
-    background-position: 0 center;
+   
 }
 .page {
     font-family: "Roboto",sans-serif;
