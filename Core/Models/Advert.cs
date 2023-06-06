@@ -16,6 +16,7 @@ namespace Core.Models
 
         public int Id { get; set; }
         public CarModel CarModel { get; set; }
+        public Equipment? Equipment { get; set; }
         public int Gear { get; set; } //0 Otomatik, 1 Vitesli
         public int Fuel { get; set; } //0 Dizel, 1 Benzinli, 2 Elektrikli
         public int Year { get; set; }

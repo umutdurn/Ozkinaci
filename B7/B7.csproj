@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\tema\sass\**" />
-    <Content Remove="wwwroot\tema\sass\**" />
-    <EmbeddedResource Remove="wwwroot\tema\sass\**" />
-    <None Remove="wwwroot\tema\sass\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\admintema\assets\css\bootstrap.css.map" />
     <None Include="wwwroot\admintema\assets\css\bootstrap.min.css.map" />
     <None Include="wwwroot\admintema\assets\css\bootstrap\bootstrap-grid.css.map" />
@@ -93,6 +86,8 @@
     <None Include="wwwroot\admintema\js\collapsible.js" />
     <None Include="wwwroot\admintema\js\component.js" />
     <None Include="wwwroot\admintema\js\datatables-init.js" />
+    <None Include="wwwroot\admintema\js\dataTables.bootstrap4.min.js" />
+    <None Include="wwwroot\admintema\js\dataTables.rowReorder.min.js" />
     <None Include="wwwroot\admintema\js\datepicker.js" />
     <None Include="wwwroot\admintema\js\dropdown.js" />
     <None Include="wwwroot\admintema\js\dropzone.min.js" />
@@ -101,6 +96,7 @@
     <None Include="wwwroot\admintema\js\forms.js" />
     <None Include="wwwroot\admintema\js\global.js" />
     <None Include="wwwroot\admintema\js\jquery-3.6.3.min.js" />
+    <None Include="wwwroot\admintema\js\jquery-ui.min.js" />
     <None Include="wwwroot\admintema\js\jquery.dataTables.min.js" />
     <None Include="wwwroot\admintema\js\jquery.maskMoney.min.js" />
     <None Include="wwwroot\admintema\js\jquery.validate.min.js" />
@@ -202,8 +198,11 @@
     <None Include="wwwroot\admintema\sass\components\_variables.scss" />
     <None Include="wwwroot\admintema\sass\components\_waves.scss" />
     <None Include="wwwroot\admintema\sass\materialize.scss" />
+    <None Include="wwwroot\excel\AracMarkaModel.xlsx" />
     <None Include="wwwroot\tema\css\materialize.css.map" />
     <None Include="wwwroot\tema\fonts\icomoon.svg" />
+    <None Include="wwwroot\tema\images\upload\amnesia-the-bunker-demo-2023651125721.webp" />
+    <None Include="wwwroot\tema\images\upload\xpbahtafqtre2whiretfdxtb-20235231249844.webp" />
     <None Include="wwwroot\tema\js\anime.min.js" />
     <None Include="wwwroot\tema\js\autocomplete.js" />
     <None Include="wwwroot\tema\js\buttons.js" />
@@ -240,6 +239,46 @@
     <None Include="wwwroot\tema\js\waves.js" />
     <None Include="wwwroot\tema\LICENSE" />
     <None Include="wwwroot\tema\README.md" />
+    <None Include="wwwroot\tema\sass\components\forms\_checkboxes.scss" />
+    <None Include="wwwroot\tema\sass\components\forms\_file-input.scss" />
+    <None Include="wwwroot\tema\sass\components\forms\_forms.scss" />
+    <None Include="wwwroot\tema\sass\components\forms\_input-fields.scss" />
+    <None Include="wwwroot\tema\sass\components\forms\_radio-buttons.scss" />
+    <None Include="wwwroot\tema\sass\components\forms\_range.scss" />
+    <None Include="wwwroot\tema\sass\components\forms\_select.scss" />
+    <None Include="wwwroot\tema\sass\components\forms\_switches.scss" />
+    <None Include="wwwroot\tema\sass\components\_badges.scss" />
+    <None Include="wwwroot\tema\sass\components\_buttons.scss" />
+    <None Include="wwwroot\tema\sass\components\_cards.scss" />
+    <None Include="wwwroot\tema\sass\components\_carousel.scss" />
+    <None Include="wwwroot\tema\sass\components\_chips.scss" />
+    <None Include="wwwroot\tema\sass\components\_collapsible.scss" />
+    <None Include="wwwroot\tema\sass\components\_color-classes.scss" />
+    <None Include="wwwroot\tema\sass\components\_color-variables.scss" />
+    <None Include="wwwroot\tema\sass\components\_datepicker.scss" />
+    <None Include="wwwroot\tema\sass\components\_dropdown.scss" />
+    <None Include="wwwroot\tema\sass\components\_global.scss" />
+    <None Include="wwwroot\tema\sass\components\_grid.scss" />
+    <None Include="wwwroot\tema\sass\components\_icons-material-design.scss" />
+    <None Include="wwwroot\tema\sass\components\_materialbox.scss" />
+    <None Include="wwwroot\tema\sass\components\_modal.scss" />
+    <None Include="wwwroot\tema\sass\components\_navbar.scss" />
+    <None Include="wwwroot\tema\sass\components\_normalize.scss" />
+    <None Include="wwwroot\tema\sass\components\_preloader.scss" />
+    <None Include="wwwroot\tema\sass\components\_pulse.scss" />
+    <None Include="wwwroot\tema\sass\components\_sidenav.scss" />
+    <None Include="wwwroot\tema\sass\components\_slider.scss" />
+    <None Include="wwwroot\tema\sass\components\_table_of_contents.scss" />
+    <None Include="wwwroot\tema\sass\components\_tabs.scss" />
+    <None Include="wwwroot\tema\sass\components\_tapTarget.scss" />
+    <None Include="wwwroot\tema\sass\components\_timepicker.scss" />
+    <None Include="wwwroot\tema\sass\components\_toast.scss" />
+    <None Include="wwwroot\tema\sass\components\_tooltip.scss" />
+    <None Include="wwwroot\tema\sass\components\_transitions.scss" />
+    <None Include="wwwroot\tema\sass\components\_typography.scss" />
+    <None Include="wwwroot\tema\sass\components\_variables.scss" />
+    <None Include="wwwroot\tema\sass\components\_waves.scss" />
+    <None Include="wwwroot\tema\sass\materialize.scss" />
   </ItemGroup>
 
   <ItemGroup>
@@ -247,15 +286,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Data.OleDb" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Services\Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\tema\images\upload\" />
   </ItemGroup>
 
 </Project>

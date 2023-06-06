@@ -10,5 +10,6 @@ namespace Core.Services
     public interface IAdvertService : IService<Advert>
     {
         ICollection<Advert> GetAllInclude();
+        Advert GetByIdInclude(int id);
     }
 }

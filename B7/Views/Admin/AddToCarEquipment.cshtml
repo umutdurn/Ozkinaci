@@ -3,8 +3,22 @@
     Layout = "_Admin";
 }
 <div class="row">
-    <form name="AddEquipment" id="AddEquipmentForm" action="/Admin/AddEquipment" method="post" class="col s12 m10 l12 productform">
+    <form name="AddEquipment" id="AddEquipmentForm" action="AddEquipment" method="post" class="col s12 m10 l12 productform">
         <div class="row">
+            <div class="input-field">
+                <label for="first_name">Araç Markası</label>
+                <select name="CarBrand" class="browser-default" asp-items="@ViewBag.CarBrand" required>
+                    <option value="">Seçiniz</option>
+                </select>
+                <br class="clearfix" />
+            </div>
+            <div class="input-field">
+                <label for="first_name">Araç Modeli</label>
+                <select name="CarModel" class="browser-default" required>
+                    <option value="">Seçiniz</option>
+                </select>
+                <br class="clearfix" />
+            </div>
             <div class="input-field">
                 <label for="first_name">Donanım Adı</label>
                 <input type="text" name="Name" class="browser-default" />
@@ -21,7 +35,31 @@
 
     <script type="text/javascript">
 
+        $("[name='CarBrand']").change(function () {
 
+            var id = $(this).val();
+
+            fetch("Getmodels/" + id, {
+                method: "post"
+            })
+                .then(r => r.json())
+                .then(r => {
+
+                    $("[name='CarModel']").html("<option value=''>Seçiniz</option>");
+
+                    $.each(r, function (i, index) {
+
+                        $("[name='CarModel']").append($('<option>', {
+                            value: index.id,
+                            text: index.name
+                        }));
+
+                    });
+
+                })
+
+
+        })
 
     </script>
     <script src="~/admintema/js/jquery.validate.min.js"></script>

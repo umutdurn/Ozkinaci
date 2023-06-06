@@ -58,6 +58,7 @@
 .input-field {
     margin: 10px 0;
     width: 460px;
+    display:inline-block;
 
     .active2 {
         position: absolute;
@@ -75,7 +76,7 @@
         padding: 12px 0 0 0;
     }
 
-    input[type=text] {
+    input[type=text], input[type=number] {
         width: 300px !important;
         float: left;
         display: block;

@@ -7,6 +7,7 @@ using Data.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Services.Services;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,7 @@ builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAdvertService, AdvertService>();
 builder.Services.AddScoped<ICarModelService, CarModelService>();
+builder.Services.AddScoped<IEquipmentService, Equipmentservice>();
 builder.Services.AddSession();
 builder.Services.AddDbContext<AppDbContext>(x =>
 {
@@ -27,6 +29,9 @@ builder.Services.AddDbContext<AppDbContext>(x =>
 
     });
 });
+
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 var app = builder.Build();
 

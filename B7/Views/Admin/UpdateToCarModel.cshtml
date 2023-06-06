@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Araç Modeli Güncelle";
+    Layout = "_Admin";
+}
+@model CarModel
+<div class="row">
+    <form name="UpdateModel" id="UpdateModelForm" action="/Admin/UpdateModel" method="post" class="col s12 m10 l12 productform">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="row">
+            <div class="input-field">
+                <label for="first_name">Model Adı</label>
+                <input type="text" name="Name" class="browser-default" value="@Model.Name" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">Kategori</label>
+                <select name="Category" class="browser-default" asp-items="@ViewBag.Category"></select>
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">Marka</label>
+                <select name="CarBrand" class="browser-default" asp-items="@ViewBag.Brands"></select>
+            </div>
+            <br class="clearfix" />
+            <div class="input-field">
+                <label for="first_name">Detayı</label>
+                <textarea type="text" name="Detail" class="browser-default">@Model.Detail</textarea>
+            </div>
+            <br class="clearfix" />
+            <div class="input-field ">
+                <label for="first_name"> </label>
+                <input type="submit" value="Model Güncelle" name="UpdateModelButton" class="btn btn-primary mr-2" />
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts{
+
+    <script type="text/javascript">
+
+
+
+    </script>
+    <script src="~/admintema/js/jquery.validate.min.js"></script>
+    <script src="~/admintema/js/ckeditor.js"></script>
+    <script src="~/admintema/js/jquery.maskmoney.min.js"></script>
+}

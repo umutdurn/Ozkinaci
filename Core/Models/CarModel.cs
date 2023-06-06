@@ -11,6 +11,7 @@ namespace Core.Models
     {
         public CarModel()
         {
+            Equipment = new Collection<Equipment>();
         }
 
         public int Id { get; set; }
@@ -18,7 +19,7 @@ namespace Core.Models
         public Category Category { get; set; }
         public CarBrand CarBrand { get; set; }
         public string Detail { get; set; }
-        public Equipment? Equipment { get; set; }
+        public ICollection<Equipment> Equipment { get; set; }
         public int Order { get; set; }
 
     }

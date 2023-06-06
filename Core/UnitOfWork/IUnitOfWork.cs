@@ -11,6 +11,8 @@ namespace Core.UnitOfWork
     {
         public IAdvertRepository Advert { get; }
         public ICarModelRepository CarModel { get; }
+        public IEquipmentRepository Equipment { get; }
+
         Task CommitAsync();
         void Commit();
     }

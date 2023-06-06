@@ -24,5 +24,15 @@ namespace Data.Repositories
                                           .Include(x => x.CarBrand)
                                           .Include(x => x.Equipment).ToList();
         }
+
+        public CarModel GetByIdIncludeModels(int id)
+        {
+            return _appDbContext.CarModels.Include(x => x.Equipment).Include(x => x.Category).Include(x => x.CarBrand).FirstOrDefault(x => x.Id == id);
+        }
+
+        public ICollection<CarModel> GetAllIncludeModelsByCarBrand(CarBrand carBrand)
+        {
+            return _appDbContext.CarModels.Where(x => x.CarBrand == carBrand).ToList();
+        }
     }
 }

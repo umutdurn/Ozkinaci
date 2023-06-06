@@ -1,0 +1,305 @@
+﻿@{
+    ViewBag.Title = "Aracımı Fiyatla";
+    Layout = "_Layout";
+}
+<div class="container">
+    <div class="priceMyCar">
+        <div class="title">
+            <h1>Otomobil Değerleme</h1>
+            <p>Aracınızın isterseniz takasa verebilir isterseniz nakit olarak satabilirsiniz.</p>
+        </div>
+        <div class="sections row">
+            <div class="col s12 l6 m6">
+                <div class="secBox">
+                    <svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" class=""><g fill="none" fill-rule="evenodd"><path d="M0 0h56v56H0z"></path><path stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 37.333L25.667 42 21 46.667"></path><path d="M9.333 30.333v7A4.665 4.665 0 0014 42h11.667M35 18.667L30.333 14 35 9.333" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M46.667 25.667v-7A4.665 4.665 0 0042 14H30.333M18.667 23.333h-7A4.665 4.665 0 017 18.667v-7A4.665 4.665 0 0111.667 7h7a4.665 4.665 0 014.666 4.667v7a4.665 4.665 0 01-4.666 4.666z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M44.333 49h-7a4.665 4.665 0 01-4.666-4.667v-7a4.665 4.665 0 014.666-4.666h7A4.665 4.665 0 0149 37.333v7A4.665 4.665 0 0144.333 49z" stroke="#231F20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+                    <span>Araç Takas</span>
+                    <p>Aracınızın takasa uygun görülmesi durumunda, takasa konu olan araç stoklarımızda bulunan araçlarımızla takas edilebilmektedir.</p>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="col s12 l6 m6">
+                <div class="secBox">
+                    <svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" class=""><g fill="none" fill-rule="evenodd"><path d="M0 0h56v56H0z"></path><path d="M30.29 32.667h17.543a3.5 3.5 0 003.5-3.5v-14a3.5 3.5 0 00-3.5-3.5H24.5a3.5 3.5 0 00-3.5 3.5v15.166M26.833 17.5h0M45.5 26.833h0M33.692 19.692a3.5 3.5 0 014.95 4.95M21 18.667h-5.348a7 7 0 00-3.13.739l-1.365.682a7 7 0 00-2.872 2.66l-3.618 6.03" stroke="#231F20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 49l13.444-4.858a9.333 9.333 0 004.594-3.6L32.02 30.07a3.84 3.84 0 00-.48-4.845h0a3.84 3.84 0 00-5.43-.001L21 30.334h-4.667" stroke="#231F20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+                    <span>Nakit Alım</span>
+                    <p>Gerekli koşullar sağlanması durumunda aracınız, anlaşılan tutardan satın alınmakta ve ödemesi Özkınacı güvencesi ile hızla yapılmaktadır.</p>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="priceMyCarSections">
+        <li class="Brand">
+            <a href="javascript:void(0)" class="hover">Marka</a>
+            <span>Seçiniz</span>
+        </li>
+        <li class="Model">
+            <a href="javascript:void(0)">Model</a>
+            <span>Seçiniz</span>
+        </li>
+        <li class="Gear">
+            <a href="javascript:void(0)">Vites</a>
+            <span>Seçiniz</span>
+        </li>
+        <li class="Fuel">
+            <a href="javascript:void(0)">Yakıt</a>
+            <span>Seçiniz</span>
+        </li>
+        <li class="Version">
+            <a href="javascript:void(0)">Versiyon</a>
+            <span>Seçiniz</span>
+        </li>
+        <li class="ModelYear">
+            <a href="javascript:void(0)">Model Yılı</a>
+            <span>Seçiniz</span>
+        </li>
+        <li class="Price"><a href="javascript:void(0)">Değerle</a></li>
+    </ul>
+    <div class="clearfix"></div>
+    @{
+        var brands = (List<CarBrand>)ViewBag.Brands;
+    }
+    <div class="priceMyCaroptions">
+        <div class="Brand">
+            <h2>Marka Seçin</h2>
+            <ul>
+                @foreach (var brand in brands)
+                {
+                    <li id="@brand.Id"><a href="javascript:void(0)">@brand.Name</a></li>
+                }
+            </ul>
+        </div>
+        <div class="Model">
+            <h2>Model Seçiniz</h2>
+            <ul class="getModels">
+                <img src="~/tema/images/loading.gif" />
+            </ul>
+        </div>
+        <div class="Gear">
+            <ul class="gears">
+                <li><a href="javascript:void(0)">Otomatik Vites</a></li>
+                <li><a href="javascript:void(0)">Düz Vites</a></li>
+            </ul>
+        </div>
+        <div class="Fuel">
+            <ul class="fuels">
+                <li><a href="javascript:void(0)">Dizel</a></li>
+                <li><a href="javascript:void(0)">Benzin</a></li>
+                <li><a href="javascript:void(0)">Elektrik</a></li>
+            </ul>
+        </div>
+        <div class="Version">
+            <ul class="Equipments">
+                <img src="~/tema/images/loading.gif" />
+            </ul>
+        </div>
+        <div class="ModelYear">
+            <h2>Model Yılı Seçin</h2>
+            <ul class="ModelYears">
+                <img src="~/tema/images/loading.gif" />
+            </ul>
+        </div>
+        <div class="Price">
+            <h2>Formu Doldurun</h2>
+            <form>
+                <div class="FormLine">
+                    <span>Adınız</span>
+                    <input type="text" name="Name" required class="browser-default" />
+                </div>
+                <div class="FormLine">
+                    <span>Soyadınız</span>
+                    <input type="text" name="Surname" required class="browser-default" />
+                </div>
+                <div class="FormLine">
+                    <span>Telefon</span>
+                    <input type="text" name="Telephone" required class="browser-default" />
+                </div>
+                <div class="FormLine">
+                    <span>E-posta</span>
+                    <input type="text" name="Email" required class="browser-default" />
+                </div>
+                <div class="FormLine">
+                    <span>Km</span>
+                    <input type="text" name="KM" required class="browser-default" />
+                </div>
+                <div class="FormLineCheckbox">
+                    <p>
+                        <label>
+                            <input type="checkbox" name="CarFeatures" required />
+                            <span>Aracımın yukarıda belirtilen özelliklerde olmadığını onaylıyorum.</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="checkbox" name="PersonalData" required />
+                            <span>Aydınlatma Metnini okudum. Kişisel verilerimin Aydınlatma Metni doğrultusunda işlenmesini ve Otomol bana satış, pazarlama ve benzeri amaçlarla her türlü iletişim mesajları göndermesini kabul ediyorum.</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="checkbox" name="SmsEmail" />
+                            <span>Otomol kampanya ve bilgilendirme amacıyla benimle (SMS, E-posta ve Telefon yoluyla) iletişim kurmasına izin veriyorum.</span>
+                        </label>
+                    </p>
+                </div>
+                <div class="FormLineButton">
+                    <input type="submit" value="Gönder" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+
+            $(".priceMyCaroptions").find("div").hide();
+            $(".priceMyCaroptions .Price").find("div").show();
+            $(".Brand").show();
+
+        })
+
+        $(".Brand ul li").click(function () {
+
+            $(".priceMyCarSections .Brand a").removeClass("hover");
+            $(".priceMyCarSections .Brand a").addClass("active");
+            $(".priceMyCarSections .Model a").addClass("hover");
+
+            $(".Brand ul li").removeClass("selected");
+
+            $(this).addClass("selected");
+
+            var selectedText = $(this).find("a").html();
+            var selectedVal = $(this).attr("id");
+
+            fetch("Home/GetModels/" + selectedVal, {
+                method: "post"
+            })
+                .then(r => r.json())
+                .then(r => {
+                    $(".getModels").html("");
+                    $.each(r, function (i, item) {
+
+                        var li = "<li id='" + item.id + "'><a href='javascript:void(0)'>" + item.name + "</a></li>";
+
+                        $(".getModels").append(li);
+
+                    })
+
+                })
+
+
+            $(".priceMyCarSections .Brand span").html(selectedText);
+            $(".priceMyCaroptions .Brand").hide();
+            $(".priceMyCaroptions .Model").show();
+        })
+
+        $(document).on("click", ".getModels li", function () {
+
+            $(".priceMyCarSections .Model a").removeClass("hover");
+            $(".priceMyCarSections .Model a").addClass("active");
+            $(".priceMyCarSections .Gear a").addClass("hover");
+
+            $(".getModels li").removeClass("selected");
+            $(this).addClass("selected");
+
+            var selectedText = $(this).find("a").html();
+
+            $(".priceMyCarSections .Model span").html(selectedText);
+
+            $(".priceMyCaroptions .Model").hide();
+            $(".priceMyCaroptions .Gear").show();
+
+        })
+
+        $(".gears li").click(function () {
+
+            $(".priceMyCarSections .Gear a").removeClass("hover");
+            $(".priceMyCarSections .Gear a").addClass("active");
+            $(".priceMyCarSections .Fuel a").addClass("hover");
+
+            $(".gears li").removeClass("selected");
+            $(this).addClass("selected");
+
+            var selectedText = $(this).find("a").html();
+
+            $(".priceMyCarSections .Gear span").html(selectedText);
+
+            $(".priceMyCaroptions .Gear").hide();
+            $(".priceMyCaroptions .Fuel").show();
+
+        })
+        $(".fuels li").click(function () {
+
+            $(".priceMyCarSections .Fuel a").removeClass("hover");
+            $(".priceMyCarSections .Fuel a").addClass("active");
+            $(".priceMyCarSections .Version a").addClass("hover");
+
+            $(".fuels li").removeClass("selected");
+            $(this).addClass("selected");
+
+            var selectedText = $(this).find("a").html();
+            var selectedVal = $(".getModels .selected").attr("id");
+
+            fetch("Home/GetEquipment/" + selectedVal, {
+                method: "post"
+            })
+                .then(r => r.json())
+                .then(r => {
+                    $(".Equipments").html("");
+                    $.each(r, function (i, item) {
+
+                        var li = "<li id='" + item.id + "'><a href='javascript:void(0)'>" + item.name + "</a></li>";
+
+                        $(".Equipments").append(li);
+
+                    })
+
+                })
+
+            $(".priceMyCarSections .Fuel span").html(selectedText);
+
+            $(".priceMyCaroptions .Fuel").hide();
+            $(".priceMyCaroptions .Version").show();
+
+        })
+
+        $(document).on("click", ".Equipments li", function () {
+
+            $(".priceMyCarSections .Version a").removeClass("hover");
+            $(".priceMyCarSections .Version a").addClass("active");
+            $(".priceMyCarSections .ModelYear a").addClass("hover");
+            $(".ModelYears").html("");
+            for (i = 2000; i <= 2023; i++) {
+
+                var li = "<li clas><a href='javascript:void(0)'>" + i + "</a></li>";
+
+                $(".ModelYears").append(li);
+            }
+
+            var selectedText = $(this).find("a").html();
+
+            $(".priceMyCarSections .Version span").html(selectedText);
+
+            $(".priceMyCaroptions .Version").hide();
+            $(".priceMyCaroptions .ModelYear").show();
+
+        })
+
+        $(document).on("click", ".ModelYears li", function () {
+
+            $(".priceMyCarSections .ModelYear a").removeClass("hover");
+            $(".priceMyCarSections .ModelYear a").addClass("active");
+            $(".priceMyCarSections .Price a").addClass("hover");
+
+            var selectedText = $(this).find("a").html();
+
+            $(".priceMyCarSections .ModelYear span").html(selectedText);
+
+            $(".priceMyCaroptions .ModelYear").hide();
+            $(".priceMyCaroptions .Price").show();
+
+        })
+    </script>
+
+}

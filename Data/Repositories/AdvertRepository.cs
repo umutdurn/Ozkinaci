@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Data.Repositories
 {
@@ -23,6 +24,17 @@ namespace Data.Repositories
             return _appDbContext.Advert.Include(x => x.CarModel)
                                        .ThenInclude(x => x.CarBrand)
                                        .ToList();
+        }
+
+        public Advert GetByIdInclude(int id)
+        {
+            return _appDbContext.Advert.Include(x => x.CarModel)
+                                       .ThenInclude(x => x.CarBrand)
+                                       .ThenInclude(x => x.CarModel)
+                                       .Include(x => x.CarModel)
+                                       .ThenInclude(x => x.Equipment)
+                                       .Include(x => x.Gallery)
+                                       .FirstOrDefault(x => x.Id == id);
         }
     }
 }

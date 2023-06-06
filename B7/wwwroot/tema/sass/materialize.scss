@@ -1573,3 +1573,153 @@ background-image: url('../images/projects/mining-projects.jpg');
         font-size: 25px;
     }
 }
+.priceMyCarSections {
+    margin: 50px 0px;
+    padding: 0px;
+
+    li {
+        float: left;
+        width: 12%;
+        height: 90px;
+        margin-bottom: 20px;
+
+        @media screen and (max-width:460px){
+
+            width:25%;
+
+        }
+
+        a {
+            display: block;
+            border-radius: 5px;
+            background: rgba(0,0,0,0.44);
+            color: #fff;
+            transition: .5s;
+            width: 70%;
+            margin: 0 auto;
+            padding: 15px 0px;
+            text-align: center;
+
+            &:hover {
+                background: #004ca9;
+            }
+        }
+
+        .hover {
+            background: #008fdb;
+        }
+
+        .active {
+            background: #82c475;
+        }
+
+        span {
+            height: 25px;
+            display: block;
+            text-align: center;
+            margin-top: 5px;
+        }
+    }
+}
+.priceMyCaroptions {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #f1f1f1;
+
+    img {
+        width: 200px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    h2 {
+        padding: 0px;
+        margin: 0px 0px 20px 0px;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    ul {
+        li {
+            width: 31%;
+            margin: 10px 1%;
+            background: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: inline-block;
+
+            @media screen and (max-width:460px) {
+                width: 47%;
+            }
+
+            a {
+                display: block;
+                padding: 10px 0px;
+                text-align: center;
+                font-weight: 500;
+                color: #000;
+            }
+        }
+    }
+}
+.Price {
+    .FormLine {
+        width: 44%;
+        margin-right: 2%;
+        margin-left: 2%;
+        display: inline-block;
+        margin-bottom: 20px;
+
+
+        input[type=text] {
+            width: 100%;
+            padding: 10px;
+        }
+    }
+
+    .FormLineCheckbox {
+        padding: 20px;
+    }
+
+    .FormLineButton{
+        input{
+            border:none;
+            padding:10px 20px;
+            font-size:20px;
+            color:#fff;
+            background:#026aa1;
+            cursor:pointer;
+        }
+    }
+}
+.priceMyCar {
+    .title {
+        text-align: center;
+        margin-bottom:20px;
+        h1 {
+            font-size: 35px;
+            font-weight: bold;
+            margin: 50px 0px 15px 0px;
+        }
+    }
+
+    .sections {
+        .secBox{
+            background:rgba(255,255,255,1);
+            padding:50px;
+            svg{
+                float:left;
+                margin-right:15px;
+            }
+            span{
+                font-size:18px;
+                font-weight:bold;
+            }
+            p{
+                margin:0px;
+                font-size:13px;
+            }
+        }
+    }
+}

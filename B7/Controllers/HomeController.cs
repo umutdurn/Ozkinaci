@@ -17,14 +17,16 @@ namespace B7.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IService<Category> _categoryService;
         private readonly IService<CarBrand> _carBrandService;
-        private readonly IService<CarModel> _carModelService;
+        private readonly IService<Equipment> _equipmentService;
+        private readonly ICarModelService _carModelService;
 
-        public HomeController(ILogger<HomeController> logger, IService<Category> categoryService, IService<CarBrand> carBrandService, IService<CarModel> carModelService)
+        public HomeController(ILogger<HomeController> logger, IService<Category> categoryService, IService<CarBrand> carBrandService, ICarModelService carModelService, IService<Equipment> equipmentService)
         {
             _logger = logger;
             _categoryService = categoryService;
             _carBrandService = carBrandService;
             _carModelService = carModelService;
+            _equipmentService = equipmentService;
         }
 
         public IActionResult Index()
@@ -81,6 +83,39 @@ namespace B7.Controllers
         public IActionResult contact()
         {
             return View();
+        }
+        [Route("guvenli-alim-satim")]
+        public IActionResult GuvenliAlimSatim()
+        {
+            return View();
+        }
+        [Route("otomobil-degerleme")]
+        public IActionResult PriceMyCar()
+        {
+            var brands = _carBrandService.GetAll().ToList();
+
+            ViewBag.Brands = brands;
+
+            return View();
+        }
+        [HttpPost]
+        public async Task<JsonResult> GetModels(int id) { 
+        
+            var carBrand = await _carBrandService.FirstOfDefaultAsync(x => x.Id == id);
+
+            var models = _carModelService.Where(x => x.CarBrand == carBrand).Result;
+
+            return Json(models);
+        
+        }
+        [HttpPost]
+        public async Task<JsonResult> GetEquipment(int id)
+        {
+
+            var carModels = _carModelService.GetByIdIncludeModels(id);
+
+            return Json(carModels.Equipment);
+
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

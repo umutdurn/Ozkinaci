@@ -18,8 +18,8 @@
             <tr id="@category.Id">
                 <td>@category.Order</td>
                 <td>@category.Name</td>
-                <td>Düzenle</td>
-                <td>Sil</td>
+                <td><a href="updatecategory/@category.Id">Düzenle</a></td>
+                <td><a href="DeleteCategory/@category.Id" onclick="return confirmRemove();">Sil</a></td>
             </tr>
         }
     </tbody>
@@ -27,6 +27,14 @@
 @section Scripts{
 
     <script>
+        function confirmRemove() {
+
+            var setConfirm = confirm("Bu modeli silmek istediğinden emin misin?");
+
+            return setConfirm;
+
+        }
+
         var table = 0;
 
         $(document).ready(function () {

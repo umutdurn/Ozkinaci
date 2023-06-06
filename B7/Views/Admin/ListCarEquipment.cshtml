@@ -1,65 +1,73 @@
 ﻿@model List<Equipment>
-    @{
-        ViewBag.Title = "Donanım Listele";
-        Layout = "_Admin";
-    }
-    <table id="data-table" class="table is-striped hover display">
-        <thead>
-            <tr>
-                <th>Sıra</th>
-                <th>Donanım</th>
-                <th>Düzenle</th>
-                <th>Sil</th>
+@{
+    ViewBag.Title = "Donanım Listele";
+    Layout = "_Admin";
+}
+<table id="data-table" class="table is-striped hover display">
+    <thead>
+        <tr>
+            <th>Sıra</th>
+            <th>Donanım</th>
+            <th>Düzenle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var donanim in Model)
+        {
+            <tr id="@donanim.Id">
+                <td>@donanim.Order</td>
+                <td>@donanim.Name</td>
+                <td><a href="UpdateToCarEquipment/@donanim.Id">Düzenle</a></td>
+                <td><a href="RemoveCarEquipment/@donanim.Id" onclick="return confirmRemove();">Sil</a></td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var donanim in Model)
-            {
-                <tr id="@donanim.Id">
-                    <td>@donanim.Order</td>
-                    <td>@donanim.Name</td>
-                    <td>Düzenle</td>
-                    <td>Sil</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    @section Scripts{
+        }
+    </tbody>
+</table>
+@section Scripts{
 
-        <script>
-            var table = 0;
+    <script>
+        function confirmRemove() {
 
-            $(document).ready(function(){
+            var setConfirm = confirm("Bu donanımı silmek istediğinden emin misin?");
 
-                siralama();
+            return setConfirm;
 
-            })
+        }
+        var table = 0;
 
-            function siralama() {
+        $(document).ready(function () {
 
-                table = $('.table').DataTable({
-                    rowReorder: {
-                        selector: 'tr'
-                    },
-                    paging: false,
+            siralama();
+
+        })
+
+        function siralama() {
+
+            table = $('.table').DataTable({
+                rowReorder: {
+                    selector: 'tr'
+                },
+                paging: true,
+                pageLength: 30,
                 searching: true,
-                    info: false,
+                info: false,
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/tr.json',
                 },
-                    "order": [[0, "asc"]]
-                });
+                "order": [[0, "asc"]]
+            });
 
-                table.on('row-reorder.dt', function (dragEvent, data, nodes) {
-                    for (var i = 0, ien = data.length; i < ien; i++) {
-                        var rowData = table.row(data[i].node).id();
-                        fetch("/Admin/UpdateRow?id=" + rowData + "&fromPosition=" + data[i].oldData + "&toPosition=" + data[i].newData, {
-                            method: 'GET'
-                        })
-                    }
-                });
+            table.on('row-reorder.dt', function (dragEvent, data, nodes) {
+                for (var i = 0, ien = data.length; i < ien; i++) {
+                    var rowData = table.row(data[i].node).id();
+                    fetch("/Admin/UpdateRow?id=" + rowData + "&fromPosition=" + data[i].oldData + "&toPosition=" + data[i].newData, {
+                        method: 'GET'
+                    })
+                }
+            });
 
-            }
-        </script>
+        }
+    </script>
 
     }

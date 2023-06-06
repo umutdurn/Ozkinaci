@@ -40,11 +40,11 @@
                 <td>
                 @if (carModel.Equipment != null)
                 {
-                    @carModel.Equipment.Name
+                    //@carModel.Equipment.Name
                 }
                 </td>
-                <td>Düzenle</td>
-                <td>Sil</td>
+                <td><a href="UpdateToCarModel/@carModel.Id">Düzenle</a></td>
+                <td><a href="DeleteCarModel/@carModel.Id" onclick="return confirmRemove();">Sil</a></td>
             </tr>
         }
     </tbody>
@@ -52,6 +52,15 @@
 @section Scripts{
 
     <script>
+
+        function confirmRemove() {
+
+            var setConfirm = confirm("Bu modeli silmek istediğinden emin misin?");
+
+            return setConfirm;
+
+        }
+
         var table = 0;
 
         $(document).ready(function () {
@@ -79,7 +88,7 @@
             table.on('row-reorder.dt', function (dragEvent, data, nodes) {
                 for (var i = 0, ien = data.length; i < ien; i++) {
                     var rowData = table.row(data[i].node).id();
-                    fetch("/Admin/UpdateRowCarModel?id=" + rowData + "&fromPosition=" + data[i].oldData + "&toPosition=" + data[i].newData, {
+                    fetch("UpdateRowCarModel?id=" + rowData + "&fromPosition=" + data[i].oldData + "&toPosition=" + data[i].newData, {
                         method: 'GET'
                     })
                 }

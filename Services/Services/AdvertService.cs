@@ -20,5 +20,10 @@ namespace Services.Services
         {
             return _unitOfWork.Advert.GetAllInclude();
         }
+
+        public Advert GetByIdInclude(int id)
+        {
+            return _unitOfWork.Advert.GetByIdInclude(id);
+        }
     }
 }

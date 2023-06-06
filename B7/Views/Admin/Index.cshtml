@@ -1,4 +1,26 @@
 ﻿@{
-    ViewBag.Title = "Admin Ana Sayfa";
-    Layout = "_Admin";
+    ViewData["Title"] = "Admin Girişi";
 }
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Admin Girişi</title>
+    <link href="~/admintema/css/style_giris.css" rel="stylesheet" />
+</head>
+<body>
+    <form method="post" asp-controller="Admin" asp-action="AdminLogin">
+        <div class="login-page">
+            <div class="form">
+                <form class="register-form">
+                    <input type="text" name="Mail" placeholder="Mail" />
+                    <input type="password" name="Password" placeholder="Parola" />
+                    <input type="submit" value="Giriş Yap" class="button" />
+                </form>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

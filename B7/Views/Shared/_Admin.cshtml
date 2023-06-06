@@ -19,12 +19,12 @@
     <div id="slide-out" class="sidenav">
         <ul class="collapsible expandable">
             <li class="active">
-                <a class="collapsible-header">Araçlar </a>
+                <a class="collapsible-header">Markalar </a>
                 <ul class="collapsible-body">
                     <li>
                         <ul>
-                            <li><a href="~/admin/ListCar">Araç Listesi</a></li>
-                            <li><a href="~/admin/AddToCar">Araç Ekle</a></li>
+                            <li><a href="~/admin/ListCarBrand">Araç Markaları</a></li>
+                            <li><a href="~/admin/AddBrand">Araç Markası Ekle</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -41,17 +41,17 @@
                 </ul>
             </li>
             <li class="active">
-                <a class="collapsible-header">Markalar </a>
+                <a class="collapsible-header">Donanımlar </a>
                 <ul class="collapsible-body">
                     <li>
                         <ul>
-                            <li><a href="~/admin/ListCarBrand">Araç Markaları</a></li>
-                            <li><a href="~/admin/AddBrand">Araç Markası Ekle</a></li>
+                            <li><a href="~/admin/ListCarEquipment">Araç Donanımları</a></li>
+                            <li><a href="~/admin/AddToCarEquipment">Araç Donanımı Ekle</a></li>
                         </ul>
                     </li>
                 </ul>
             </li>
-            <li>
+            <li class="active">
                 <a class="collapsible-header">Categories</a>
                 <ul class="collapsible-body">
                     <li>
@@ -63,12 +63,12 @@
                 </ul>
             </li>
             <li class="active">
-                <a class="collapsible-header">Donanımlar </a>
+                <a class="collapsible-header">Araçlar </a>
                 <ul class="collapsible-body">
                     <li>
                         <ul>
-                            <li><a href="~/admin/ListCarEquipment">Araç Donanımları</a></li>
-                            <li><a href="~/admin/AddToCarEquipment">Araç Donanımı Ekle</a></li>
+                            <li><a href="~/admin/ListCar">Araç Listesi</a></li>
+                            <li><a href="~/admin/AddToCar">Araç Ekle</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -86,6 +86,7 @@
     <script src="~/admintema/js/jquery.datatables.min.js"></script>
     <script src="~/admintema/js/datatables.rowreorder.min.js"></script>
     <script src="~/admintema/js/datatables.bootstrap4.min.js"></script>
+    <script src="~/admintema/js/jquery-ui.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.sidenav').sidenav();

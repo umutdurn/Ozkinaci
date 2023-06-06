@@ -20,5 +20,15 @@ namespace Services.Services
         {
             return _unitOfWork.CarModel.GetAllIncludeModels();
         }
+
+        public ICollection<CarModel> GetAllIncludeModelsByCarBrand(CarBrand carBrand)
+        {
+            return _unitOfWork.CarModel.GetAllIncludeModelsByCarBrand(carBrand);
+        }
+
+        public CarModel GetByIdIncludeModels(int id)
+        {
+            return _unitOfWork.CarModel.GetByIdIncludeModels(id);
+        }
     }
 }

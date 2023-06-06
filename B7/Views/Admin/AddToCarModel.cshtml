@@ -3,7 +3,7 @@
     Layout = "_Admin";
 }
 <div class="row">
-    <form name="AddModel" id="AddModelForm" action="/Admin/AddModel" method="post" class="col s12 m10 l12 productform">
+    <form name="AddModel" id="AddModelForm" action="AddModel" method="post" class="col s12 m10 l12 productform">
         <div class="row">
             <div class="input-field">
                 <label for="first_name">Model Adı</label>
@@ -19,12 +19,6 @@
                 <label for="first_name">Marka</label>
                 <select name="CarBrand" class="browser-default" asp-items="@ViewBag.Brands"></select>
             </div>
-            <br class="clearfix" />
-            <div class="input-field">
-                <label for="first_name">Donanım</label>
-                <select name="Equipment" class="browser-default" asp-items="@ViewBag.Equipment"></select>
-            </div>
-            
             <br class="clearfix" />
             <div class="input-field">
                 <label for="first_name">Detayı</label>

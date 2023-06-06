@@ -148,7 +148,7 @@ function readFile(input) {
                 return xhr;
             },
 
-            url: '/Admin/UploadHandler',
+            url: 'UploadHandler',
             type: "POST",
             contentType: false, // Not to set any content header
             processData: false, // Not to process data
@@ -189,8 +189,10 @@ function UploadGetir(result) {
 
         if (filenameler[i] != "") {
 
-            var tur = "<img src='../../tema/images/upload/" + filenam[0] + "' width=\"100\" />";
-            var liste = "<li id='fotoDisDiv' class=" + fileClass[0] + "><div id='fotoDiv'><span>" + tur + "</span></div><a class=\"silBtnFoto\" id=" + filenameler[i] + " onclick='DeleteFile(\"" + filenam[0] + "\")'></a></li>"; // Binding the file name;
+            var number = i + 1;
+
+            var tur = "<img src='../tema/images/upload/" + filenam[0] + "' width=\"100\" />";
+            var liste = "<li id=" + number + " ><div id='fotoDisDiv' class=" + fileClass[0] + "><div id='fotoDiv'><span>" + tur + "</span></div><a class=\"silBtnFoto\" id=" + filenameler[i] + " onclick='DeleteFile(\"" + filenam[0] + "\")'></a></div></li>"; // Binding the file name;
             $("#ListofFiles").append(liste);
 
         }
@@ -202,7 +204,7 @@ function UploadGetir(result) {
 function DeleteFile(FileName) {
 
     $.ajax({
-        url: '/Admin/UploadHandler?deleteImage=' + FileName,
+        url: '../UploadHandler?deleteImage=' + FileName,
         type: "POST",
         success: function (FileName) {
             let filenam = FileName.split('.');

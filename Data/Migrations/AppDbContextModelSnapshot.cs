@@ -22,6 +22,27 @@ namespace Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Core.Models.Admin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Mail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Admin");
+                });
+
             modelBuilder.Entity("Core.Models.Advert", b =>
                 {
                     b.Property<int>("Id")
@@ -54,6 +75,9 @@ namespace Data.Migrations
                     b.Property<string>("EnginePower")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EquipmentId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Fuel")
                         .HasColumnType("int");
@@ -97,6 +121,8 @@ namespace Data.Migrations
 
                     b.HasIndex("CarModelId");
 
+                    b.HasIndex("EquipmentId");
+
                     b.ToTable("Advert");
                 });
 
@@ -138,9 +164,6 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EquipmentId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -153,8 +176,6 @@ namespace Data.Migrations
                     b.HasIndex("CarBrandId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("EquipmentId");
 
                     b.ToTable("CarModels");
                 });
@@ -187,6 +208,9 @@ namespace Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("CarModelId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -195,6 +219,8 @@ namespace Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CarModelId");
 
                     b.ToTable("Equipment");
                 });
@@ -229,13 +255,19 @@ namespace Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Core.Models.Equipment", "Equipment")
+                        .WithMany()
+                        .HasForeignKey("EquipmentId");
+
                     b.Navigation("CarModel");
+
+                    b.Navigation("Equipment");
                 });
 
             modelBuilder.Entity("Core.Models.CarModel", b =>
                 {
                     b.HasOne("Core.Models.CarBrand", "CarBrand")
-                        .WithMany()
+                        .WithMany("CarModel")
                         .HasForeignKey("CarBrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -246,15 +278,18 @@ namespace Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Core.Models.Equipment", "Equipment")
-                        .WithMany()
-                        .HasForeignKey("EquipmentId");
-
                     b.Navigation("CarBrand");
 
                     b.Navigation("Category");
+                });
 
-                    b.Navigation("Equipment");
+            modelBuilder.Entity("Core.Models.Equipment", b =>
+                {
+                    b.HasOne("Core.Models.CarModel", "CarModel")
+                        .WithMany("Equipment")
+                        .HasForeignKey("CarModelId");
+
+                    b.Navigation("CarModel");
                 });
 
             modelBuilder.Entity("Core.Models.Gallery", b =>
@@ -271,6 +306,16 @@ namespace Data.Migrations
             modelBuilder.Entity("Core.Models.Advert", b =>
                 {
                     b.Navigation("Gallery");
+                });
+
+            modelBuilder.Entity("Core.Models.CarBrand", b =>
+                {
+                    b.Navigation("CarModel");
+                });
+
+            modelBuilder.Entity("Core.Models.CarModel", b =>
+                {
+                    b.Navigation("Equipment");
                 });
 
             modelBuilder.Entity("Core.Models.Category", b =>

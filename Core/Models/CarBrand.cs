@@ -9,13 +9,13 @@ namespace Core.Models
 {
     public class CarBrand
     {
-
         public CarBrand()
         {
+            CarModel = new Collection<CarModel>();
         }
-
         public int Id { get; set; }
         public string Name { get; set; }
         public int Order { get; set; }
+        public ICollection<CarModel> CarModel { get; set; }
     }
 }

@@ -33,8 +33,8 @@
                     }
                 </td>
                 <td>@brand.Name</td>
-                <td>Düzenle</td>
-                <td>Sil</td>
+                <td><a href="UpdateBrand/@brand.Id">Düzenle</a></td>
+                <td><a href="DeleteBrand/@brand.Id" onclick="return confirmRemove();">Sil</a></td>
             </tr>
         }
     </tbody>
@@ -42,6 +42,15 @@
 @section Scripts{
 
     <script>
+
+        function confirmRemove() {
+
+            var setConfirm = confirm("Bu aracı silmek istediğinden emin misin?");
+
+            return setConfirm;
+
+        }
+
         var table = 0;
 
         $(document).ready(function () {

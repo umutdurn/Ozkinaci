@@ -42,10 +42,39 @@
                         @:Vitesli
                     }
                 </td>
-                <td>@advert.Color</td>
-                <td>Düzenle</td>
-                <td>Sil</td>
+                <td>
+                    @if (advert.Color == "0")
+                    {
+                        @:Siyah
+                    }
+                    else if (advert.Color == "1")
+                    {
+                        @:Beyaz
+                    }
+                    else if (advert.Color == "2")
+                    {
+                        @:Kırmızı
+                    }else if (advert.Color == "3")
+                    {
+                        @:Sarı
+                    }
+                </td>
+                <td><a href="UpdateToCar/@advert.Id">Düzenle</a></td>
+                <td><a href="DeleteToCar/@advert.Id" onclick="return confirmRemove();">Sil</a></td>
             </tr>
         }
     </tbody>
 </table>
+@section Scripts{
+
+    <script>
+        function confirmRemove(){
+
+        var setConfirm = confirm("Bu aracı silmek istediğinden emin misin?");
+
+        return setConfirm;
+
+        }
+    </script>
+
+}

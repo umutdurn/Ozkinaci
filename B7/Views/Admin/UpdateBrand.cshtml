@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Marka Güncelle";
+    Layout = "_Admin";
+}
+@model CarBrand
+<div class="row">
+    <form name="UpdateBrand" id="UpdateBrandForm" action="/Admin/UpdateToBrand" method="post" class="col s12 m10 l12 productform">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="row">
+            <div class="input-field">
+                <label for="first_name">Marka Adı</label>
+                <input type="text" name="Name" class="browser-default" value="@Model.Name" />
+            </div>
+            <br class="clearfix" />
+            <div class="input-field ">
+                <label for="first_name"> </label>
+                <input type="submit" value="Marka Güncelle" name="UpdateBrandButton" class="btn btn-primary mr-2" />
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts{
+
+    <script type="text/javascript">
+
+
+
+    </script>
+    <script src="~/admintema/js/jquery.validate.min.js"></script>
+    <script src="~/admintema/js/ckeditor.js"></script>
+    <script src="~/admintema/js/jquery.maskmoney.min.js"></script>
+    <script src="~/admintema/cstmjs/productjs.js"></script>
+}
