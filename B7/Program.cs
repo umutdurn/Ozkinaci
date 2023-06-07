@@ -19,6 +19,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAdvertService, AdvertService>();
 builder.Services.AddScoped<ICarModelService, CarModelService>();
 builder.Services.AddScoped<IEquipmentService, Equipmentservice>();
+builder.Services.AddScoped<ICarBrandService, CarBrandService>();
 builder.Services.AddSession();
 builder.Services.AddDbContext<AppDbContext>(x =>
 {

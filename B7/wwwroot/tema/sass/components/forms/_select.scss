@@ -6,11 +6,9 @@ select.browser-default { display: block; }
 
 select {
   background-color: $select-background;
-  width: 100%;
   padding: $select-padding;
   border: $select-border;
   border-radius: $select-radius;
-  height: $input-height;
 }
 
 .select-label {

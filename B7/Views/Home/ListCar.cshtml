@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Araç Listesi";
+    Layout = "_Layout";
+}
+@model List<Advert>
+<div class="container listCar">
+    <table id="data-table" class="table is-striped hover display">
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Marka</th>
+                <th>Yıl</th>
+                <th>KM</th>
+                <th>Yakıt</th>
+                <th>Fiyat</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var advert in Model)
+            {
+                <tr>
+                    <td><a href="arac/@advert.Id"></a><img src="~/tema/images/upload/@advert.Gallery.First().Image" /></td>
+                    <td>
+                        <div class="aracBilgiler">
+                            <div class="brand"><span class="marka">@advert.CarModel.CarBrand.Name</span></div>
+                            <div class="sub-model">@advert.Equipment.Name</div>
+                        </div>
+                    </td>
+                    <td>
+                        @advert.Year
+                    </td>
+                    <td>
+                        @advert.Km.ToString("#,#")
+                    </td>
+                    <td>
+                        @if (advert.Fuel == 0)
+                        {
+                            @:Benzinli
+                        }
+                        else if (advert.Fuel == 1)
+                        {
+                            @:Dizel
+                        }
+                        else
+                        {
+                            @:Elektrikli
+                        }
+                    </td>
+                    <td>@advert.Price.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section Scripts{
+    <script>
+
+        $(document).ready(function () {
+
+            siralama();
+
+        })
+
+        function siralama() {
+
+            table = $('.table').DataTable({
+                "columns": [
+                    { "width": "125px" },
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ],
+                paging: true,
+                pageLength: 10,
+                searching: true,
+                info: false,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/tr.json',
+                }
+            });
+
+        }
+
+    </script>
+}

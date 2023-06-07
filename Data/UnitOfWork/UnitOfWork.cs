@@ -22,11 +22,14 @@ namespace Data.UnitOfWork
         private AdvertRepository _advertRepository;
         private CarModelRepository _carModelRepository;
         private EquipmentRepository _equipmentRepository;
+        private CarBrandRepository _carBrandRepository;
 
         public IAdvertRepository Advert => _advertRepository ?? new AdvertRepository(_appDbContext);
         public ICarModelRepository CarModel => _carModelRepository ?? new CarModelRepository(_appDbContext);
 
         public IEquipmentRepository Equipment => _equipmentRepository ?? new EquipmentRepository(_appDbContext);
+
+        public ICarBrandRepository CarBrand => _carBrandRepository ?? new CarBrandRepository(_appDbContext);
 
         public void Commit()
         {

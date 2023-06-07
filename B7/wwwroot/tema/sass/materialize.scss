@@ -1723,3 +1723,31 @@ background-image: url('../images/projects/mining-projects.jpg');
         }
     }
 }
+.listCar{
+    margin:75px auto;
+    background:#fff;
+    padding:15px;
+    select{
+        display:inline-block !important;
+    }
+    table{
+        tr{
+            position:relative;
+            border:none !important;
+            td{
+                a{
+                    position:absolute;
+                    left:0px;
+                    right:0px;
+                    bottom:0px;
+                    top:0px;
+                    width:100%;
+                }
+                border:none !important;
+                img{
+                    width:100%;
+                }
+            }
+        }
+    }
+}

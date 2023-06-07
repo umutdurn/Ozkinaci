@@ -23,6 +23,8 @@ namespace Data.Repositories
         {
             return _appDbContext.Advert.Include(x => x.CarModel)
                                        .ThenInclude(x => x.CarBrand)
+                                       .Include(x => x.Gallery)
+                                       .Include(x => x.Equipment)
                                        .ToList();
         }
 

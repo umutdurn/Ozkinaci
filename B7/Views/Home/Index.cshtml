@@ -49,7 +49,7 @@
                 </li>
             </ul>
         </div>
-            <div class="slide4 slideS animate__fadeIn animate__animated animate__fadeOut" id="slideByc">
+        <div class="slide4 slideS animate__fadeIn animate__animated animate__fadeOut" id="slideByc">
             <div class="container slideText animate__fadeInUp animate__animated animate__fadeOutDown">
                 <span class="sBaslik">
                     <span class="normal">ARACINIZI</span>
@@ -64,7 +64,7 @@
                 </li>
             </ul>
         </div>
-            <div class="slide5 slideS animate__fadeIn animate__animated animate__fadeOut" id="slideByc">
+        <div class="slide5 slideS animate__fadeIn animate__animated animate__fadeOut" id="slideByc">
             <div class="container slideText animate__fadeInUp animate__animated animate__fadeOutDown">
                 <span class="sBaslik">
                     <span class="normal">ARACINIZI</span>
@@ -164,201 +164,201 @@
                     <div class="clearfix"></div>
                 </div>
             </a>
-            
-        <div class="clearfix"></div>
-    </div>
-</div>
-<div class="aracAlSatBanner">
-    <div class="container">
-        <div class="banner">
-            <div class="text">
-                <div class="textIc">
-                    <a href="aracsat">
-                        <span>Bana Uygun Araç</span>
-                        <span class="buyuk">ALMAK İSTİYORUM</span>
-                     
-                    </a>
-                </div>
-            </div>
-            <div class="text textRight">
-                <div class="textIc">
-                    <a href="aracal">
-                         <span>En İyi Fiyata Araç</span>
-                        <span class="buyuk">SATMAK İSTİYORUM</span>
-                    </a>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="title">
-            <h2>Vitrin İlanları</h2>
-            <hr />
-        </div>
-    </div>
-</div>
-<div class="vitrin">
-    <div class="container">
-        <div class="araclar">
-            @for (int i = 0; i < 40; i++)
-            {
-                <div class="arac">
-                    <div class="aracFoto">
-                        <img src="~/tema/images/denemearac.jpg">
-                    </div>
-                    <div class="aracBilgiler">
-                        <div class="brand"><span class="marka">BMW</span> 2 SERİSİ</div>
-                        <div class="sub-model"><a href="altmodel">216D M SPORT OTOMATIK</a></div>
-                        <div class="yearKM">
-                            <div class="year">2021 Model</div>
-                            <div class="km">46.964 Km</div>
-                        </div>
-                        <div class="fuelVites">
-                            <div class="fuel">Dizel</div>
-                            <div class="vites">Otomatik</div>
-                        </div>
-                        <div class="fiyat">
-                            1.564.000 ₺
-                        </div>
-                    </div>
-                </div>
-            }
+
             <div class="clearfix"></div>
         </div>
     </div>
-</div>
-@section Scripts{
-    <script type="text/javascript">
-        /*Slider*/
+    <div class="aracAlSatBanner">
+        <div class="container">
+            <div class="banner">
+                <div class="text">
+                    <div class="textIc">
+                        <a href="arac-listesi">
+                            <span>Bana Uygun Araç</span>
+                            <span class="buyuk">ALMAK İSTİYORUM</span>
 
-        $(window).scroll(function () {
-            sessionStorage["scrollPosition"] = $(window).scrollTop();
-        });
+                        </a>
+                    </div>
+                </div>
+                <div class="text textRight">
+                    <div class="textIc">
+                        <a href="otomobil-degerleme">
+                            <span>En İyi Fiyata Araç</span>
+                            <span class="buyuk">SATMAK İSTİYORUM</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="title">
+                <h2>Vitrin İlanları</h2>
+                <hr />
+            </div>
+        </div>
+    </div>
+    <div class="vitrin">
+        <div class="container">
+            <div class="araclar">
+                @for (int i = 0; i < 40; i++)
+                {
+                    <div class="arac">
+                        <div class="aracFoto">
+                            <img src="~/tema/images/denemearac.jpg">
+                        </div>
+                        <div class="aracBilgiler">
+                            <div class="brand"><span class="marka">BMW</span> 2 SERİSİ</div>
+                            <div class="sub-model"><a href="altmodel">216D M SPORT OTOMATIK</a></div>
+                            <div class="yearKM">
+                                <div class="year">2021 Model</div>
+                                <div class="km">46.964 Km</div>
+                            </div>
+                            <div class="fuelVites">
+                                <div class="fuel">Dizel</div>
+                                <div class="vites">Otomatik</div>
+                            </div>
+                            <div class="fiyat">
+                                1.564.000 ₺
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    @section Scripts{
+        <script type="text/javascript">
+            /*Slider*/
 
-        $(document).ready(function () {
+            $(window).scroll(function () {
+                sessionStorage["scrollPosition"] = $(window).scrollTop();
+            });
+
+            $(document).ready(function () {
 
 
-            $(window).trigger('resize');
+                $(window).trigger('resize');
 
-            var interval = 1;
-            var inter;
-            var ul = $(".slideNavByc li").length;
+                var interval = 1;
+                var inter;
+                var ul = $(".slideNavByc li").length;
 
-            var timer = function () {
+                var timer = function () {
 
-                inter = setInterval(function () {
+                    inter = setInterval(function () {
 
-                    interval++;
+                        interval++;
 
-                    if (ul >= interval) {
+                        if (ul >= interval) {
 
-                        $("#" + interval).click();
+                            $("#" + interval).click();
 
-                    } else {
+                        } else {
 
-                        interval = 1;
+                            interval = 1;
 
-                        $("#" + interval).click();
+                            $("#" + interval).click();
+                        }
+
+                        $(window).scrollTop(sessionStorage["scrollPosition"]);
+
+
+
+                    }, 11000);
+
+                };
+
+
+                //timer();
+
+                $("#ileri").click(function () {
+
+                    var getId = parseInt($(".aktifLi").parent("li").attr("id"));
+
+                    getId++;
+
+                    if (getId > 6) {
+
+                        getId = 1;
+
                     }
 
-                    $(window).scrollTop(sessionStorage["scrollPosition"]);
+                    interval = getId;
+
+                    $("#" + interval.toString()).trigger("click");
+
+                    clearInterval(inter);
+                    timer();
+                });
+
+                $("#geri").click(function () {
+
+                    var getId = parseInt($(".aktifLi").parent("li").attr("id"));
+
+                    getId--;
+
+                    if (getId < 1) {
+
+                        getId = 6;
+
+                    }
+
+                    interval = getId;
+
+                    $("#" + interval.toString()).trigger("click");
+
+                    clearInterval(inter);
+                    timer();
+                });
+
+                $(".slideNavByc li").click(function () {
+
+                    $(".slideNavByc li span").removeClass("aktifLi");
+
+                    $(this).find("span").addClass("aktifLi");
+
+                    interval = this.id;
+
+                    /* Slider Değiştir */
+                    var slide = "slide" + interval;
+
+                    $(".slideS").addClass("animate__animated animate__fadeOut");
+                    $("." + slide).removeClass("animate__animated animate__fadeOut");
+                    $("." + slide).addClass("animate__animated animate__fadeIn");
+
+                    $(".slideS .slideText").addClass("animate__animated animate__fadeOutDown");
+                    $("." + slide + " .slideText").removeClass("animate__animated animate__fadeOutDown");
+                    $("." + slide + " .slideText").addClass("animate__animated animate__fadeInUp");
+
+                    clearInterval(inter);
+                    timer();
+
+                });
+
+                $("#1").trigger("click");
 
 
-
-                }, 11000);
-
-            };
-
-
-            //timer();
-
-            $("#ileri").click(function () {
-
-                var getId = parseInt($(".aktifLi").parent("li").attr("id"));
-
-                getId++;
-
-                if (getId > 6) {
-
-                    getId = 1;
-
-                }
-
-                interval = getId;
-
-                $("#" + interval.toString()).trigger("click");
-
-                clearInterval(inter);
-                timer();
-            });
-
-            $("#geri").click(function () {
-
-                var getId = parseInt($(".aktifLi").parent("li").attr("id"));
-
-                getId--;
-
-                if (getId < 1) {
-
-                    getId = 6;
-
-                }
-
-                interval = getId;
-
-                $("#" + interval.toString()).trigger("click");
-
-                clearInterval(inter);
-                timer();
-            });
-
-            $(".slideNavByc li").click(function () {
-
-                $(".slideNavByc li span").removeClass("aktifLi");
-
-                $(this).find("span").addClass("aktifLi");
-
-                interval = this.id;
-
-                /* Slider Değiştir */
-                var slide = "slide" + interval;
-
-                $(".slideS").addClass("animate__animated animate__fadeOut");
-                $("." + slide).removeClass("animate__animated animate__fadeOut");
-                $("." + slide).addClass("animate__animated animate__fadeIn");
-
-                $(".slideS .slideText").addClass("animate__animated animate__fadeOutDown");
-                $("." + slide + " .slideText").removeClass("animate__animated animate__fadeOutDown");
-                $("." + slide + " .slideText").addClass("animate__animated animate__fadeInUp");
-
-                clearInterval(inter);
-                timer();
 
             });
 
-            $("#1").trigger("click");
-
-
-
-        });
-
-        $('.owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            nav: true,
-            dots: true,
-            navText: ["<i class='arrows left'></i>", "<i class='arrows right'></i>"],
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 3
-                },
-                1000: {
-                    items: 4
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: true,
+                navText: ["<i class='arrows left'></i>", "<i class='arrows right'></i>"],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
                 }
-            }
-        })
+            })
 
-    </script>
-}
+        </script>
+    }

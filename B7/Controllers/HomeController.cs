@@ -16,17 +16,19 @@ namespace B7.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IService<Category> _categoryService;
-        private readonly IService<CarBrand> _carBrandService;
+        private readonly ICarBrandService _carBrandService;
         private readonly IService<Equipment> _equipmentService;
         private readonly ICarModelService _carModelService;
+        private readonly IAdvertService _advertService;
 
-        public HomeController(ILogger<HomeController> logger, IService<Category> categoryService, IService<CarBrand> carBrandService, ICarModelService carModelService, IService<Equipment> equipmentService)
+        public HomeController(ILogger<HomeController> logger, IService<Category> categoryService, ICarBrandService carBrandService, ICarModelService carModelService, IService<Equipment> equipmentService, IAdvertService advertService)
         {
             _logger = logger;
             _categoryService = categoryService;
             _carBrandService = carBrandService;
             _carModelService = carModelService;
             _equipmentService = equipmentService;
+            _advertService = advertService;
         }
 
         public IActionResult Index()
@@ -43,7 +45,13 @@ namespace B7.Controllers
         {
             return View();
         }
+        [Route("arac-listesi")]
+        public IActionResult ListCar()
+        {
+            var listCar = _advertService.GetAllInclude();
 
+            return View(listCar);
+        }
         [Route("kullanilmis-otomobiller")]
         public IActionResult KullanilmisOtomobiller()
         {
@@ -66,11 +74,6 @@ namespace B7.Controllers
         }
         [Route("sigorta-islemleri")]
         public IActionResult Sigortaİslemleri()
-        {
-            return View();
-        }
-        [Route("otomobil-degerleme")]
-        public IActionResult otomobildeger()
         {
             return View();
         }
