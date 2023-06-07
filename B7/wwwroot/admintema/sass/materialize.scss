@@ -46,8 +46,59 @@
        display:none;
     }
 }
-.sidenav{
-    
+.sidenav {
+    .collapsible-header{
+        position:relative;
+    }
+    .active {
+        .arrow {
+            -webkit-transform: rotate(45deg) translate(-5px, -5px);
+            transform: rotate(45deg) translate(-5px, -5px);
+
+            &:before {
+                -webkit-transform: translate(10px, 0);
+                transform: translate(10px, 0);
+            }
+
+            &:after {
+                -webkit-transform: rotate(90deg) translate(10px, 0);
+                transform: rotate(90deg) translate(10px, 0);
+            }
+        }
+    }
+
+    .arrow {
+        width: 13px;
+        height: 13px;
+        display: inline-block;
+        position: absolute;
+        top: 16px;
+        right: 27px;
+        transition: .4s ease;
+        margin-top: 2px;
+        text-align: left;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        float: right;
+
+        &:before, &:after {
+            position: absolute;
+            content: "";
+            display: inline-block;
+            width: 12px;
+            height: 3px;
+            background-color: #000;
+            transition: 0.4s ease;
+        }
+
+        &:after {
+            position: absolute;
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+            top: -5px;
+            left: 5px;
+        }
+    }
 }
 .adminright {
     float: left;
