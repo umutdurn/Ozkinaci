@@ -1761,56 +1761,65 @@ background-image: url('../images/projects/mining-projects.jpg');
         padding-bottom:20px;
     }
 }
-.detailBox {
-    background: #fff;
-    box-shadow: 0px 0px 4px 0px #cfcfcf;
-    border-radius: 5px;
-    padding: 10px 20px;
-    height: 575px;
+.detailMain {
+    text-align:right;
 
-    @media screen and (max-width:600px) {
-        border-radius: 0px 0px 5px 5px;
-    }
+    .detailBox {
+        background: #fff;
+        box-shadow: 0px 0px 4px 0px #cfcfcf;
+        border-radius: 5px;
+        padding: 10px 20px;
+        height: 573px;
+        width: 90%;
+        display: inline-block;
+        text-align: left;
 
-    .price {
-        display: block;
-        text-align: center;
-        font-size: 23px;
-        font-weight: bold;
-        padding: 10px 0px;
-    }
+        @media screen and (max-width:600px) {
+            border-radius: 0px 0px 5px 5px;
+            width:100%;
+        }
 
-    ul {
-        font-weight: 500;
+        .price {
+            display: block;
+            text-align: center;
+            font-size: 23px;
+            font-weight: bold;
+            padding: 10px 0px;
+        }
 
-        li {
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 13px;
-            margin-bottom: 13px;
+        ul {
+            font-weight: 500;
 
-            span {
-                display: block;
-            }
+            li {
+                border-bottom: 1px solid #f0f0f0;
+                padding-bottom: 13px;
+                margin-bottom: 13px;
 
-            .dt {
-                width: 50%;
-                float: left;
-                color: #b1b1b1;
-                font-size: 14px;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-            }
+                span {
+                    display: block;
+                }
 
-            .dd {
-                width: 50%;
-                float: right;
-                text-align: right;
-                color: #000000;
-                font-size: 13px;
+                .dt {
+                    width: 50%;
+                    float: left;
+                    color: #b1b1b1;
+                    font-size: 14px;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                .dd {
+                    width: 50%;
+                    float: right;
+                    text-align: right;
+                    color: #000000;
+                    font-size: 13px;
+                }
             }
         }
     }
 }
+
 .tab {
 
     margin-top:40px;

@@ -30,7 +30,7 @@
                 }
             </div>
         </div>
-        <div class="col s12 l4 m4">
+        <div class="col s12 l4 m4 detailMain">
             <div class="detailBox">
                 <span class="price">@Model.Price.ToString("C")</span>
                 <ul>
@@ -116,52 +116,53 @@
         <div class="col s12 l3 m3"></div>
     </div>
     <div class="row">
-        <div class="tab">
-            <div class="tabTitle">
-                <span class="technichDetails">Teknik Özellikler</span>
-            </div>
-            <div class="tabDetail">
-                <ul>
-                    <li>
-                        <span>Max Hız</span>
-                        <strong>@Model.MaxSpeed km</strong>
-                    </li>
-                    <li>
-                        <span>Boş Ağırlık</span>
-                        <strong>@Model.EmptyWeight kg</strong>
-                    </li>
-                    <li>
-                        <span>Silindir Hacmi</span>
-                        <strong>@Model.CylinderVolume cc</strong>
-                    </li>
-                    <li>
-                        <span>0-100 Km</span>
-                        <strong>@Model.To0100 sn</strong>
-                    </li>
-                    <li>
-                        <span>Yakıt Tüketimi</span>
-                        <strong>@Model.FuelConsumption L</strong>
-                    </li>
-                    <li>
-                        <span>Silindir Adedi</span>
-                        <strong>@Model.CylinderNumber</strong>
-                    </li>
-                    <li>
-                        <span>Tork</span>
-                        <strong>@Model.Tork nm/dd</strong>
-                    </li>
-                    <li>
-                        <span>Supap Adedi</span>
-                        <strong>@Model.ValveNumber</strong>
-                    </li>
-                    <li>
-                        <span>Yakıt Deposu</span>
-                        <strong>@Model.FuelTank</strong>
-                    </li>
-                </ul>
+        <div class="col s12 m12 l12">
+            <div class="tab">
+                <div class="tabTitle">
+                    <span class="technichDetails">Teknik Özellikler</span>
+                </div>
+                <div class="tabDetail">
+                    <ul>
+                        <li>
+                            <span>Max Hız</span>
+                            <strong>@Model.MaxSpeed km</strong>
+                        </li>
+                        <li>
+                            <span>Boş Ağırlık</span>
+                            <strong>@Model.EmptyWeight kg</strong>
+                        </li>
+                        <li>
+                            <span>Silindir Hacmi</span>
+                            <strong>@Model.CylinderVolume cc</strong>
+                        </li>
+                        <li>
+                            <span>0-100 Km</span>
+                            <strong>@Model.To0100 sn</strong>
+                        </li>
+                        <li>
+                            <span>Yakıt Tüketimi</span>
+                            <strong>@Model.FuelConsumption L</strong>
+                        </li>
+                        <li>
+                            <span>Silindir Adedi</span>
+                            <strong>@Model.CylinderNumber</strong>
+                        </li>
+                        <li>
+                            <span>Tork</span>
+                            <strong>@Model.Tork nm/dd</strong>
+                        </li>
+                        <li>
+                            <span>Supap Adedi</span>
+                            <strong>@Model.ValveNumber</strong>
+                        </li>
+                        <li>
+                            <span>Yakıt Deposu</span>
+                            <strong>@Model.FuelTank</strong>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
 @section Scripts{
