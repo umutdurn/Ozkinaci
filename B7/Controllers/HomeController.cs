@@ -52,6 +52,14 @@ namespace B7.Controllers
 
             return View(listCar);
         }
+        [Route("arac/{id}")]
+        public IActionResult Car(int id) {
+
+            var advert = _advertService.GetByIdInclude(id);
+
+            return View(advert);
+        
+        }
         [Route("kullanilmis-otomobiller")]
         public IActionResult KullanilmisOtomobiller()
         {

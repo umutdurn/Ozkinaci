@@ -1751,3 +1751,188 @@ background-image: url('../images/projects/mining-projects.jpg');
         }
     }
 }
+.inPageHead {
+    padding: 40px 10px 0px 10px;
+
+    .title {
+        font-size: 23px;
+        border-bottom: 0.5px solid rgba(0,0,0,0.20);
+        display:block;
+        padding-bottom:20px;
+    }
+}
+.detailBox {
+    background: #fff;
+    box-shadow: 0px 0px 4px 0px #cfcfcf;
+    border-radius: 5px;
+    padding: 10px 20px;
+    height: 575px;
+
+    @media screen and (max-width:600px) {
+        border-radius: 0px 0px 5px 5px;
+    }
+
+    .price {
+        display: block;
+        text-align: center;
+        font-size: 23px;
+        font-weight: bold;
+        padding: 10px 0px;
+    }
+
+    ul {
+        font-weight: 500;
+
+        li {
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 13px;
+            margin-bottom: 13px;
+
+            span {
+                display: block;
+            }
+
+            .dt {
+                width: 50%;
+                float: left;
+                color: #b1b1b1;
+                font-size: 14px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .dd {
+                width: 50%;
+                float: right;
+                text-align: right;
+                color: #000000;
+                font-size: 13px;
+            }
+        }
+    }
+}
+.tab {
+
+    margin-top:40px;
+
+    .tabTitle {
+        background: #333333;
+
+        .technichDetails {
+            background: #fff;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px 5px 0px 0px;
+            text-align: center;
+        }
+    }
+
+    .tabDetail {
+        background: #fff;
+        padding: 15px;
+
+        ul {
+            li {
+                display: inline-block;
+                width: 30%;
+                margin-bottom: 30px;
+
+                strong {
+                    font-weight: 500;
+                    font-size: 18px;
+                    display: block;
+                }
+
+                span {
+                    color: #9f9f9f;
+                    font-size: 12px;
+                    display: block;
+                    margin-bottom:10px;
+                }
+            }
+        }
+    }
+}
+.slider-nav {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.slick-arrow {
+    display: block;
+    position: absolute;
+    z-index: 9999;
+    border: none;
+    height: 95%;
+    top: 0;
+    cursor: pointer;
+    background: none;
+
+    @media screen and (max-width:600px) {
+        top:-290px;
+    }
+
+    &:before {
+        content: "";
+        border: solid #000000;
+        border-width: 0px 4px 4px 0;
+        display: inline-block;
+        padding: 0px;
+        height: 15px;
+        width: 15px;
+        top: 50%;
+    }
+}
+
+.slick-prev {
+    left: -23px;
+
+    @media screen and (max-width:600px) {
+        left: 30px;
+    }
+
+    &:before {
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+    }
+}
+
+.slick-next {
+    right: -23px;
+
+    @media screen and (max-width:600px) {
+        right: 30px;
+    }
+
+    &:before {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        margin-left: 0 !important;
+    }
+}
+
+.slick-cloned img {
+    margin: 1%;
+}
+
+.slider-for .slick-slide img {
+    display: block;
+    width: 100%;
+    border: 1px solid #c1c1c1;
+}
+
+.slick-slide img {
+    display: block;
+    width: 94%;
+    border: 1px solid #c1c1c1;
+    }
+
+
+
+.slick-initialized .slick-slide {
+    display: block;
+}
+
+.slick-current img {
+    border: 2px solid #525252;
+}

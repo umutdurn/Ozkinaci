@@ -25,6 +25,7 @@ namespace Core.Models
         public string To0100 { get; set; }
         public string Tork { get; set; }
         public float EmptyWeight { get; set; }
+        public int? FuelTank { get; set; }
         public string FuelConsumption { get; set; } // Yakıt Tüketimi
         public string CylinderVolume { get; set; } // Silindir Hacmi
         public int CylinderNumber { get; set; } // Silindir Adedi

@@ -1,0 +1,189 @@
+﻿@model Advert
+@{
+    ViewData["Title"] = Model.CarModel.CarBrand.Name + " " + Model.CarModel.Name;
+    Layout = "_Layout";
+}
+<link href="~/tema/css/fancybox.css" rel="stylesheet" />
+<link href="~/tema/css/slick.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="inPageHead">
+            <span class="title">@Model.CarModel.CarBrand.Name @Model.CarModel.Name @Model.Equipment.Name</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 l8 m8">
+            <div class=" slider-for">
+                @foreach (var item in Model.Gallery)
+                {
+                    <div>
+                        <img src="~/tema/images/upload/@item.Image" data-fancybox="gallery" />
+                    </div>
+                }
+            </div>
+            <div class=" slider-nav">
+                @foreach (var item in Model.Gallery)
+                {
+                    <div>
+                        <img src="~/tema/images/upload/@item.Image" />
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col s12 l4 m4">
+            <div class="detailBox">
+                <span class="price">@Model.Price.ToString("C")</span>
+                <ul>
+                    <li>
+                        <span class="dt">İLAN NO</span>
+                        <span class="dd">@Model.Id</span>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <span class="dt">KASA TİPİ</span>
+                        <span class="dd">
+                            @if (Model.CaseType == "0")
+                            {
+                                @:HATCHBACK
+                            }
+                            else
+                            {
+                                @:SEDAN
+                            }
+                        </span>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <span class="dt">MODEL YILI</span>
+                        <span class="dd">@Model.Year</span>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <span class="dt">KİLOMETRE</span>
+                        <span class="dd">@Model.Km.ToString("#,#")</span>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <span class="dt">MOTOR GÜCÜ</span>
+                        <span class="dd">@Model.EnginePower HP</span>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <span class="dt">VİTES TİPİ</span>
+                        <span class="dd">
+                            @if (Model.Gear == 0)
+                            {
+                                @:OTOMATİK
+                            }
+                            else
+                            {
+                                @:VİTESLİ
+                            }
+                        </span>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <span class="dt">YAKIT TÜRÜ</span>
+                        <span class="dd">
+                            @if (Model.Fuel == 0)
+                            {
+                                @:DİZEL
+                            }
+                            else if (Model.Fuel == 1)
+                            {
+                                @:BENZİN
+                            }
+                            else
+                            {
+                                @:ELEKTRİKLİ
+                            }
+                        </span>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <span class="dt">YAKIT TÜKETİMİ</span>
+                        <span class="dd">@Model.FuelConsumption L</span>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <span class="dt">AKTARMA TÜRÜ</span>
+                        <span class="dd">@Model.TypeOfTransfer</span>
+                        <div class="clearfix"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col s12 l3 m3"></div>
+    </div>
+    <div class="row">
+        <div class="tab">
+            <div class="tabTitle">
+                <span class="technichDetails">Teknik Özellikler</span>
+            </div>
+            <div class="tabDetail">
+                <ul>
+                    <li>
+                        <span>Max Hız</span>
+                        <strong>@Model.MaxSpeed km</strong>
+                    </li>
+                    <li>
+                        <span>Boş Ağırlık</span>
+                        <strong>@Model.EmptyWeight kg</strong>
+                    </li>
+                    <li>
+                        <span>Silindir Hacmi</span>
+                        <strong>@Model.CylinderVolume cc</strong>
+                    </li>
+                    <li>
+                        <span>0-100 Km</span>
+                        <strong>@Model.To0100 sn</strong>
+                    </li>
+                    <li>
+                        <span>Yakıt Tüketimi</span>
+                        <strong>@Model.FuelConsumption L</strong>
+                    </li>
+                    <li>
+                        <span>Silindir Adedi</span>
+                        <strong>@Model.CylinderNumber</strong>
+                    </li>
+                    <li>
+                        <span>Tork</span>
+                        <strong>@Model.Tork nm/dd</strong>
+                    </li>
+                    <li>
+                        <span>Supap Adedi</span>
+                        <strong>@Model.ValveNumber</strong>
+                    </li>
+                    <li>
+                        <span>Yakıt Deposu</span>
+                        <strong>@Model.FuelTank</strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts{
+    <script src="~/tema/js/fancybox.umd.js"></script>
+    <script src="~/tema/js/slick.min.js"></script>
+    <script>
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav'
+        });
+        $('.slider-nav').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            nav: true,
+            asNavFor: '.slider-for',
+            dots: false,
+            centerMode: false,
+            focusOnSelect: true
+        });
+
+    </script>
+}
