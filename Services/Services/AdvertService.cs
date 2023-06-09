@@ -25,5 +25,10 @@ namespace Services.Services
         {
             return _unitOfWork.Advert.GetByIdInclude(id);
         }
+
+        public ICollection<Advert> ShowcaseInclude()
+        {
+            return _unitOfWork.Advert.ShowcaseInclude();
+        }
     }
 }

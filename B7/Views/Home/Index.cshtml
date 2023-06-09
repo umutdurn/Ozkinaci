@@ -2,6 +2,7 @@
     ViewData["Title"] = "Home Page";
     Layout = "_Layout";
 }
+@model List<Advert>
 <div class="container">
     <div class="ustslide">
         <div class="slide1 slideS animate__fadeIn animate__animated animate__fadeOut" id="slideByc">
@@ -199,25 +200,47 @@
     <div class="vitrin">
         <div class="container">
             <div class="araclar">
-                @for (int i = 0; i < 40; i++)
+                @foreach (var item in Model)
                 {
                     <div class="arac">
                         <div class="aracFoto">
-                            <img src="~/tema/images/denemearac.jpg">
+                            <img src="~/tema/images/upload/@item.Gallery.First().Image">
                         </div>
                         <div class="aracBilgiler">
-                            <div class="brand"><span class="marka">BMW</span> 2 SERİSİ</div>
-                            <div class="sub-model"><a href="altmodel">216D M SPORT OTOMATIK</a></div>
+                            <div class="brand"><span class="marka">@item.CarModel.CarBrand.Name</span> @item.CarModel.Name</div>
+                            <div class="sub-model"><a href="altmodel">@item.Equipment.Name</a></div>
                             <div class="yearKM">
-                                <div class="year">2021 Model</div>
-                                <div class="km">46.964 Km</div>
+                                <div class="year">@item.Year Model</div>
+                                <div class="km">@item.Km.ToString("#,#") Km</div>
                             </div>
                             <div class="fuelVites">
-                                <div class="fuel">Dizel</div>
-                                <div class="vites">Otomatik</div>
+                                <div class="fuel">
+                                    @if (item.Fuel == 0)
+                                    {
+                                        @:Benzinli
+                                    }
+                                    else if (item.Fuel == 1)
+                                    {
+                                        @:Dizel
+                                    }
+                                    else
+                                    {
+                                        @:Elektrikli
+                                    }
+                                </div>
+                                <div class="vites">
+                                    @if (item.Gear == 0)
+                                    {
+                                        @:OTOMATİK
+                                    }
+                                    else
+                                    {
+                                        @:VİTESLİ
+                                    }
+                                </div>
                             </div>
                             <div class="fiyat">
-                                1.564.000 ₺
+                                @item.Price.ToString("C")
                             </div>
                         </div>
                     </div>

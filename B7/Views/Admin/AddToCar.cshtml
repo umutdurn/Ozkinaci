@@ -6,6 +6,15 @@
 <div class="row">
     <form name="AddAdvert" id="AddCarForm" action="AddAdvert" method="post" class="col s12 m10 l12 productform">
         <div class="row">
+            <div>
+                <p>
+                    <label>
+                        <input type="checkbox" name="Showcase" />
+                        <span>Vitrinde Gözüksün mü?</span>
+                    </label>
+                </p>
+                <br class="clearfix" />
+            </div>
             <div class="input-field">
                 <label for="first_name">Araç Markası</label>
                 <select name="CarBrand" class="browser-default" asp-items="@ViewBag.CarBrand" required>
@@ -168,7 +177,10 @@
                 </div>
                 <br class="clearfix" />
             </div>
-
+            <h2>Ekspertiz</h2>
+            <div class="expert">
+                <img src="~/tema/images/car.png" />
+            </div>
             <div class="input-field ">
                 <label for="first_name"> </label>
                 <input type="submit" value="Otomobil Ekle" name="AddCarButton" class="btn btn-primary mr-2" />

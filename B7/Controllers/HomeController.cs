@@ -33,7 +33,9 @@ namespace B7.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var showcase = _advertService.ShowcaseInclude();
+
+            return View(showcase);
         }
 
         public IActionResult Privacy()

@@ -10,6 +10,7 @@ namespace Core.Repositories
     public interface IAdvertRepository : IRepository<Advert>
     {
         ICollection<Advert> GetAllInclude();
+        ICollection<Advert> ShowcaseInclude();
         Advert GetByIdInclude(int id);
     }
 }

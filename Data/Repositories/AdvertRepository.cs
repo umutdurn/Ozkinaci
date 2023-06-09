@@ -38,5 +38,15 @@ namespace Data.Repositories
                                        .Include(x => x.Gallery)
                                        .FirstOrDefault(x => x.Id == id);
         }
+
+        public ICollection<Advert> ShowcaseInclude()
+        {
+            return _appDbContext.Advert.Where(x => x.Showcase == true)
+                                        .Include(x => x.CarModel)
+                                        .ThenInclude(x => x.CarBrand)
+                                        .Include(x => x.Gallery)
+                                        .Include(x => x.Equipment)
+                                        .ToList();
+        }
     }
 }

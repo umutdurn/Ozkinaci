@@ -152,6 +152,15 @@ namespace B7.Controllers
                 }
             }
 
+            if (Request.Form["Showcase"].ToString() == "on")
+            {
+                advert.Showcase = true;
+            }
+            else
+            {
+                advert.Showcase = true;
+            }
+
             advert.Gallery = Gallerys;
 
             var carModel = await _carModelService.FirstOfDefaultAsync(x => x.Id == Convert.ToInt32(Request.Form["CarModel"]));
@@ -165,6 +174,7 @@ namespace B7.Controllers
             return RedirectToAction(nameof(UpdateToCar), new { id = advert.Id });
         }
         [LoginFilter]
+        [HttpPost]
         public async Task<IActionResult> UpdateAdvert(Advert getAdvert)
         {
 
@@ -190,6 +200,14 @@ namespace B7.Controllers
             advert.TypeOfTransfer = getAdvert.TypeOfTransfer;
             advert.Price = getAdvert.Price;
 
+            if (Request.Form["Showcase"].ToString() == "on")
+            {
+                advert.Showcase = true;
+            }
+            else
+            {
+                advert.Showcase = false;
+            }
 
             string Images = HttpContext.Session.GetString("galeri");
 

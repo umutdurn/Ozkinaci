@@ -4,9 +4,18 @@
 }
 @model Advert
 <div class="row">
-    <form name="UpdateAdvert" id="UpdateCarForm" action="UpdateAdvert" method="post" class="col s12 m10 l12 productform">
+    <form name="UpdateAdvert" id="UpdateCarForm" action="/Admin/UpdateAdvert" method="post" class="col s12 m10 l12 productform">
         <input type="hidden" name="Id" value="@Model.Id" />
         <div class="row">
+            <div>
+                <p>
+                    <label>
+                        <input type="checkbox" name="Showcase" />
+                        <span>Vitrinde Gözüksün mü?</span>
+                    </label>
+                </p>
+                <br class="clearfix" />
+            </div>
             <div class="input-field">
                 <label for="first_name">Araç Markası</label>
                 <select name="CarBrand" class="browser-default" asp-items="@ViewBag.CarBrand" required>
@@ -217,6 +226,10 @@
             $("[name='Fuel']").val(@Model.Fuel);
             $("[name='Color']").val(@Model.Color);
             $("[name='CaseType']").val(@Model.CaseType);
+            @if (Model.Showcase)
+            {
+            @:$("[name='Showcase']").prop("checked", true);
+            }
         })
         $("[name='CarBrand']").change(function () {
 
