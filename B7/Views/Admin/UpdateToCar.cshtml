@@ -157,7 +157,19 @@
                 <input type="text" name="Price" class="browser-default" value="@Model.Price" required />
                 <br class="clearfix" />
             </div>
-
+            <input type="hidden" name="OnTampon" value="@Model.Expertiz.OnTampon" />
+            <input type="hidden" name="OnSagCamurluk" value="@Model.Expertiz.OnSagCamurluk" />
+            <input type="hidden" name="OnSolCamurluk" value="@Model.Expertiz.OnSolCamurluk" />
+            <input type="hidden" name="Kaput" value="@Model.Expertiz.Kaput" />
+            <input type="hidden" name="OnSagKapi" value="@Model.Expertiz.OnSagKapi" />
+            <input type="hidden" name="OnSolKapi" value="@Model.Expertiz.OnSolKapi" />
+            <input type="hidden" name="ArkaSagKapi" value="@Model.Expertiz.ArkaSagKapi" />
+            <input type="hidden" name="ArkaSolKapi" value="@Model.Expertiz.ArkaSolKapi" />
+            <input type="hidden" name="Tavan" value="@Model.Expertiz.Tavan" />
+            <input type="hidden" name="ArkaSolCamurluk" value="@Model.Expertiz.ArkaSolCamurluk" />
+            <input type="hidden" name="ArkaSagCamurluk" value="@Model.Expertiz.ArkaSagCamurluk" />
+            <input type="hidden" name="BagajKapagi" value="@Model.Expertiz.BagajKapagi" />
+            <input type="hidden" name="ArkaTampon" value="@Model.Expertiz.ArkaTampon" />
             <div class="input-field uzn">
                 <label for="first_name">Ürün Resimleri </label>
                 <div class="dropzndis">
@@ -184,7 +196,59 @@
                 </div>
                 <br class="clearfix" />
             </div>
-
+            <h2>Ekspertiz</h2>
+            <ul class="expertInfo">
+                <li><span>L.</span> Lokal Boyalı</li>
+                <li><span>H.</span> Hasarlı</li>
+                <li><span>B.</span> Boyalı</li>
+                <li><span>D.</span> Değişen</li>
+                <li><span>E.</span> Ezik</li>
+                <li><span>Ç.</span> Çizik</li>
+            </ul>
+            <div class="expert">
+                <div class="carBlock">
+                    <div id="OnTampon" class="@if(Model.Expertiz.OnTampon != "+"){
+                        @:redBack
+                    }">@Model.Expertiz.OnTampon</div>
+                    <div id="OnSagCamurluk" class="@if(Model.Expertiz.OnSagCamurluk != "+"){
+                        @:redBack
+                    }">@Model.Expertiz.OnSagCamurluk</div>
+                    <div id="OnSolCamurluk" class="@if(Model.Expertiz.OnSolCamurluk != "+"){
+                        @:redBack
+                    }">@Model.Expertiz.OnSolCamurluk</div>
+                    <div id="Kaput" class="@if(Model.Expertiz.Kaput != "+"){
+                        @:redBack
+                    }">@Model.Expertiz.Kaput</div>
+                    <div id="OnSagKapi" class="@if(Model.Expertiz.OnSagKapi != "+"){
+                        @:redBack
+                    }">@Model.Expertiz.OnSagKapi </div>
+                    <div id="OnSolKapi" class="@if(Model.Expertiz.OnSolKapi != "+"){
+                        @:redBack
+                    }">@Model.Expertiz.OnSolKapi</div>
+                    <div id="ArkaSagKapi" class="@if(Model.Expertiz.ArkaSagKapi != "+"){
+                        @:redBack
+                    }">@Model.Expertiz.ArkaSagKapi</div>
+                    <div id="ArkaSolKapi" class="@if(Model.Expertiz.ArkaSolKapi != "+"){
+                        @:redBack
+                    }">@Model.Expertiz.ArkaSolKapi</div>
+                    <div id="Tavan" class="@if(Model.Expertiz.Tavan != "+"){
+                        @:redBack
+                    }">@Model.Expertiz.Tavan</div>
+                    <div id="ArkaSolCamurluk" class="@if(Model.Expertiz.ArkaSolCamurluk != "+"){
+                        @:redBack
+                    }">@Model.Expertiz.ArkaSolCamurluk</div>
+                    <div id="ArkaSagCamurluk" class="@if(Model.Expertiz.ArkaSagCamurluk != "+"){
+                        @:redBack
+                    }">@Model.Expertiz.ArkaSagCamurluk</div>
+                    <div id="BagajKapagi" class="@if(Model.Expertiz.BagajKapagi != "+"){
+                        @:redBack
+                    }">@Model.Expertiz.BagajKapagi</div>
+                    <div id="ArkaTampon" class="@if(Model.Expertiz.ArkaTampon != "+"){
+                        @:redBack
+                    }">@Model.Expertiz.ArkaTampon</div>
+                </div>
+                <img src="~/tema/images/car.png" />
+            </div>
             <div class="input-field ">
                 <label for="first_name"> </label>
                 <input type="submit" value="Otomobil Güncelle" name="AddCarButton" class="btn btn-primary mr-2" />
@@ -202,6 +266,36 @@
         $(".table li").sortable({
             appendTo: document.body
         });
+
+        $(".carBlock div").click(function () {
+
+            $(this).addClass("redBack");
+
+            var htm = $(this).html();
+            var divId = $(this).attr("id");
+
+            if (htm == "+") {
+                $(this).html("L");
+            } else if (htm == "L") {
+                $(this).html("H");
+            } else if (htm == "H") {
+                $(this).html("B");
+            } else if (htm == "B") {
+                $(this).html("D");
+            } else if (htm == "D") {
+                $(this).html("E");
+            } else if (htm == "E") {
+                $(this).html("Ç");
+            } else if (htm == "Ç") {
+                $(this).html("+");
+                $(this).removeClass("redBack");
+            }
+
+            var newHtm = $(this).html();
+            $("[name='" + divId + "']").val(newHtm);
+
+        })
+
         //$('.table li').sortable({
         //    start: function (event, ui) {
         //        var start_pos = ui.item.index();

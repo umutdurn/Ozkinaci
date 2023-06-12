@@ -12,7 +12,6 @@ namespace Core.Models
         public Advert()
         {
             Gallery = new Collection<Gallery>();
-            Expertiz = new Collection<Expertiz>();
         }
         public bool Showcase { get; set; }
         public int Id { get; set; }
@@ -37,7 +36,7 @@ namespace Core.Models
         public string TypeOfTransfer { get; set; } // Aktarma Türü
         public decimal Price { get; set; }
         public ICollection<Gallery> Gallery { get; set; }
-        public ICollection<Expertiz> Expertiz { get; set; }
+        public Expertiz? Expertiz { get; set; }
 
     }
 }

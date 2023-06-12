@@ -156,7 +156,19 @@
                 <input type="number" name="Price" class="browser-default" required />
                 <br class="clearfix" />
             </div>
-
+            <input type="hidden" name="OnTampon" value="+" />
+            <input type="hidden" name="OnSagCamurluk" value="+" />
+            <input type="hidden" name="OnSolCamurluk" value="+" />
+            <input type="hidden" name="Kaput" value="+" />
+            <input type="hidden" name="OnSagKapi" value="+" />
+            <input type="hidden" name="OnSolKapi" value="+" />
+            <input type="hidden" name="ArkaSagKapi" value="+" />
+            <input type="hidden" name="ArkaSolKapi" value="+" />
+            <input type="hidden" name="Tavan" value="+" />
+            <input type="hidden" name="ArkaSolCamurluk" value="+" />
+            <input type="hidden" name="ArkaSagCamurluk" value="+" />
+            <input type="hidden" name="BagajKapagi" value="+" />
+            <input type="hidden" name="ArkaTampon" value="+" />
             <div class="input-field uzn">
                 <label for="first_name">Ürün Resimleri </label>
                 <div class="dropzndis">
@@ -177,24 +189,31 @@
                 </div>
                 <br class="clearfix" />
             </div>
-               <br class="clearfix" />
-            <ul id="sortable">
-                <li class="ui-state-default">1</li>
-                <li class="ui-state-default">2</li>
-                <li class="ui-state-default">3</li>
-                <li class="ui-state-default">4</li>
-                <li class="ui-state-default">5</li>
-                <li class="ui-state-default">6</li>
-                <li class="ui-state-default">7</li>
-                <li class="ui-state-default">8</li>
-                <li class="ui-state-default">9</li>
-                <li class="ui-state-default">10</li>
-                <li class="ui-state-default">11</li>
-                <li class="ui-state-default">12</li>
-            </ul>
-            <br class="clearfix" />   <br class="clearfix" />
             <h2>Ekspertiz</h2>
+            <ul class="expertInfo">
+                <li><span>L.</span> Lokal Boyalı</li>
+                <li><span>H.</span> Hasarlı</li>
+                <li><span>B.</span> Boyalı</li>
+                <li><span>D.</span> Değişen</li>
+                <li><span>E.</span> Ezik</li>
+                <li><span>Ç.</span> Çizik</li>
+            </ul>
             <div class="expert">
+                <div class="carBlock">
+                    <div id="OnTampon">+</div>
+                    <div id="OnSagCamurluk">+</div>
+                    <div id="OnSolCamurluk">+</div>
+                    <div id="Kaput">+</div>
+                    <div id="OnSagKapi">+</div>
+                    <div id="OnSolKapi">+</div>
+                    <div id="ArkaSagKapi">+</div>
+                    <div id="ArkaSolKapi">+</div>
+                    <div id="Tavan">+</div>
+                    <div id="ArkaSolCamurluk">+</div>
+                    <div id="ArkaSagCamurluk">+</div>
+                    <div id="BagajKapagi">+</div>
+                    <div id="ArkaTampon">+</div>
+                </div>
                 <img src="~/tema/images/car.png" />
             </div>
             <div class="input-field ">
@@ -209,21 +228,60 @@
     <script src="~/admintema/js/ckeditor.js"></script>
     <script src="~/admintema/js/jquery.maskmoney.min.js"></script>
     <script src="~/admintema/cstmjs/productjs.js"></script>
-    <style>
-  #sortable { list-style-type: none; margin: 0; padding: 0; width: 450px; }
-  #sortable li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 100px; height: 90px; font-size: 4em; text-align: center; }
-  </style>
+
     <script type="text/javascript">
-        $(function () {
-            $(".table").sortable({
-                revert: true
-            });
+        //$(".table li").sortable({
+        //    appendTo: document.body
+        //});
+
+        $(".carBlock div").click(function(){
+        
+            $(this).addClass("redBack");
+
+            var htm = $(this).html();
+            var divId = $(this).attr("id");
+
+            if(htm == "+"){
+                $(this).html("L");
+            }else if(htm == "L"){
+                $(this).html("H");
+            }else if (htm == "H") {
+                $(this).html("B");
+            }else if (htm == "B") {
+                $(this).html("D");
+            }else if (htm == "D") {
+                $(this).html("E");
+            }else if (htm == "E") {
+                $(this).html("Ç");
+            }else if (htm == "Ç") {
+                $(this).html("+");
+                $(this).removeClass("redBack");
+            }
+
+            var newHtm = $(this).html();
+            $("[name='" + divId + "']").val(newHtm);
+        
+        })
+
+        $(document).on("sortable",".table li",{
+            start: function (event, ui) {
+                var start_pos = ui.item.index();
+                ui.item.data('start_pos', start_pos);
+            },
+            change: function (event, ui) {
+                var start_pos = ui.item.data('start_pos');
+                var index = ui.placeholder.index();
+                if (start_pos < index) {
+                    $('.table li:nth-child(' + index + ')').addClass('highlights');
+                } else {
+                    $('.table li:eq(' + (index + 1) + ')').addClass('highlights');
+                }
+            },
+            update: function (event, ui) {
+                $('.table li').removeClass('highlights');
+            }
         });
-        $(function () {
-            $("#sortable").sortable({
-                revert: true
-            });
-        });
+        
 
         $("[name='CarBrand']").change(function () {
 

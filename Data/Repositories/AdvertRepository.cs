@@ -36,6 +36,7 @@ namespace Data.Repositories
                                        .Include(x => x.CarModel)
                                        .ThenInclude(x => x.Equipment)
                                        .Include(x => x.Gallery)
+                                       .Include(x => x.Expertiz)
                                        .FirstOrDefault(x => x.Id == id);
         }
 

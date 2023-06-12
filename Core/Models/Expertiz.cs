@@ -9,7 +9,6 @@ namespace Core.Models
     public class Expertiz
     {
         public int Id { get; set; }
-        public Advert Advert { get; set; }
         public string OnTampon { get; set; }
         public string OnSagCamurluk { get; set; }
         public string OnSolCamurluk { get; set; }
