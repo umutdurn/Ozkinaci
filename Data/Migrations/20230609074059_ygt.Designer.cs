@@ -4,6 +4,7 @@ using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230609074059_ygt")]
+    partial class ygt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,9 +104,6 @@ namespace Data.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool>("Showcase")
-                        .HasColumnType("bit");
 
                     b.Property<string>("To0100")
                         .IsRequired()
@@ -231,76 +231,6 @@ namespace Data.Migrations
                     b.ToTable("Equipment");
                 });
 
-            modelBuilder.Entity("Core.Models.Expertiz", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AdvertId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ArkaSagCamurluk")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ArkaSagKapi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ArkaSolCamurluk")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ArkaSolKapi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ArkaTampon")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BagajKapagi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Kaput")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OnSagCamurluk")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OnSagKapi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OnSolCamurluk")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OnSolKapi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OnTampon")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tavan")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AdvertId");
-
-                    b.ToTable("Expertiz");
-                });
-
             modelBuilder.Entity("Core.Models.Gallery", b =>
                 {
                     b.Property<int>("Id")
@@ -368,17 +298,6 @@ namespace Data.Migrations
                     b.Navigation("CarModel");
                 });
 
-            modelBuilder.Entity("Core.Models.Expertiz", b =>
-                {
-                    b.HasOne("Core.Models.Advert", "Advert")
-                        .WithMany("Expertiz")
-                        .HasForeignKey("AdvertId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Advert");
-                });
-
             modelBuilder.Entity("Core.Models.Gallery", b =>
                 {
                     b.HasOne("Core.Models.Advert", "Advert")
@@ -392,8 +311,6 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Core.Models.Advert", b =>
                 {
-                    b.Navigation("Expertiz");
-
                     b.Navigation("Gallery");
                 });
 
