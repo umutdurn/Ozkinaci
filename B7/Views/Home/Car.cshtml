@@ -119,47 +119,162 @@
         <div class="col s12 m12 l12">
             <div class="tab">
                 <div class="tabTitle">
-                    <span class="technichDetails">Teknik Özellikler</span>
+                    <div class="col s12">
+                        <ul class="tabs">
+                            <li class="tab"><a class="active" href="#teknik">Teknik Özellikler</a></li>
+                            <li class="tab"><a href="#ekspertiz">Ekspertiz</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="tabDetail">
-                    <ul>
-                        <li>
-                            <span>Max Hız</span>
-                            <strong>@Model.MaxSpeed km</strong>
-                        </li>
-                        <li>
-                            <span>Boş Ağırlık</span>
-                            <strong>@Model.EmptyWeight kg</strong>
-                        </li>
-                        <li>
-                            <span>Silindir Hacmi</span>
-                            <strong>@Model.CylinderVolume cc</strong>
-                        </li>
-                        <li>
-                            <span>0-100 Km</span>
-                            <strong>@Model.To0100 sn</strong>
-                        </li>
-                        <li>
-                            <span>Yakıt Tüketimi</span>
-                            <strong>@Model.FuelConsumption L</strong>
-                        </li>
-                        <li>
-                            <span>Silindir Adedi</span>
-                            <strong>@Model.CylinderNumber</strong>
-                        </li>
-                        <li>
-                            <span>Tork</span>
-                            <strong>@Model.Tork nm/dd</strong>
-                        </li>
-                        <li>
-                            <span>Supap Adedi</span>
-                            <strong>@Model.ValveNumber</strong>
-                        </li>
-                        <li>
-                            <span>Yakıt Deposu</span>
-                            <strong>@Model.FuelTank</strong>
-                        </li>
-                    </ul>
+                    <div id="teknik">
+                        <ul>
+                            <li>
+                                <span>Max Hız</span>
+                                <strong>@Model.MaxSpeed km</strong>
+                            </li>
+                            <li>
+                                <span>Boş Ağırlık</span>
+                                <strong>@Model.EmptyWeight kg</strong>
+                            </li>
+                            <li>
+                                <span>Silindir Hacmi</span>
+                                <strong>@Model.CylinderVolume cc</strong>
+                            </li>
+                            <li>
+                                <span>0-100 Km</span>
+                                <strong>@Model.To0100 sn</strong>
+                            </li>
+                            <li>
+                                <span>Yakıt Tüketimi</span>
+                                <strong>@Model.FuelConsumption L</strong>
+                            </li>
+                            <li>
+                                <span>Silindir Adedi</span>
+                                <strong>@Model.CylinderNumber</strong>
+                            </li>
+                            <li>
+                                <span>Tork</span>
+                                <strong>@Model.Tork nm/dd</strong>
+                            </li>
+                            <li>
+                                <span>Supap Adedi</span>
+                                <strong>@Model.ValveNumber</strong>
+                            </li>
+                            <li>
+                                <span>Yakıt Deposu</span>
+                                <strong>@Model.FuelTank</strong>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="ekspertiz" class="col s12">
+                        <ul class="expertInfo">
+                            <li><span>L.</span> Lokal Boyalı</li>
+                            <li><span>H.</span> Hasarlı</li>
+                            <li><span>B.</span> Boyalı</li>
+                            <li><span>D.</span> Değişen</li>
+                            <li><span>E.</span> Ezik</li>
+                            <li><span>Ç.</span> Çizik</li>
+                        </ul>
+                        <div class="expert">
+                            <div class="carBlock">
+                                <div id="OnTampon" class="@if(Model.Expertiz.OnTampon != "+"){
+                        @:redBack
+                    }else{
+                        @:dnone
+                    }">
+                                    @Model.Expertiz.OnTampon
+                                </div>
+                                <div id="OnSagCamurluk" class="@if(Model.Expertiz.OnSagCamurluk != "+"){
+                        @:redBack
+                    }else{
+                        @:dnone
+                    }">
+                                    @Model.Expertiz.OnSagCamurluk
+                                </div>
+                                <div id="OnSolCamurluk" class="@if(Model.Expertiz.OnSolCamurluk != "+"){
+                        @:redBack
+                    }else{
+                        @:dnone
+                    }">
+                                    @Model.Expertiz.OnSolCamurluk
+                                </div>
+                                <div id="Kaput" class="@if(Model.Expertiz.Kaput != "+"){
+                        @:redBack
+                    }else{
+                        @:dnone
+                    }">
+                                    @Model.Expertiz.Kaput
+                                </div>
+                                <div id="OnSagKapi" class="@if(Model.Expertiz.OnSagKapi != "+"){
+                        @:redBack
+                    }else{
+                        @:dnone
+                    }">
+                                    @Model.Expertiz.OnSagKapi
+                                </div>
+                                <div id="OnSolKapi" class="@if(Model.Expertiz.OnSolKapi != "+"){
+                        @:redBack
+                    }else{
+                        @:dnone
+                    }">
+                                    @Model.Expertiz.OnSolKapi
+                                </div>
+                                <div id="ArkaSagKapi" class="@if(Model.Expertiz.ArkaSagKapi != "+"){
+                        @:redBack
+                    }else{
+                        @:dnone
+                    }">
+                                    @Model.Expertiz.ArkaSagKapi
+                                </div>
+                                <div id="ArkaSolKapi" class="@if(Model.Expertiz.ArkaSolKapi != "+"){
+                        @:redBack
+                    }else{
+                        @:dnone
+                    }">
+                                    @Model.Expertiz.ArkaSolKapi
+                                </div>
+                                <div id="Tavan" class="@if(Model.Expertiz.Tavan != "+"){
+                        @:redBack
+                    }else{
+                        @:dnone
+                    }">
+                                    @Model.Expertiz.Tavan
+                                </div>
+                                <div id="ArkaSolCamurluk" class="@if(Model.Expertiz.ArkaSolCamurluk != "+"){
+                        @:redBack
+                    }else{
+                        @:dnone
+                    }">
+                                    @Model.Expertiz.ArkaSolCamurluk
+                                </div>
+                                <div id="ArkaSagCamurluk" class="@if(Model.Expertiz.ArkaSagCamurluk != "+"){
+                        @:redBack
+                    }else{
+                        @:dnone
+                    }">
+                                    @Model.Expertiz.ArkaSagCamurluk
+                                </div>
+                                <div id="BagajKapagi" class="@if(Model.Expertiz.BagajKapagi != "+"){
+                        @:redBack
+                    }else{
+                        @:dnone
+                    }">
+                                    @Model.Expertiz.BagajKapagi
+                                </div>
+                                <div id="ArkaTampon" class="@if(Model.Expertiz.ArkaTampon != "+"){
+                        @:redBack
+                    }else{
+                        @:dnone
+                    }">
+                                    @Model.Expertiz.ArkaTampon
+                                </div>
+                            </div>
+                            <img src="~/tema/images/car.png" />
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>
@@ -169,6 +284,9 @@
     <script src="~/tema/js/fancybox.umd.js"></script>
     <script src="~/tema/js/slick.min.js"></script>
     <script>
+        $(document).ready(function () {
+            $('.tabs').tabs();
+        });
         $('.slider-for').slick({
             slidesToShow: 1,
             slidesToScroll: 1,

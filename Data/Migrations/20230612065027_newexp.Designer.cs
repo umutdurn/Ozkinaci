@@ -4,6 +4,7 @@ using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230612065027_newexp")]
+    partial class newexp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,9 +82,6 @@ namespace Data.Migrations
                     b.Property<int?>("EquipmentId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ExpertizId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Fuel")
                         .HasColumnType("int");
 
@@ -131,8 +131,6 @@ namespace Data.Migrations
                     b.HasIndex("CarModelId");
 
                     b.HasIndex("EquipmentId");
-
-                    b.HasIndex("ExpertizId");
 
                     b.ToTable("Advert");
                 });
@@ -244,6 +242,9 @@ namespace Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AdvertId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ArkaSagCamurluk")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -298,6 +299,8 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AdvertId");
+
                     b.ToTable("Expertiz");
                 });
 
@@ -335,15 +338,9 @@ namespace Data.Migrations
                         .WithMany()
                         .HasForeignKey("EquipmentId");
 
-                    b.HasOne("Core.Models.Expertiz", "Expertiz")
-                        .WithMany()
-                        .HasForeignKey("ExpertizId");
-
                     b.Navigation("CarModel");
 
                     b.Navigation("Equipment");
-
-                    b.Navigation("Expertiz");
                 });
 
             modelBuilder.Entity("Core.Models.CarModel", b =>
@@ -372,6 +369,17 @@ namespace Data.Migrations
                         .HasForeignKey("CarModelId");
 
                     b.Navigation("CarModel");
+                });
+
+            modelBuilder.Entity("Core.Models.Expertiz", b =>
+                {
+                    b.HasOne("Core.Models.Advert", "Advert")
+                        .WithMany()
+                        .HasForeignKey("AdvertId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Advert");
                 });
 
             modelBuilder.Entity("Core.Models.Gallery", b =>

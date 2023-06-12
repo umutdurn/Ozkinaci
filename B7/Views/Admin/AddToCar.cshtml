@@ -156,7 +156,19 @@
                 <input type="number" name="Price" class="browser-default" required />
                 <br class="clearfix" />
             </div>
-
+            <input type="hidden" name="OnTampon" value="+" />
+            <input type="hidden" name="OnSagCamurluk" value="+" />
+            <input type="hidden" name="OnSolCamurluk" value="+" />
+            <input type="hidden" name="Kaput" value="+" />
+            <input type="hidden" name="OnSagKapi" value="+" />
+            <input type="hidden" name="OnSolKapi" value="+" />
+            <input type="hidden" name="ArkaSagKapi" value="+" />
+            <input type="hidden" name="ArkaSolKapi" value="+" />
+            <input type="hidden" name="Tavan" value="+" />
+            <input type="hidden" name="ArkaSolCamurluk" value="+" />
+            <input type="hidden" name="ArkaSagCamurluk" value="+" />
+            <input type="hidden" name="BagajKapagi" value="+" />
+            <input type="hidden" name="ArkaTampon" value="+" />
             <div class="input-field uzn">
                 <label for="first_name">Ürün Resimleri </label>
                 <div class="dropzndis">
@@ -178,7 +190,30 @@
                 <br class="clearfix" />
             </div>
             <h2>Ekspertiz</h2>
+            <ul class="expertInfo">
+                <li><span>L.</span> Lokal Boyalı</li>
+                <li><span>H.</span> Hasarlı</li>
+                <li><span>B.</span> Boyalı</li>
+                <li><span>D.</span> Değişen</li>
+                <li><span>E.</span> Ezik</li>
+                <li><span>Ç.</span> Çizik</li>
+            </ul>
             <div class="expert">
+                <div class="carBlock">
+                    <div id="OnTampon">+</div>
+                    <div id="OnSagCamurluk">+</div>
+                    <div id="OnSolCamurluk">+</div>
+                    <div id="Kaput">+</div>
+                    <div id="OnSagKapi">+</div>
+                    <div id="OnSolKapi">+</div>
+                    <div id="ArkaSagKapi">+</div>
+                    <div id="ArkaSolKapi">+</div>
+                    <div id="Tavan">+</div>
+                    <div id="ArkaSolCamurluk">+</div>
+                    <div id="ArkaSagCamurluk">+</div>
+                    <div id="BagajKapagi">+</div>
+                    <div id="ArkaTampon">+</div>
+                </div>
                 <img src="~/tema/images/car.png" />
             </div>
             <div class="input-field ">
@@ -198,6 +233,36 @@
         //$(".table li").sortable({
         //    appendTo: document.body
         //});
+
+        $(".carBlock div").click(function(){
+        
+            $(this).addClass("redBack");
+
+            var htm = $(this).html();
+            var divId = $(this).attr("id");
+
+            if(htm == "+"){
+                $(this).html("L");
+            }else if(htm == "L"){
+                $(this).html("H");
+            }else if (htm == "H") {
+                $(this).html("B");
+            }else if (htm == "B") {
+                $(this).html("D");
+            }else if (htm == "D") {
+                $(this).html("E");
+            }else if (htm == "E") {
+                $(this).html("Ç");
+            }else if (htm == "Ç") {
+                $(this).html("+");
+                $(this).removeClass("redBack");
+            }
+
+            var newHtm = $(this).html();
+            $("[name='" + divId + "']").val(newHtm);
+        
+        })
+
         $(document).on("sortable",".table li",{
             start: function (event, ui) {
                 var start_pos = ui.item.index();

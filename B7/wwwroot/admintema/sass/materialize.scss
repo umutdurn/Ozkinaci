@@ -287,8 +287,119 @@
 table tr{
     cursor:pointer;
 }
-.expert{
-    width:476px;
-    height:545px;
-    margin:20px 0px 50px 0px;
+.productform{
+    h2{
+        font-size:25px;
+        margin:10px 0px;
+        padding:0px;
+    }
+}
+.expertInfo {
+    margin: 50px 0px;
+    padding: 0px;
+
+    li {
+        display: inline-block;
+        margin: 0px 20px;
+
+        span {
+            color: #810000;
+            font-weight: bold;
+        }
+    }
+}
+.expert {
+    width: 476px;
+    height: 545px;
+    margin: 20px 0px 50px 0px;
+
+    .carBlock {
+        position: relative;
+
+        div {
+            cursor: pointer;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #00a6dc;
+            color: #fff;
+            font-size: 19px;
+            text-align: center;
+        }
+
+        #OnTampon {
+            top: 20px;
+            margin-left: -25px;
+            left: 50%;
+        }
+
+        #OnSolCamurluk {
+            top: 70px;
+            left: 70px;
+        }
+
+        #OnSagCamurluk {
+            top: 70px;
+            right: 87px;
+        }
+
+        #Kaput {
+            top: 90px;
+            margin-left: -25px;
+            left: 50%;
+        }
+
+        #OnSagKapi {
+            top: 195px;
+            right: 100px;
+        }
+
+        #OnSolKapi {
+            top: 195px;
+            left: 85px;
+        }
+
+        #ArkaSagKapi {
+            top: 275px;
+            right: 100px;
+        }
+
+        #ArkaSolKapi {
+            top: 275px;
+            left: 85px;
+        }
+
+        #Tavan {
+            top: 265px;
+            margin-left: -25px;
+            left: 50%;
+        }
+
+        #ArkaSolCamurluk {
+            top: 390px;
+            left: 80px;
+        }
+
+        #ArkaSagCamurluk {
+            top: 390px;
+            right: 96px;
+        }
+
+        #BagajKapagi {
+            top: 434px;
+            margin-left: -25px;
+            left: 50%;
+        }
+
+        #ArkaTampon {
+            top: 490px;
+            margin-left: -25px;
+            left: 50%;
+        }
+
+        .redBack {
+            background: #b50000;
+        }
+    }
 }

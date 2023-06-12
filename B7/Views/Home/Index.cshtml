@@ -165,223 +165,237 @@
                     <div class="clearfix"></div>
                 </div>
             </a>
+            <a href="~/sigorta-islemleri" class="item">
+                <div class="kutu">
+                    <div class="iconKutu">
+                        <span class="icon-sigorta"></span>
+                    </div>
+                    <div class="kutuDetay">
+                        <span>Güvenli Alım</span>
+                        <p>Satın almış olduğunuz araç için, en uygun en kapsamlı poliçeler tarafınıza sunulur.</p>
+                        <span class="fiyatal">Bilgi Al</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="aracAlSatBanner">
+    <div class="container">
+        <div class="banner">
+            <div class="text">
+                <div class="textIc">
+                    <a href="arac-listesi">
+                        <span>Bana Uygun Araç</span>
+                        <span class="buyuk">ALMAK İSTİYORUM</span>
 
+                    </a>
+                </div>
+            </div>
+            <div class="text textRight">
+                <div class="textIc">
+                    <a href="otomobil-degerleme">
+                        <span>En İyi Fiyata Araç</span>
+                        <span class="buyuk">SATMAK İSTİYORUM</span>
+                    </a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="title">
+            <h2>Vitrin İlanları</h2>
+            <hr />
+        </div>
+    </div>
+</div>
+<div class="vitrin">
+    <div class="container">
+        <div class="araclar">
+            @foreach (var item in Model)
+            {
+                <div class="arac">
+                    <div class="aracFoto">
+                        <a href="arac/@item.Id">
+                            <img src="~/tema/images/upload/@item.Gallery.First().Image">
+                        </a>
+                    </div>
+                    <div class="aracBilgiler">
+                        <div class="brand"><span class="marka">@item.CarModel.CarBrand.Name</span> @item.CarModel.Name</div>
+                        <div class="sub-model"><a href="altmodel">@item.Equipment.Name</a></div>
+                        <div class="yearKM">
+                            <div class="year">@item.Year Model</div>
+                            <div class="km">@item.Km.ToString("#,#") Km</div>
+                        </div>
+                        <div class="fuelVites">
+                            <div class="fuel">
+                                @if (item.Fuel == 0)
+                                {
+                                    @:Benzinli
+                                }
+                                else if (item.Fuel == 1)
+                                {
+                                    @:Dizel
+                                }
+                                else
+                                {
+                                    @:Elektrikli
+                                }
+                            </div>
+                            <div class="vites">
+                                @if (item.Gear == 0)
+                                {
+                                    @:OTOMATİK
+                                }
+                                else
+                                {
+                                    @:VİTESLİ
+                                }
+                            </div>
+                        </div>
+                        <div class="fiyat">
+                            @item.Price.ToString("C")
+                        </div>
+                    </div>
+                </div>
+            }
             <div class="clearfix"></div>
         </div>
     </div>
-    <div class="aracAlSatBanner">
-        <div class="container">
-            <div class="banner">
-                <div class="text">
-                    <div class="textIc">
-                        <a href="arac-listesi">
-                            <span>Bana Uygun Araç</span>
-                            <span class="buyuk">ALMAK İSTİYORUM</span>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        /*Slider*/
 
-                        </a>
-                    </div>
-                </div>
-                <div class="text textRight">
-                    <div class="textIc">
-                        <a href="otomobil-degerleme">
-                            <span>En İyi Fiyata Araç</span>
-                            <span class="buyuk">SATMAK İSTİYORUM</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="title">
-                <h2>Vitrin İlanları</h2>
-                <hr />
-            </div>
-        </div>
-    </div>
-    <div class="vitrin">
-        <div class="container">
-            <div class="araclar">
-                @foreach (var item in Model)
-                {
-                    <div class="arac">
-                        <div class="aracFoto">
-                            <img src="~/tema/images/upload/@item.Gallery.First().Image">
-                        </div>
-                        <div class="aracBilgiler">
-                            <div class="brand"><span class="marka">@item.CarModel.CarBrand.Name</span> @item.CarModel.Name</div>
-                            <div class="sub-model"><a href="altmodel">@item.Equipment.Name</a></div>
-                            <div class="yearKM">
-                                <div class="year">@item.Year Model</div>
-                                <div class="km">@item.Km.ToString("#,#") Km</div>
-                            </div>
-                            <div class="fuelVites">
-                                <div class="fuel">
-                                    @if (item.Fuel == 0)
-                                    {
-                                        @:Benzinli
-                                    }
-                                    else if (item.Fuel == 1)
-                                    {
-                                        @:Dizel
-                                    }
-                                    else
-                                    {
-                                        @:Elektrikli
-                                    }
-                                </div>
-                                <div class="vites">
-                                    @if (item.Gear == 0)
-                                    {
-                                        @:OTOMATİK
-                                    }
-                                    else
-                                    {
-                                        @:VİTESLİ
-                                    }
-                                </div>
-                            </div>
-                            <div class="fiyat">
-                                @item.Price.ToString("C")
-                            </div>
-                        </div>
-                    </div>
+        $(window).scroll(function () {
+            sessionStorage["scrollPosition"] = $(window).scrollTop();
+        });
+
+        $(document).ready(function () {
+
+
+            $(window).trigger('resize');
+
+            var interval = 1;
+            var inter;
+            var ul = $(".slideNavByc li").length;
+
+            var timer = function () {
+
+                inter = setInterval(function () {
+
+                    interval++;
+
+                    if (ul >= interval) {
+
+                        $("#" + interval).click();
+
+                    } else {
+
+                        interval = 1;
+
+                        $("#" + interval).click();
+                    }
+
+                    $(window).scrollTop(sessionStorage["scrollPosition"]);
+
+
+
+                }, 11000);
+
+            };
+
+
+            //timer();
+
+            $("#ileri").click(function () {
+
+                var getId = parseInt($(".aktifLi").parent("li").attr("id"));
+
+                getId++;
+
+                if (getId > 6) {
+
+                    getId = 1;
+
                 }
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-    @section Scripts{
-        <script type="text/javascript">
-            /*Slider*/
 
-            $(window).scroll(function () {
-                sessionStorage["scrollPosition"] = $(window).scrollTop();
+                interval = getId;
+
+                $("#" + interval.toString()).trigger("click");
+
+                clearInterval(inter);
+                timer();
             });
 
-            $(document).ready(function () {
+            $("#geri").click(function () {
 
+                var getId = parseInt($(".aktifLi").parent("li").attr("id"));
 
-                $(window).trigger('resize');
+                getId--;
 
-                var interval = 1;
-                var inter;
-                var ul = $(".slideNavByc li").length;
+                if (getId < 1) {
 
-                var timer = function () {
+                    getId = 6;
 
-                    inter = setInterval(function () {
+                }
 
-                        interval++;
+                interval = getId;
 
-                        if (ul >= interval) {
+                $("#" + interval.toString()).trigger("click");
 
-                            $("#" + interval).click();
+                clearInterval(inter);
+                timer();
+            });
 
-                        } else {
+            $(".slideNavByc li").click(function () {
 
-                            interval = 1;
+                $(".slideNavByc li span").removeClass("aktifLi");
 
-                            $("#" + interval).click();
-                        }
+                $(this).find("span").addClass("aktifLi");
 
-                        $(window).scrollTop(sessionStorage["scrollPosition"]);
+                interval = this.id;
 
+                /* Slider Değiştir */
+                var slide = "slide" + interval;
 
+                $(".slideS").addClass("animate__animated animate__fadeOut");
+                $("." + slide).removeClass("animate__animated animate__fadeOut");
+                $("." + slide).addClass("animate__animated animate__fadeIn");
 
-                    }, 11000);
+                $(".slideS .slideText").addClass("animate__animated animate__fadeOutDown");
+                $("." + slide + " .slideText").removeClass("animate__animated animate__fadeOutDown");
+                $("." + slide + " .slideText").addClass("animate__animated animate__fadeInUp");
 
-                };
-
-
-                //timer();
-
-                $("#ileri").click(function () {
-
-                    var getId = parseInt($(".aktifLi").parent("li").attr("id"));
-
-                    getId++;
-
-                    if (getId > 6) {
-
-                        getId = 1;
-
-                    }
-
-                    interval = getId;
-
-                    $("#" + interval.toString()).trigger("click");
-
-                    clearInterval(inter);
-                    timer();
-                });
-
-                $("#geri").click(function () {
-
-                    var getId = parseInt($(".aktifLi").parent("li").attr("id"));
-
-                    getId--;
-
-                    if (getId < 1) {
-
-                        getId = 6;
-
-                    }
-
-                    interval = getId;
-
-                    $("#" + interval.toString()).trigger("click");
-
-                    clearInterval(inter);
-                    timer();
-                });
-
-                $(".slideNavByc li").click(function () {
-
-                    $(".slideNavByc li span").removeClass("aktifLi");
-
-                    $(this).find("span").addClass("aktifLi");
-
-                    interval = this.id;
-
-                    /* Slider Değiştir */
-                    var slide = "slide" + interval;
-
-                    $(".slideS").addClass("animate__animated animate__fadeOut");
-                    $("." + slide).removeClass("animate__animated animate__fadeOut");
-                    $("." + slide).addClass("animate__animated animate__fadeIn");
-
-                    $(".slideS .slideText").addClass("animate__animated animate__fadeOutDown");
-                    $("." + slide + " .slideText").removeClass("animate__animated animate__fadeOutDown");
-                    $("." + slide + " .slideText").addClass("animate__animated animate__fadeInUp");
-
-                    clearInterval(inter);
-                    timer();
-
-                });
-
-                $("#1").trigger("click");
-
-
+                clearInterval(inter);
+                timer();
 
             });
 
-            $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 10,
-                nav: true,
-                dots: true,
-                navText: ["<i class='arrows left'></i>", "<i class='arrows right'></i>"],
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 3
-                    },
-                    1000: {
-                        items: 4
-                    }
-                }
-            })
+            $("#1").trigger("click");
 
-        </script>
+
+
+        });
+
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: true,
+            navText: ["<i class='arrows left'></i>", "<i class='arrows right'></i>"],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        })
+
+    </script>
     }

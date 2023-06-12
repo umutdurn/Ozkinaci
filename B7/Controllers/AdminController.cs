@@ -16,8 +16,9 @@ namespace B7.Controllers
         private readonly IEquipmentService _equipmentService;
         private readonly IAdvertService _advertService;
         private readonly IService<Admin> _adminService;
+        private readonly IService<Expertiz> _expertizService;
 
-        public AdminController(IService<Gallery> imageGallery, IAdvertService advertService, IService<CarBrand> carBrand, ICarModelService carModelService, IService<Category> categoryService, IEquipmentService equipmentService, IService<Admin> adminService)
+        public AdminController(IService<Gallery> imageGallery, IAdvertService advertService, IService<CarBrand> carBrand, ICarModelService carModelService, IService<Category> categoryService, IEquipmentService equipmentService, IService<Admin> adminService, IService<Expertiz> expertizService)
         {
             _imageGallery = imageGallery;
             _advertService = advertService;
@@ -26,6 +27,7 @@ namespace B7.Controllers
             _categoryService = categoryService;
             _equipmentService = equipmentService;
             _adminService = adminService;
+            _expertizService = expertizService;
         }
 
         public IActionResult Index()
@@ -169,6 +171,23 @@ namespace B7.Controllers
             advert.CarModel = carModel;
             advert.Equipment = equipment;
 
+            Expertiz exp = new Expertiz();
+            exp.OnTampon = Request.Form["OnTampon"].ToString();
+            exp.OnSagCamurluk = Request.Form["OnSagCamurluk"].ToString();
+            exp.OnSolCamurluk = Request.Form["OnSolCamurluk"].ToString();
+            exp.Kaput = Request.Form["Kaput"].ToString();
+            exp.OnSagKapi = Request.Form["OnSagKapi"].ToString();
+            exp.OnSolKapi = Request.Form["OnSolKapi"].ToString();
+            exp.ArkaSagKapi = Request.Form["ArkaSagKapi"].ToString();
+            exp.ArkaSolKapi = Request.Form["ArkaSolKapi"].ToString();
+            exp.Tavan = Request.Form["Tavan"].ToString();
+            exp.ArkaSolCamurluk = Request.Form["ArkaSolCamurluk"].ToString();
+            exp.ArkaSagCamurluk = Request.Form["ArkaSagCamurluk"].ToString();
+            exp.BagajKapagi = Request.Form["BagajKapagi"].ToString();
+            exp.ArkaTampon = Request.Form["ArkaTampon"].ToString();
+
+            advert.Expertiz = exp;
+                
             await _advertService.AddAsync(advert);
 
             return RedirectToAction(nameof(UpdateToCar), new { id = advert.Id });
@@ -199,6 +218,20 @@ namespace B7.Controllers
             advert.Color = getAdvert.Color;
             advert.TypeOfTransfer = getAdvert.TypeOfTransfer;
             advert.Price = getAdvert.Price;
+
+            advert.Expertiz.OnTampon = Request.Form["OnTampon"].ToString();
+            advert.Expertiz.OnSagCamurluk = Request.Form["OnSagCamurluk"].ToString();
+            advert.Expertiz.OnSolCamurluk = Request.Form["OnSolCamurluk"].ToString();
+            advert.Expertiz.Kaput = Request.Form["Kaput"].ToString();
+            advert.Expertiz.OnSagKapi = Request.Form["OnSagKapi"].ToString();
+            advert.Expertiz.OnSolKapi = Request.Form["OnSolKapi"].ToString();
+            advert.Expertiz.ArkaSagKapi = Request.Form["ArkaSagKapi"].ToString();
+            advert.Expertiz.ArkaSolKapi = Request.Form["ArkaSolKapi"].ToString();
+            advert.Expertiz.Tavan = Request.Form["Tavan"].ToString();
+            advert.Expertiz.ArkaSolCamurluk = Request.Form["ArkaSolCamurluk"].ToString();
+            advert.Expertiz.ArkaSagCamurluk = Request.Form["ArkaSagCamurluk"].ToString();
+            advert.Expertiz.BagajKapagi = Request.Form["BagajKapagi"].ToString();
+            advert.Expertiz.ArkaTampon = Request.Form["ArkaTampon"].ToString();
 
             if (Request.Form["Showcase"].ToString() == "on")
             {
