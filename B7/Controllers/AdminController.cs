@@ -297,7 +297,7 @@ namespace B7.Controllers
                     file.Delete();
                 }
 
-                var galerryImages = await _imageGallery.SingleOrDefaultAsync(x => x.Image == deleteImage);
+                var galerryImages = await _imageGallery.FirstOfDefaultAsync(x => x.Image == deleteImage);
 
                 if (galerryImages != null)
                 {
