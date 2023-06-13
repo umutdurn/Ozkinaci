@@ -23,6 +23,11 @@
 }
 
 
+.icon-galim:before {
+    content: "\e90a";
+    color: #b5b5b5;
+}
+
 .icon-finanz:before {
     content: "\e906";
     color: #b5b5b5;
@@ -67,6 +72,18 @@
     content: "\e942";
 }
 
+.icon-cross:before {
+    content: "\ea0f";
+}
+
+.icon-checkmark:before {
+    content: "\ea10";
+}
+
+.icon-checkmark2:before {
+    content: "\ea11";
+}
+
 .icon-enter:before {
     content: "\ea13";
 }
@@ -98,4 +115,3 @@
 .icon-location:before {
     content: "\e900";
 }
-
