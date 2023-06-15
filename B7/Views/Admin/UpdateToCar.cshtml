@@ -172,7 +172,8 @@
                 <input type="hidden" name="ArkaSagCamurluk" value="@Model.Expertiz.ArkaSagCamurluk" />
                 <input type="hidden" name="BagajKapagi" value="@Model.Expertiz.BagajKapagi" />
                 <input type="hidden" name="ArkaTampon" value="@Model.Expertiz.ArkaTampon" />
-            }else
+            }
+            else
             {
                 <input type="hidden" name="OnTampon" value="+" />
                 <input type="hidden" name="OnSagCamurluk" value="+" />
@@ -188,7 +189,6 @@
                 <input type="hidden" name="BagajKapagi" value="+" />
                 <input type="hidden" name="ArkaTampon" value="+" />
             }
-            
             <div class="input-field uzn">
                 <label for="first_name">Ürün Resimleri </label>
                 <div class="dropzndis">
@@ -205,14 +205,21 @@
                         </div>
                     </div>
                     <ul class="table" id="ListofFiles">
-                        @foreach (var item in Model.Gallery)
+                        @{
+                            var Images = "";
+                            var gallery = Model.Gallery.OrderBy(x => x.Order);
+                        }
+                        @foreach (var item in gallery)
                         {
+                            Images += item.Image + ",";
+
                             string[] fileClass = item.Image.Split('.');
 
-                            <li id="@item.Id"><div id='fotoDisDiv' class="@fileClass[0]"><div id='fotoDiv'><span><img src='../../tema/images/upload/@item.Image' width="100" /></span></div><a class="silBtnFoto" id="@item.Image" onclick='DeleteFile("@item.Image")'></a></div></li>
+                            <li id="@item.Image" class="@fileClass[0]"><div id='fotoDisDiv'><div id='fotoDiv'><span><img src='../../tema/images/upload/@item.Image' width="100" /></span></div><a class="silBtnFoto" id="@item.Image" onclick='DeleteFile("@item.Image")'></a></div></li>
                         }
                     </ul>
                 </div>
+                <input type="hidden" name="Images" value="@Images" />
                 <br class="clearfix" />
             </div>
             <h2>Ekspertiz</h2>
@@ -301,8 +308,23 @@
     <script src="~/admintema/js/jquery.maskmoney.min.js"></script>
 
     <script type="text/javascript">
-        $(".table li").sortable({
-            appendTo: document.body
+        $(".table").sortable({
+            update: function (event, ui) {
+                var phrase = '';
+                $('.table').each(function () {
+
+                    $(this).find('li').each(function () {
+                        var current = $(this);
+                        var classd = current.attr("class");
+                        if (classd != "dispnone") {
+                            phrase += current.attr("id") + ",";
+                        }
+                    });
+                });
+
+                $("[name='Images']").val(phrase);
+
+            }
         });
 
         $(function () {
@@ -337,36 +359,17 @@
             $("[name='" + divId + "']").val(newHtm);
 
         })
-
-        //$('.table li').sortable({
-        //    start: function (event, ui) {
-        //        var start_pos = ui.item.index();
-        //        ui.item.data('start_pos', start_pos);
-        //    },
-        //    change: function (event, ui) {
-        //        var start_pos = ui.item.data('start_pos');
-        //        var index = ui.placeholder.index();
-        //        if (start_pos < index) {
-        //            $('.table li:nth-child(' + index + ')').addClass('highlights');
-        //        } else {
-        //            $('.table li:eq(' + (index + 1) + ')').addClass('highlights');
-        //        }
-        //    },
-        //    update: function (event, ui) {
-        //        $('.table li').removeClass('highlights');
-        //    }
-        //});
         $(document).ready(function () {
 
             $("[name='Gear']").val(@Model.Gear);
             $("[name='Fuel']").val(@Model.Fuel);
             $("[name='Color']").val(@Model.Color);
             $("[name='CaseType']").val(@Model.CaseType);
-            @if (Model.Showcase)
-            {
+        @if (Model.Showcase)
+        {
             @:$("[name='Showcase']").prop("checked", true);
-            }
-        })
+        }
+                })
         $("[name='CarBrand']").change(function () {
 
             var id = $(this).val();
@@ -499,6 +502,7 @@
         function UploadGetir(result) {
 
             let filenameler = result.split('/');
+            var phrase = $("[name='Images']").val();
 
             for (let i = 0; i < filenameler.length; i++) {
 
@@ -508,13 +512,14 @@
                 if (filenameler[i] != "") {
 
                     var number = i + 1;
-
+                    phrase += filenam[0] + ",";
                     var tur = "<img src='../../tema/images/upload/" + filenam[0] + "' width=\"100\" />";
-                    var liste = "<li id=" + number + " ><div id='fotoDisDiv' class=" + fileClass[0] + "><div id='fotoDiv'><span>" + tur + "</span></div><a class=\"silBtnFoto\" id=" + filenameler[i] + " onclick='DeleteFile(\"" + filenam[0] + "\")'></a></div></li>"; // Binding the file name;
+                    var liste = "<li id=" + filenam[0] + "  class=" + fileClass[0] + "><div id='fotoDisDiv'><div id='fotoDiv'><span>" + tur + "</span></div><a class=\"silBtnFoto\" id=" + filenameler[i] + " onclick='DeleteFile(\"" + filenam[0] + "\")'></a></div></li>"; // Binding the file name;
                     $("#ListofFiles").append(liste);
 
                 }
             }
+            $("[name='Images']").val(phrase);
             $('#Files').val('');
             $('#FileBrowse').find("*").prop("disabled", false);
         }
@@ -526,7 +531,21 @@
                 type: "POST",
                 success: function (FileName) {
                     let filenam = FileName.split('.');
-                    $("." + filenam[0]).addClass("dispnone");
+                    $("." + filenam[0]).removeClass().addClass("dispnone");
+
+                    var phrase = '';
+                    $('.table').each(function () {
+
+                        $(this).find('li').each(function () {
+                            var current = $(this);
+                            var classd = current.attr("class");
+                            if (classd != "dispnone") {
+                                phrase += current.attr("id") + ",";
+                            }
+                        });
+                    });
+
+                    $("[name='Images']").val(phrase);
                 }
             });
 

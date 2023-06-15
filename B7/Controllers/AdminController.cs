@@ -137,19 +137,21 @@ namespace B7.Controllers
         [LoginFilter]
         public async Task<IActionResult> AddAdvert(Advert advert)
         {
-            string Images = HttpContext.Session.GetString("galeri");
+            string Images = Request.Form["Images"].ToString();
 
             List<Gallery> Gallerys = new List<Gallery>();
 
-            if (!String.IsNullOrEmpty(Images))
+            if (Images != "+")
             {
-                string[] Image = Images.Split('/');
+                string[] Image = Images.Split(',');
 
                 for (int i = 0; i < Image.Length; i++)
                 {
                     if (!String.IsNullOrEmpty(Image[i]))
                     {
-                        Gallerys.Add(new Gallery { Image = Image[i], Advert = advert });
+                        int order = i + 1;
+
+                        Gallerys.Add(new Gallery { Image = Image[i], Advert = advert, Order = order });
                     }
                 }
             }
@@ -242,19 +244,38 @@ namespace B7.Controllers
                 advert.Showcase = false;
             }
 
-            string Images = HttpContext.Session.GetString("galeri");
+            string Images = Request.Form["Images"].ToString();
 
             List<Gallery> Gallerys = advert.Gallery.ToList();
 
             if (!String.IsNullOrEmpty(Images))
             {
-                string[] Image = Images.Split('/');
+                string[] Image = Images.Split(',');
 
                 for (int i = 0; i < Image.Length; i++)
                 {
                     if (!String.IsNullOrEmpty(Image[i]))
                     {
-                        Gallerys.Add(new Gallery { Image = Image[i], Advert = advert });
+                        int order = i + 1;
+                        bool imageIf = false;
+
+                        foreach (var image in Gallerys)
+                        {
+
+                            if (image.Image == Image[i])
+                            {
+                                image.Order = order;
+                                imageIf = true;
+
+                                break;
+                            }
+
+                        }
+
+                        if (!imageIf)
+                        {
+                            Gallerys.Add(new Gallery { Image = Image[i], Advert = advert, Order = order });
+                        }
                     }
                 }
             }
@@ -284,7 +305,6 @@ namespace B7.Controllers
         {
 
             string uploadFiles = "";
-            string newSession = HttpContext.Session.GetString("galeri");
             string kayitKlasoru = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/tema/images/upload");
 
             if (!String.IsNullOrEmpty(deleteImage))
@@ -306,11 +326,6 @@ namespace B7.Controllers
 
                 uploadFiles = deleteImage;
 
-                if (!String.IsNullOrEmpty(newSession))
-                {
-                    string rplc = deleteImage + "/";
-                    newSession = newSession.Replace(rplc, "");
-                }
             }
             else
             {
@@ -329,13 +344,7 @@ namespace B7.Controllers
                     }
 
                     uploadFiles += dosyaAdi + "/";
-                    newSession += dosyaAdi + "/";
                 }
-            }
-
-            if (!String.IsNullOrEmpty(newSession))
-            {
-                HttpContext.Session.SetString("galeri", newSession);
             }
 
             return Json(uploadFiles);

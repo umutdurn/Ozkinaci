@@ -4,7 +4,7 @@
 }
 
 <div class="row">
-    <form name="AddAdvert" id="AddCarForm" action="AddAdvert" method="post" class="col s12 m10 l12 productform">
+    <form name="AddAdvert" id="AddCarForm" action="AddAdvert" method="post" class="col s12 m12 l12 productform">
         <div class="row">
             <div>
                 <p>
@@ -169,6 +169,7 @@
             <input type="hidden" name="ArkaSagCamurluk" value="+" />
             <input type="hidden" name="BagajKapagi" value="+" />
             <input type="hidden" name="ArkaTampon" value="+" />
+            <input type="hidden" name="Images" value="+" />
             <div class="input-field uzn">
                 <label for="first_name">Ürün Resimleri </label>
                 <div class="dropzndis">
@@ -237,54 +238,53 @@
             $("[name='Price']").maskMoney();
         })
 
-        $(".carBlock div").click(function(){
-        
+        $(".carBlock div").click(function () {
+
             $(this).addClass("redBack");
 
             var htm = $(this).html();
             var divId = $(this).attr("id");
 
-            if(htm == "+"){
+            if (htm == "+") {
                 $(this).html("L");
-            }else if(htm == "L"){
+            } else if (htm == "L") {
                 $(this).html("H");
-            }else if (htm == "H") {
+            } else if (htm == "H") {
                 $(this).html("B");
-            }else if (htm == "B") {
+            } else if (htm == "B") {
                 $(this).html("D");
-            }else if (htm == "D") {
+            } else if (htm == "D") {
                 $(this).html("E");
-            }else if (htm == "E") {
+            } else if (htm == "E") {
                 $(this).html("Ç");
-            }else if (htm == "Ç") {
+            } else if (htm == "Ç") {
                 $(this).html("+");
                 $(this).removeClass("redBack");
             }
 
             var newHtm = $(this).html();
             $("[name='" + divId + "']").val(newHtm);
-        
+
         })
 
-        $(document).on("sortable",".table li",{
-            start: function (event, ui) {
-                var start_pos = ui.item.index();
-                ui.item.data('start_pos', start_pos);
-            },
-            change: function (event, ui) {
-                var start_pos = ui.item.data('start_pos');
-                var index = ui.placeholder.index();
-                if (start_pos < index) {
-                    $('.table li:nth-child(' + index + ')').addClass('highlights');
-                } else {
-                    $('.table li:eq(' + (index + 1) + ')').addClass('highlights');
-                }
-            },
+        $(".table").sortable({
             update: function (event, ui) {
-                $('.table li').removeClass('highlights');
+                var phrase = '';
+                $('.table').each(function () {
+                    
+                    $(this).find('li').each(function () {
+                        var current = $(this);
+                        var classd = current.attr("class");
+                        if (classd != "dispnone") {
+                            phrase += current.attr("id") + ",";
+                        }
+                    });
+                });
+
+                $("[name='Images']").val(phrase);
+
             }
         });
-        
 
         $("[name='CarBrand']").change(function () {
 
@@ -417,22 +417,29 @@
         function UploadGetir(result) {
 
             let filenameler = result.split('/');
+            var phrase = $("[name='Images']").val();
+
+            if(phrase == "+"){
+                phrase = "";
+            }
 
             for (let i = 0; i < filenameler.length; i++) {
 
                 let filenam = filenameler[i].split('/');
                 let fileClass = filenam[0].split('.');
+               
 
                 if (filenameler[i] != "") {
 
                     var number = i + 1;
-
+                    phrase += filenam[0] + ",";
                     var tur = "<img src='../tema/images/upload/" + filenam[0] + "' width=\"100\" />";
-                    var liste = "<li id=" + number + " ><div id='fotoDisDiv' class=" + fileClass[0] + "><div id='fotoDiv'><span>" + tur + "</span></div><a class=\"silBtnFoto\" id=" + filenameler[i] + " onclick='DeleteFile(\"" + filenam[0] + "\")'></a></div></li>"; // Binding the file name;
+                    var liste = "<li id=" + filenam[0] + " class=" + fileClass[0] + " ><div id='fotoDisDiv'><div id='fotoDiv'><span>" + tur + "</span></div><a class=\"silBtnFoto\" id=" + filenameler[i] + " onclick='DeleteFile(\"" + filenam[0] + "\")'></a></div><div class='clearfix'></div></li>"; // Binding the file name;
                     $("#ListofFiles").append(liste);
-
                 }
             }
+
+            $("[name='Images']").val(phrase);
             $('#Files').val('');
             $('#FileBrowse').find("*").prop("disabled", false);
         }
@@ -444,7 +451,21 @@
                 type: "POST",
                 success: function (FileName) {
                     let filenam = FileName.split('.');
-                    $("." + filenam[0]).addClass("dispnone");
+                    $("." + filenam[0]).removeClass().addClass("dispnone");
+
+                    var phrase = '';
+                    $('.table').each(function () {
+
+                        $(this).find('li').each(function () {
+                            var current = $(this);
+                            var classd = current.attr("class");
+                            if (classd != "dispnone") {
+                                phrase += current.attr("id") + ",";
+                            }
+                        });
+                    });
+
+                    $("[name='Images']").val(phrase);
                 }
             });
 
