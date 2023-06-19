@@ -4,7 +4,7 @@
 }
 
 <div class="row">
-    <form name="AddAdvert" id="AddCarForm" action="AddAdvert" method="post" class="col s12 m10 l12 productform">
+    <form name="AddAdvert" id="AddCarForm" action="AddAdvert" method="post" class="col s12 m12 l12 productform">
         <div class="row">
             <div>
                 <p>
@@ -153,7 +153,7 @@
 
             <div class="input-field">
                 <label for="first_name">Fiyatı</label>
-                <input type="number" name="Price" class="browser-default" required />
+                <input type="text" name="Price" class="browser-default" data-affixes-stay="true" data-thousands="." data-decimal="," required />
                 <br class="clearfix" />
             </div>
             <input type="hidden" name="OnTampon" value="+" />
@@ -169,6 +169,7 @@
             <input type="hidden" name="ArkaSagCamurluk" value="+" />
             <input type="hidden" name="BagajKapagi" value="+" />
             <input type="hidden" name="ArkaTampon" value="+" />
+            <input type="hidden" name="Images" value="+" />
             <div class="input-field uzn">
                 <label for="first_name">Ürün Resimleri </label>
                 <div class="dropzndis">
@@ -227,61 +228,63 @@
     <script src="~/admintema/js/jquery.validate.min.js"></script>
     <script src="~/admintema/js/ckeditor.js"></script>
     <script src="~/admintema/js/jquery.maskmoney.min.js"></script>
-    <script src="~/admintema/cstmjs/productjs.js"></script>
 
     <script type="text/javascript">
         //$(".table li").sortable({
         //    appendTo: document.body
         //});
 
-        $(".carBlock div").click(function(){
-        
+        $(function () {
+            $("[name='Price']").maskMoney();
+        })
+
+        $(".carBlock div").click(function () {
+
             $(this).addClass("redBack");
 
             var htm = $(this).html();
             var divId = $(this).attr("id");
 
-            if(htm == "+"){
+            if (htm == "+") {
                 $(this).html("L");
-            }else if(htm == "L"){
+            } else if (htm == "L") {
                 $(this).html("H");
-            }else if (htm == "H") {
+            } else if (htm == "H") {
                 $(this).html("B");
-            }else if (htm == "B") {
+            } else if (htm == "B") {
                 $(this).html("D");
-            }else if (htm == "D") {
+            } else if (htm == "D") {
                 $(this).html("E");
-            }else if (htm == "E") {
+            } else if (htm == "E") {
                 $(this).html("Ç");
-            }else if (htm == "Ç") {
+            } else if (htm == "Ç") {
                 $(this).html("+");
                 $(this).removeClass("redBack");
             }
 
             var newHtm = $(this).html();
             $("[name='" + divId + "']").val(newHtm);
-        
+
         })
 
-        $(document).on("sortable",".table li",{
-            start: function (event, ui) {
-                var start_pos = ui.item.index();
-                ui.item.data('start_pos', start_pos);
-            },
-            change: function (event, ui) {
-                var start_pos = ui.item.data('start_pos');
-                var index = ui.placeholder.index();
-                if (start_pos < index) {
-                    $('.table li:nth-child(' + index + ')').addClass('highlights');
-                } else {
-                    $('.table li:eq(' + (index + 1) + ')').addClass('highlights');
-                }
-            },
+        $(".table").sortable({
             update: function (event, ui) {
-                $('.table li').removeClass('highlights');
+                var phrase = '';
+                $('.table').each(function () {
+                    
+                    $(this).find('li').each(function () {
+                        var current = $(this);
+                        var classd = current.attr("class");
+                        if (classd != "dispnone") {
+                            phrase += current.attr("id") + ",";
+                        }
+                    });
+                });
+
+                $("[name='Images']").val(phrase);
+
             }
         });
-        
 
         $("[name='CarBrand']").change(function () {
 
@@ -333,5 +336,140 @@
 
 
         })
+
+        $(".dropzone").change(function () {
+            var ext = $('#Files').val().split('.').pop().toLowerCase();
+
+            if (ext != 'jpg' && ext != 'jpeg' && ext != 'tif' && ext != 'pjp' && ext != 'pjpeg' && ext != 'webp' && ext != 'tiff' && ext != 'png' && ext != 'svg' && ext != 'svgz' && ext != 'gif' && ext != 'ico' && ext != 'xbm' && ext != 'dib') {
+                alert("Bu alana sadece fotoğraf dosyaları yüklenebilir.");
+            } else {
+                readFile(this);
+            }
+        });
+
+        $('.dropzone-wrapper').on('dragover', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).addClass('dragover');
+        });
+
+        $('.dropzone-wrapper').on('dragleave', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).removeClass('dragover');
+        });
+
+
+        function readFile(input) {
+            if (input.files && input.files[0]) {
+
+                var files = input.files;
+                // Create FormData object
+                var fileData = new FormData();
+                // Looping over all files and add it to FormData object
+                for (var i = 0; i < files.length; i++) {
+                    fileData.append(files[i].name, files[i]);
+                }
+                $.ajax({
+
+                    xhr: function () {
+                        var xhr = new window.XMLHttpRequest();
+                        xhr.upload.addEventListener("progress", function (evt) {
+                            if (evt.lengthComputable) {
+                                var percentComplete = ((evt.loaded / evt.total) * 100);
+                                $(".progress-bar").width(percentComplete + '%');
+                                $(".progress-bar").html(parseInt(percentComplete) + '%');
+                            }
+                        }, false);
+                        return xhr;
+                    },
+
+                    url: '../Admin/UploadHandler',
+                    type: "POST",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    cache: false,
+                    data: fileData,
+                    multiple: true,
+                    acceptFileTypes: '',
+                    async: true,
+
+                    beforeSend: function () {
+                        $(".progress-bar").width('0%');
+                        $('#uploadStatus').html('<img src="~/images/loading.gif"/>');
+                    },
+
+                    success: function (result) {
+                        if (result != "") {
+                            $(".progress-bar").width('0%');
+                            $('#FileBrowse').find("*").prop("disabled", true);
+                            $(".progress-bar").html("");
+                            UploadGetir(result); //calling UploadFiles function to load the progress bar.
+                        }
+                    },
+                    error: function (err) {
+                        alert(err.statusText);
+                    }
+                });
+            }
+        }
+
+        function UploadGetir(result) {
+
+            let filenameler = result.split('/');
+            var phrase = $("[name='Images']").val();
+
+            if(phrase == "+"){
+                phrase = "";
+            }
+
+            for (let i = 0; i < filenameler.length; i++) {
+
+                let filenam = filenameler[i].split('/');
+                let fileClass = filenam[0].split('.');
+               
+
+                if (filenameler[i] != "") {
+
+                    var number = i + 1;
+                    phrase += filenam[0] + ",";
+                    var tur = "<img src='../tema/images/upload/" + filenam[0] + "' width=\"100\" />";
+                    var liste = "<li id=" + filenam[0] + " class=" + fileClass[0] + " ><div id='fotoDisDiv'><div id='fotoDiv'><span>" + tur + "</span></div><a class=\"silBtnFoto\" id=" + filenameler[i] + " onclick='DeleteFile(\"" + filenam[0] + "\")'></a></div><div class='clearfix'></div></li>"; // Binding the file name;
+                    $("#ListofFiles").append(liste);
+                }
+            }
+
+            $("[name='Images']").val(phrase);
+            $('#Files').val('');
+            $('#FileBrowse').find("*").prop("disabled", false);
+        }
+
+        function DeleteFile(FileName) {
+
+            $.ajax({
+                url: 'UploadHandler?deleteImage=' + FileName,
+                type: "POST",
+                success: function (FileName) {
+                    let filenam = FileName.split('.');
+                    $("." + filenam[0]).removeClass().addClass("dispnone");
+
+                    var phrase = '';
+                    $('.table').each(function () {
+
+                        $(this).find('li').each(function () {
+                            var current = $(this);
+                            var classd = current.attr("class");
+                            if (classd != "dispnone") {
+                                phrase += current.attr("id") + ",";
+                            }
+                        });
+                    });
+
+                    $("[name='Images']").val(phrase);
+                }
+            });
+
+        }
+
     </script>
 }

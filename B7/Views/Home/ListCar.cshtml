@@ -19,7 +19,7 @@
             @foreach (var advert in Model)
             {
                 <tr>
-                    <td><a href="arac/@advert.Id"></a><img src="~/tema/images/upload/@advert.Gallery.First().Image" /></td>
+                    <td><a href="~/arac/@advert.Id"></a><img src="~/tema/images/upload/@advert.Gallery.First().Image" /></td>
                     <td>
                         <div class="aracBilgiler">
                             <div class="brand"><span class="marka">@advert.CarModel.CarBrand.Name</span></div>

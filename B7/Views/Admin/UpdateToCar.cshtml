@@ -4,7 +4,7 @@
 }
 @model Advert
 <div class="row">
-    <form name="UpdateAdvert" id="UpdateCarForm" action="/Admin/UpdateAdvert" method="post" class="col s12 m10 l12 productform">
+    <form name="UpdateAdvert" id="UpdateCarForm" action="../UpdateAdvert" method="post" class="col s12 m10 l12 productform">
         <input type="hidden" name="Id" value="@Model.Id" />
         <div class="row">
             <div>
@@ -154,22 +154,41 @@
 
             <div class="input-field">
                 <label for="first_name">Fiyatı</label>
-                <input type="text" name="Price" class="browser-default" value="@Model.Price" required />
+                <input type="text" name="Price" class="browser-default" value="@Model.Price" data-affixes-stay="true" data-thousands="." data-decimal="," required />
                 <br class="clearfix" />
             </div>
-            <input type="hidden" name="OnTampon" value="@Model.Expertiz.OnTampon" />
-            <input type="hidden" name="OnSagCamurluk" value="@Model.Expertiz.OnSagCamurluk" />
-            <input type="hidden" name="OnSolCamurluk" value="@Model.Expertiz.OnSolCamurluk" />
-            <input type="hidden" name="Kaput" value="@Model.Expertiz.Kaput" />
-            <input type="hidden" name="OnSagKapi" value="@Model.Expertiz.OnSagKapi" />
-            <input type="hidden" name="OnSolKapi" value="@Model.Expertiz.OnSolKapi" />
-            <input type="hidden" name="ArkaSagKapi" value="@Model.Expertiz.ArkaSagKapi" />
-            <input type="hidden" name="ArkaSolKapi" value="@Model.Expertiz.ArkaSolKapi" />
-            <input type="hidden" name="Tavan" value="@Model.Expertiz.Tavan" />
-            <input type="hidden" name="ArkaSolCamurluk" value="@Model.Expertiz.ArkaSolCamurluk" />
-            <input type="hidden" name="ArkaSagCamurluk" value="@Model.Expertiz.ArkaSagCamurluk" />
-            <input type="hidden" name="BagajKapagi" value="@Model.Expertiz.BagajKapagi" />
-            <input type="hidden" name="ArkaTampon" value="@Model.Expertiz.ArkaTampon" />
+            @if (Model.Expertiz != null)
+            {
+                <input type="hidden" name="OnTampon" value="@Model.Expertiz.OnTampon" />
+                <input type="hidden" name="OnSagCamurluk" value="@Model.Expertiz.OnSagCamurluk" />
+                <input type="hidden" name="OnSolCamurluk" value="@Model.Expertiz.OnSolCamurluk" />
+                <input type="hidden" name="Kaput" value="@Model.Expertiz.Kaput" />
+                <input type="hidden" name="OnSagKapi" value="@Model.Expertiz.OnSagKapi" />
+                <input type="hidden" name="OnSolKapi" value="@Model.Expertiz.OnSolKapi" />
+                <input type="hidden" name="ArkaSagKapi" value="@Model.Expertiz.ArkaSagKapi" />
+                <input type="hidden" name="ArkaSolKapi" value="@Model.Expertiz.ArkaSolKapi" />
+                <input type="hidden" name="Tavan" value="@Model.Expertiz.Tavan" />
+                <input type="hidden" name="ArkaSolCamurluk" value="@Model.Expertiz.ArkaSolCamurluk" />
+                <input type="hidden" name="ArkaSagCamurluk" value="@Model.Expertiz.ArkaSagCamurluk" />
+                <input type="hidden" name="BagajKapagi" value="@Model.Expertiz.BagajKapagi" />
+                <input type="hidden" name="ArkaTampon" value="@Model.Expertiz.ArkaTampon" />
+            }
+            else
+            {
+                <input type="hidden" name="OnTampon" value="+" />
+                <input type="hidden" name="OnSagCamurluk" value="+" />
+                <input type="hidden" name="OnSolCamurluk" value="+" />
+                <input type="hidden" name="Kaput" value="+" />
+                <input type="hidden" name="OnSagKapi" value="+" />
+                <input type="hidden" name="OnSolKapi" value="+" />
+                <input type="hidden" name="ArkaSagKapi" value="+" />
+                <input type="hidden" name="ArkaSolKapi" value="+" />
+                <input type="hidden" name="Tavan" value="+" />
+                <input type="hidden" name="ArkaSolCamurluk" value="+" />
+                <input type="hidden" name="ArkaSagCamurluk" value="+" />
+                <input type="hidden" name="BagajKapagi" value="+" />
+                <input type="hidden" name="ArkaTampon" value="+" />
+            }
             <div class="input-field uzn">
                 <label for="first_name">Ürün Resimleri </label>
                 <div class="dropzndis">
@@ -186,14 +205,21 @@
                         </div>
                     </div>
                     <ul class="table" id="ListofFiles">
-                        @foreach (var item in Model.Gallery)
+                        @{
+                            var Images = "";
+                            var gallery = Model.Gallery.OrderBy(x => x.Order);
+                        }
+                        @foreach (var item in gallery)
                         {
+                            Images += item.Image + ",";
+
                             string[] fileClass = item.Image.Split('.');
 
-                            <li id="@item.Id"><div id='fotoDisDiv' class="@fileClass[0]"><div id='fotoDiv'><span><img src='../../tema/images/upload/@item.Image' width="100" /></span></div><a class="silBtnFoto" id="@item.Image" onclick='DeleteFile("@item.Image")'></a></div></li>
+                            <li id="@item.Image" class="@fileClass[0]"><div id='fotoDisDiv'><div id='fotoDiv'><span><img src='../../tema/images/upload/@item.Image' width="100" /></span></div><a class="silBtnFoto" id="@item.Image" onclick='DeleteFile("@item.Image")'></a></div></li>
                         }
                     </ul>
                 </div>
+                <input type="hidden" name="Images" value="@Images" />
                 <br class="clearfix" />
             </div>
             <h2>Ekspertiz</h2>
@@ -207,45 +233,65 @@
             </ul>
             <div class="expert">
                 <div class="carBlock">
-                    <div id="OnTampon" class="@if(Model.Expertiz.OnTampon != "+"){
+                    @if (Model.Expertiz != null)
+                    {
+                        <div id="OnTampon" class="@if(Model.Expertiz.OnTampon != "+"){
                         @:redBack
                     }">@Model.Expertiz.OnTampon</div>
-                    <div id="OnSagCamurluk" class="@if(Model.Expertiz.OnSagCamurluk != "+"){
+                        <div id="OnSagCamurluk" class="@if(Model.Expertiz.OnSagCamurluk != "+"){
                         @:redBack
                     }">@Model.Expertiz.OnSagCamurluk</div>
-                    <div id="OnSolCamurluk" class="@if(Model.Expertiz.OnSolCamurluk != "+"){
+                        <div id="OnSolCamurluk" class="@if(Model.Expertiz.OnSolCamurluk != "+"){
                         @:redBack
                     }">@Model.Expertiz.OnSolCamurluk</div>
-                    <div id="Kaput" class="@if(Model.Expertiz.Kaput != "+"){
+                        <div id="Kaput" class="@if(Model.Expertiz.Kaput != "+"){
                         @:redBack
                     }">@Model.Expertiz.Kaput</div>
-                    <div id="OnSagKapi" class="@if(Model.Expertiz.OnSagKapi != "+"){
+                        <div id="OnSagKapi" class="@if(Model.Expertiz.OnSagKapi != "+"){
                         @:redBack
-                    }">@Model.Expertiz.OnSagKapi </div>
-                    <div id="OnSolKapi" class="@if(Model.Expertiz.OnSolKapi != "+"){
+                    }">@Model.Expertiz.OnSagKapi</div>
+                        <div id="OnSolKapi" class="@if(Model.Expertiz.OnSolKapi != "+"){
                         @:redBack
                     }">@Model.Expertiz.OnSolKapi</div>
-                    <div id="ArkaSagKapi" class="@if(Model.Expertiz.ArkaSagKapi != "+"){
+                        <div id="ArkaSagKapi" class="@if(Model.Expertiz.ArkaSagKapi != "+"){
                         @:redBack
                     }">@Model.Expertiz.ArkaSagKapi</div>
-                    <div id="ArkaSolKapi" class="@if(Model.Expertiz.ArkaSolKapi != "+"){
+                        <div id="ArkaSolKapi" class="@if(Model.Expertiz.ArkaSolKapi != "+"){
                         @:redBack
                     }">@Model.Expertiz.ArkaSolKapi</div>
-                    <div id="Tavan" class="@if(Model.Expertiz.Tavan != "+"){
+                        <div id="Tavan" class="@if(Model.Expertiz.Tavan != "+"){
                         @:redBack
                     }">@Model.Expertiz.Tavan</div>
-                    <div id="ArkaSolCamurluk" class="@if(Model.Expertiz.ArkaSolCamurluk != "+"){
+                        <div id="ArkaSolCamurluk" class="@if(Model.Expertiz.ArkaSolCamurluk != "+"){
                         @:redBack
                     }">@Model.Expertiz.ArkaSolCamurluk</div>
-                    <div id="ArkaSagCamurluk" class="@if(Model.Expertiz.ArkaSagCamurluk != "+"){
+                        <div id="ArkaSagCamurluk" class="@if(Model.Expertiz.ArkaSagCamurluk != "+"){
                         @:redBack
                     }">@Model.Expertiz.ArkaSagCamurluk</div>
-                    <div id="BagajKapagi" class="@if(Model.Expertiz.BagajKapagi != "+"){
+                        <div id="BagajKapagi" class="@if(Model.Expertiz.BagajKapagi != "+"){
                         @:redBack
                     }">@Model.Expertiz.BagajKapagi</div>
-                    <div id="ArkaTampon" class="@if(Model.Expertiz.ArkaTampon != "+"){
+                        <div id="ArkaTampon" class="@if(Model.Expertiz.ArkaTampon != "+"){
                         @:redBack
                     }">@Model.Expertiz.ArkaTampon</div>
+                    }
+                    else
+                    {
+                        <div id="OnTampon" class="">+</div>
+                        <div id="OnSagCamurluk" class="">+</div>
+                        <div id="OnSolCamurluk" class="">+</div>
+                        <div id="Kaput" class="">+</div>
+                        <div id="OnSagKapi" class="">+</div>
+                        <div id="OnSolKapi" class="">+</div>
+                        <div id="ArkaSagKapi" class="">+</div>
+                        <div id="ArkaSolKapi" class="">+</div>
+                        <div id="Tavan" class="">+</div>
+                        <div id="ArkaSolCamurluk" class="">+</div>
+                        <div id="ArkaSagCamurluk" class="">+</div>
+                        <div id="BagajKapagi" class="">+</div>
+                        <div id="ArkaTampon" class="">+</div>
+                    }
+
                 </div>
                 <img src="~/tema/images/car.png" />
             </div>
@@ -260,12 +306,30 @@
     <script src="~/admintema/js/jquery.validate.min.js"></script>
     <script src="~/admintema/js/ckeditor.js"></script>
     <script src="~/admintema/js/jquery.maskmoney.min.js"></script>
-    <script src="~/admintema/cstmjs/productjs.js"></script>
 
     <script type="text/javascript">
-        $(".table li").sortable({
-            appendTo: document.body
+        $(".table").sortable({
+            update: function (event, ui) {
+                var phrase = '';
+                $('.table').each(function () {
+
+                    $(this).find('li').each(function () {
+                        var current = $(this);
+                        var classd = current.attr("class");
+                        if (classd != "dispnone") {
+                            phrase += current.attr("id") + ",";
+                        }
+                    });
+                });
+
+                $("[name='Images']").val(phrase);
+
+            }
         });
+
+        $(function () {
+            $("[name='Price']").maskMoney();
+        })
 
         $(".carBlock div").click(function () {
 
@@ -295,36 +359,17 @@
             $("[name='" + divId + "']").val(newHtm);
 
         })
-
-        //$('.table li').sortable({
-        //    start: function (event, ui) {
-        //        var start_pos = ui.item.index();
-        //        ui.item.data('start_pos', start_pos);
-        //    },
-        //    change: function (event, ui) {
-        //        var start_pos = ui.item.data('start_pos');
-        //        var index = ui.placeholder.index();
-        //        if (start_pos < index) {
-        //            $('.table li:nth-child(' + index + ')').addClass('highlights');
-        //        } else {
-        //            $('.table li:eq(' + (index + 1) + ')').addClass('highlights');
-        //        }
-        //    },
-        //    update: function (event, ui) {
-        //        $('.table li').removeClass('highlights');
-        //    }
-        //});
         $(document).ready(function () {
 
             $("[name='Gear']").val(@Model.Gear);
             $("[name='Fuel']").val(@Model.Fuel);
             $("[name='Color']").val(@Model.Color);
             $("[name='CaseType']").val(@Model.CaseType);
-            @if (Model.Showcase)
-            {
+        @if (Model.Showcase)
+        {
             @:$("[name='Showcase']").prop("checked", true);
-            }
-        })
+        }
+                })
         $("[name='CarBrand']").change(function () {
 
             var id = $(this).val();
@@ -375,5 +420,136 @@
 
 
         })
+
+
+        $(".dropzone").change(function () {
+            var ext = $('#Files').val().split('.').pop().toLowerCase();
+
+            if (ext != 'jpg' && ext != 'jpeg' && ext != 'tif' && ext != 'pjp' && ext != 'pjpeg' && ext != 'webp' && ext != 'tiff' && ext != 'png' && ext != 'svg' && ext != 'svgz' && ext != 'gif' && ext != 'ico' && ext != 'xbm' && ext != 'dib') {
+                alert("Bu alana sadece fotoğraf dosyaları yüklenebilir.");
+            } else {
+                readFile(this);
+            }
+        });
+
+        $('.dropzone-wrapper').on('dragover', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).addClass('dragover');
+        });
+
+        $('.dropzone-wrapper').on('dragleave', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).removeClass('dragover');
+        });
+
+
+        function readFile(input) {
+            if (input.files && input.files[0]) {
+
+                var files = input.files;
+                // Create FormData object
+                var fileData = new FormData();
+                // Looping over all files and add it to FormData object
+                for (var i = 0; i < files.length; i++) {
+                    fileData.append(files[i].name, files[i]);
+                }
+                $.ajax({
+
+                    xhr: function () {
+                        var xhr = new window.XMLHttpRequest();
+                        xhr.upload.addEventListener("progress", function (evt) {
+                            if (evt.lengthComputable) {
+                                var percentComplete = ((evt.loaded / evt.total) * 100);
+                                $(".progress-bar").width(percentComplete + '%');
+                                $(".progress-bar").html(parseInt(percentComplete) + '%');
+                            }
+                        }, false);
+                        return xhr;
+                    },
+
+                    url: '../UploadHandler',
+                    type: "POST",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    cache: false,
+                    data: fileData,
+                    multiple: true,
+                    acceptFileTypes: '',
+                    async: true,
+
+                    beforeSend: function () {
+                        $(".progress-bar").width('0%');
+                        $('#uploadStatus').html('<img src="~/images/loading.gif"/>');
+                    },
+
+                    success: function (result) {
+                        if (result != "") {
+                            $(".progress-bar").width('0%');
+                            $('#FileBrowse').find("*").prop("disabled", true);
+                            $(".progress-bar").html("");
+                            UploadGetir(result); //calling UploadFiles function to load the progress bar.
+                        }
+                    },
+                    error: function (err) {
+                        alert(err.statusText);
+                    }
+                });
+            }
+        }
+
+        function UploadGetir(result) {
+
+            let filenameler = result.split('/');
+            var phrase = $("[name='Images']").val();
+
+            for (let i = 0; i < filenameler.length; i++) {
+
+                let filenam = filenameler[i].split('/');
+                let fileClass = filenam[0].split('.');
+
+                if (filenameler[i] != "") {
+
+                    var number = i + 1;
+                    phrase += filenam[0] + ",";
+                    var tur = "<img src='../../tema/images/upload/" + filenam[0] + "' width=\"100\" />";
+                    var liste = "<li id=" + filenam[0] + "  class=" + fileClass[0] + "><div id='fotoDisDiv'><div id='fotoDiv'><span>" + tur + "</span></div><a class=\"silBtnFoto\" id=" + filenameler[i] + " onclick='DeleteFile(\"" + filenam[0] + "\")'></a></div></li>"; // Binding the file name;
+                    $("#ListofFiles").append(liste);
+
+                }
+            }
+            $("[name='Images']").val(phrase);
+            $('#Files').val('');
+            $('#FileBrowse').find("*").prop("disabled", false);
+        }
+
+        function DeleteFile(FileName) {
+
+            $.ajax({
+                url: '../UploadHandler?deleteImage=' + FileName,
+                type: "POST",
+                success: function (FileName) {
+                    let filenam = FileName.split('.');
+                    $("." + filenam[0]).removeClass().addClass("dispnone");
+
+                    var phrase = '';
+                    $('.table').each(function () {
+
+                        $(this).find('li').each(function () {
+                            var current = $(this);
+                            var classd = current.attr("class");
+                            if (classd != "dispnone") {
+                                phrase += current.attr("id") + ",";
+                            }
+                        });
+                    });
+
+                    $("[name='Images']").val(phrase);
+                }
+            });
+
+        }
+
     </script>
 }

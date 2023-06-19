@@ -541,7 +541,7 @@ header {
         left: 50%;
         bottom: 3%;
         z-index: 99;
-        width: 290px;
+        width: 320px;
         margin-left: -145px;
 
         @media screen and (max-width:414px) {
@@ -856,7 +856,7 @@ header {
     }
 
     .iletisimBilgileri {
-        span {
+        i {
             font-size: 20px;
             margin-right: 5px;
         }
@@ -1469,7 +1469,7 @@ background-image: url('../images/projects/mining-projects.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 500px;
+    height: 270px;
     border-bottom: 5px solid #0a66c2;
 
     @media screen and (max-width:850px) {
@@ -1678,18 +1678,25 @@ background-image: url('../images/projects/mining-projects.jpg');
         }
     }
 
+    .textarea{
+        width:92.5%;
+        textarea{
+            height:150px;
+        }
+    }
+    
     .FormLineCheckbox {
         padding: 20px;
     }
 
-    .FormLineButton{
-        input{
-            border:none;
-            padding:10px 20px;
-            font-size:20px;
-            color:#fff;
-            background:#026aa1;
-            cursor:pointer;
+    .FormLineButton {
+        input {
+            border: none;
+            padding: 10px 20px;
+            font-size: 20px;
+            color: #fff;
+            background: #026aa1;
+            cursor: pointer;
         }
     }
 }
@@ -1753,12 +1760,13 @@ background-image: url('../images/projects/mining-projects.jpg');
 }
 .inPageHead {
     padding: 40px 10px 0px 10px;
+    
 
     .title {
         font-size: 23px;
         border-bottom: 0.5px solid rgba(0,0,0,0.20);
-        display:block;
-        padding-bottom:20px;
+        display: block;
+        padding-bottom: 20px;
     }
 }
 .detailMain {
@@ -2074,4 +2082,8 @@ background-image: url('../images/projects/mining-projects.jpg');
             background: #b50000;
         }
     }
+}
+.gvnlialmstm {
+    background-image: url('../images/guvenlialimsatim.jpg');
+    height: 270px;
 }

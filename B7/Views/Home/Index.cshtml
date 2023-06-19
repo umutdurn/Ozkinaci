@@ -79,7 +79,8 @@
                     <img src="~/tema/images/slider/slide5.jpg">
                 </li>
             </ul>
-        </div>    <div class="slide6 slideS animate__fadeIn animate__animated animate__fadeOut" id="slideByc">
+        </div>    
+        <div class="slide6 slideS animate__fadeIn animate__animated animate__fadeOut" id="slideByc">
             <div class="container slideText animate__fadeInUp animate__animated animate__fadeOutDown">
                 <span class="sBaslik">
                     <span class="normal">ARACINIZI</span>
@@ -94,6 +95,21 @@
                 </li>
             </ul>
         </div>
+        <div class="slide7 slideS animate__fadeIn animate__animated animate__fadeOut" id="slideByc">
+            <div class="container slideText animate__fadeInUp animate__animated animate__fadeOutDown">
+                <span class="sBaslik">
+                    <span class="normal">ARACINIZI</span>
+                    <span class="buyuk">DEĞERİNDE</span>
+                    <span class="normal">SATIN</span>
+                    <a href="teklifal" class="teklifAl">HEMEN TEKLİF AL</a>
+                </span>
+            </div>
+            <ul>
+                <li>
+                    <img src="~/tema/images/slider/slide7.jpg">
+                </li>
+            </ul>
+        </div>
         <div class="slideNavByc">
             <div class="container relativeDiv">
                 <div id="geri"><span><i class="arrows left"></i></span></div>
@@ -104,6 +120,7 @@
                     <li id="4"><span class=""></span></li>
                     <li id="5"><span class=""></span></li>
                     <li id="6"><span class=""></span></li>
+                    <li id="7"><span class=""></span></li>
                 </ul>
                 <div id="ileri"><span><i class="arrows right"></i></span></div>
             </div>
@@ -165,7 +182,7 @@
                     <div class="clearfix"></div>
                 </div>
             </a>
-            <a href="~/sigorta-islemleri" class="item">
+            <a href="~/guvenli-alim-satim" class="item">
                 <div class="kutu">
                     <div class="iconKutu">
                         <span class="icon-galim"></span>
@@ -186,7 +203,7 @@
         <div class="banner">
             <div class="text">
                 <div class="textIc">
-                    <a href="arac-listesi">
+                    <a href="~/arac-listesi">
                         <span>Bana Uygun Araç</span>
                         <span class="buyuk">ALMAK İSTİYORUM</span>
 
@@ -195,7 +212,7 @@
             </div>
             <div class="text textRight">
                 <div class="textIc">
-                    <a href="otomobil-degerleme">
+                    <a href="~/otomobil-degerleme">
                         <span>En İyi Fiyata Araç</span>
                         <span class="buyuk">SATMAK İSTİYORUM</span>
                     </a>
@@ -216,7 +233,7 @@
             {
                 <div class="arac">
                     <div class="aracFoto">
-                        <a href="arac/@item.Id">
+                        <a href="~/arac/@item.Id">
                             <img src="~/tema/images/upload/@item.Gallery.First().Image">
                         </a>
                     </div>
@@ -314,7 +331,7 @@
 
                 getId++;
 
-                if (getId > 6) {
+                if (getId > 7) {
 
                     getId = 1;
 
@@ -336,7 +353,7 @@
 
                 if (getId < 1) {
 
-                    getId = 6;
+                    getId = 7;
 
                 }
 

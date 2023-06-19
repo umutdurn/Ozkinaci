@@ -11,5 +11,6 @@ namespace Core.Models
         public int Id { get; set; }
         public string Image { get; set; }
         public Advert Advert { get; set; }
+        public int Order { get; set; }
     }
 }

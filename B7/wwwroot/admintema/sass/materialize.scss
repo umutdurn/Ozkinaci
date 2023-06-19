@@ -105,11 +105,21 @@
     width: calc(100% - 200px);
     padding: 30px;
     margin-left: 210px;
+
+    @media screen and (max-width:900px){
+        margin-left:0px;
+        float:none;
+        width:100%;
+    }
 }
 .input-field {
     margin: 10px 0;
     width: 460px;
-    display:inline-block;
+    display: inline-block;
+
+    @media screen and (max-width:900px) {
+        width: 100%;
+    }
 
     .active2 {
         position: absolute;
@@ -136,6 +146,10 @@
         background-color: #f2f2f2 !important;
         padding: 0px 10px !important;
         color: #000000 !important;
+
+        @media screen and (max-width:900px) {
+            width: 100% !important;
+        }
     }
 
     .btn-primary {
@@ -177,6 +191,10 @@
     .dropzndis {
         float: left;
         width: calc(60% - 140px);
+
+        @media screen and (max-width:900px) {
+            width: 100% !important;
+        }
     }
 
     .dropzone-wrapper {
@@ -282,7 +300,7 @@
     top: -10px;
 }
 .dispnone {
-    display: none;
+    display: none !important;
 }
 table tr{
     cursor:pointer;
@@ -402,4 +420,16 @@ table tr{
             background: #b50000;
         }
     }
+}
+.sidenav-trigger {
+    color: #000;
+    margin: 20px;
+    display:block;
+    text-align:right;
+    i {
+        font-size: 50px;
+    }
+}
+.table li{
+    display:inline-block;
 }

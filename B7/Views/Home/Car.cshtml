@@ -178,99 +178,103 @@
                             <li><span>Ç.</span> Çizik</li>
                         </ul>
                         <div class="expert">
-                            <div class="carBlock">
-                                <div id="OnTampon" class="@if(Model.Expertiz.OnTampon != "+"){
+                            @if (Model.Expertiz != null)
+                            {
+                                <div class="carBlock">
+                                    <div id="OnTampon" class="@if(Model.Expertiz.OnTampon != "+"){
                         @:redBack
                     }else{
                         @:dnone
                     }">
-                                    @Model.Expertiz.OnTampon
-                                </div>
-                                <div id="OnSagCamurluk" class="@if(Model.Expertiz.OnSagCamurluk != "+"){
+                                        @Model.Expertiz.OnTampon
+                                    </div>
+                                    <div id="OnSagCamurluk" class="@if(Model.Expertiz.OnSagCamurluk != "+"){
                         @:redBack
                     }else{
                         @:dnone
                     }">
-                                    @Model.Expertiz.OnSagCamurluk
-                                </div>
-                                <div id="OnSolCamurluk" class="@if(Model.Expertiz.OnSolCamurluk != "+"){
+                                        @Model.Expertiz.OnSagCamurluk
+                                    </div>
+                                    <div id="OnSolCamurluk" class="@if(Model.Expertiz.OnSolCamurluk != "+"){
                         @:redBack
                     }else{
                         @:dnone
                     }">
-                                    @Model.Expertiz.OnSolCamurluk
-                                </div>
-                                <div id="Kaput" class="@if(Model.Expertiz.Kaput != "+"){
+                                        @Model.Expertiz.OnSolCamurluk
+                                    </div>
+                                    <div id="Kaput" class="@if(Model.Expertiz.Kaput != "+"){
                         @:redBack
                     }else{
                         @:dnone
                     }">
-                                    @Model.Expertiz.Kaput
-                                </div>
-                                <div id="OnSagKapi" class="@if(Model.Expertiz.OnSagKapi != "+"){
+                                        @Model.Expertiz.Kaput
+                                    </div>
+                                    <div id="OnSagKapi" class="@if(Model.Expertiz.OnSagKapi != "+"){
                         @:redBack
                     }else{
                         @:dnone
                     }">
-                                    @Model.Expertiz.OnSagKapi
-                                </div>
-                                <div id="OnSolKapi" class="@if(Model.Expertiz.OnSolKapi != "+"){
+                                        @Model.Expertiz.OnSagKapi
+                                    </div>
+                                    <div id="OnSolKapi" class="@if(Model.Expertiz.OnSolKapi != "+"){
                         @:redBack
                     }else{
                         @:dnone
                     }">
-                                    @Model.Expertiz.OnSolKapi
-                                </div>
-                                <div id="ArkaSagKapi" class="@if(Model.Expertiz.ArkaSagKapi != "+"){
+                                        @Model.Expertiz.OnSolKapi
+                                    </div>
+                                    <div id="ArkaSagKapi" class="@if(Model.Expertiz.ArkaSagKapi != "+"){
                         @:redBack
                     }else{
                         @:dnone
                     }">
-                                    @Model.Expertiz.ArkaSagKapi
-                                </div>
-                                <div id="ArkaSolKapi" class="@if(Model.Expertiz.ArkaSolKapi != "+"){
+                                        @Model.Expertiz.ArkaSagKapi
+                                    </div>
+                                    <div id="ArkaSolKapi" class="@if(Model.Expertiz.ArkaSolKapi != "+"){
                         @:redBack
                     }else{
                         @:dnone
                     }">
-                                    @Model.Expertiz.ArkaSolKapi
-                                </div>
-                                <div id="Tavan" class="@if(Model.Expertiz.Tavan != "+"){
+                                        @Model.Expertiz.ArkaSolKapi
+                                    </div>
+                                    <div id="Tavan" class="@if(Model.Expertiz.Tavan != "+"){
                         @:redBack
                     }else{
                         @:dnone
                     }">
-                                    @Model.Expertiz.Tavan
-                                </div>
-                                <div id="ArkaSolCamurluk" class="@if(Model.Expertiz.ArkaSolCamurluk != "+"){
+                                        @Model.Expertiz.Tavan
+                                    </div>
+                                    <div id="ArkaSolCamurluk" class="@if(Model.Expertiz.ArkaSolCamurluk != "+"){
                         @:redBack
                     }else{
                         @:dnone
                     }">
-                                    @Model.Expertiz.ArkaSolCamurluk
-                                </div>
-                                <div id="ArkaSagCamurluk" class="@if(Model.Expertiz.ArkaSagCamurluk != "+"){
+                                        @Model.Expertiz.ArkaSolCamurluk
+                                    </div>
+                                    <div id="ArkaSagCamurluk" class="@if(Model.Expertiz.ArkaSagCamurluk != "+"){
                         @:redBack
                     }else{
                         @:dnone
                     }">
-                                    @Model.Expertiz.ArkaSagCamurluk
-                                </div>
-                                <div id="BagajKapagi" class="@if(Model.Expertiz.BagajKapagi != "+"){
+                                        @Model.Expertiz.ArkaSagCamurluk
+                                    </div>
+                                    <div id="BagajKapagi" class="@if(Model.Expertiz.BagajKapagi != "+"){
                         @:redBack
                     }else{
                         @:dnone
                     }">
-                                    @Model.Expertiz.BagajKapagi
-                                </div>
-                                <div id="ArkaTampon" class="@if(Model.Expertiz.ArkaTampon != "+"){
+                                        @Model.Expertiz.BagajKapagi
+                                    </div>
+                                    <div id="ArkaTampon" class="@if(Model.Expertiz.ArkaTampon != "+"){
                         @:redBack
                     }else{
                         @:dnone
                     }">
-                                    @Model.Expertiz.ArkaTampon
+                                        @Model.Expertiz.ArkaTampon
+                                    </div>
                                 </div>
-                            </div>
+                            }
+
                             <img src="~/tema/images/car.png" />
                         </div>
                     </div>

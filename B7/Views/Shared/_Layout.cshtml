@@ -43,18 +43,18 @@
             inHeader = "inHeader";
         }
     }
-    
+
     <header class="@inHeader">
         <div class="container">
             <a href="~/"><img class="logo" src="~/tema/images/logo.jpg" /></a>
-        <div class="headersag">
+            <div class="headersag">
                 <div class="hdust">
                 </div>
                 <br class="clearfix" />
                 <div id="slide-out" class="sidenav">
                     <ul class="collapsible">
                         <li><a href="/" class="menua">ANASAYFA</a></li>
-                       
+
                         <li class='drop'>
                             <a class="collapsible-header oa">
                                 <span>KURUMSAL</span><span class="arrow-down"></span>
@@ -62,14 +62,15 @@
                             <ul class="collapsible-body">
                                 <li><a href="~/hakkimizda">Hakkımızda</a></li>
                                 <li><a href="#">Genel Politika ve Sertifikalar</a></li>
-                                
+
                             </ul>
                         </li>
-                         <li class='drop'>
+                        <li class='drop'>
                             <a class="collapsible-header oa"><span>HİZMETLERİMİZ</span><span class="arrow-down"></span></a>
                             <ul class="collapsible-body">
                                 <li><a href="~/kullanilmis-otomobiller">Kullanılmış Otomobiller</a></li>
                                 <li><a href="~/otomobil-degerleme">Otomobil Değerleme</a></li>
+                                <li><a href="~/guvenli-alim-satim">Güvenli Alım Satım</a></li>
                                 <li><a href="~/detayli-expertiz">Detaylı Ekspertiz</a></li>
                                 <li><a href="~/oto-bakim-servisi">Oto Bakım Servisi</a></li>
                                 <li><a href="~/finansman-kredi">Finansman / Kredi</a></li>
@@ -84,7 +85,7 @@
                     <span></span><span></span><span></span>
                 </a>
             </div>
-           <br class="clearfix" />
+            <br class="clearfix" />
         </div>
     </header>
     @RenderBody()
@@ -95,47 +96,46 @@
             <div class="container">
                 <ul class="footsol">
                     <li><img src="~/tema/images/flogo.png" width="250" /></li>
-                   <li><h3>İLETİŞİM DETAYLARI</h3></li>
-                    
+                    <li><h3>İLETİŞİM DETAYLARI</h3></li>
+                    <li><i class="fa-solid fa-phone"></i>Telephone: 0 (216) 305 40 90 </li>
                     <li>
-                        <i class="fa-solid fa-location-dot"></i> Zümrütevler Mahallesi, Hanımeli Caddesi, No:10
-                        34852 Maltepe / İstanbul
+                        <i class="fa-solid fa-location-dot"></i> Zümrütevler, Vişne Sk. No:10, 34852 Maltepe/İstanbul
                     </li>
-                    <li><i class="fa-solid fa-phone"></i>Telephone: +90 532 465 54 48</li>
-                    <li><i class="fa-solid fa-envelope"></i>Mail: info@ozkinaci.com</li>
-                    
-               </ul>
-               <ul class="footsol orta">
+                    <li><i class="fa-solid fa-mobile-screen"></i>GSM: +90 532 465 54 48</li>
+                    <li><i class="fa-solid fa-envelope"></i>Mail: info@ozkinaci.com.tr</li>
+
+                </ul>
+                <ul class="footsol orta">
                     <li><h3>HİZMETLERİMİZ</h3></li>
-                     <li><a href="~/#">Kullanılmış Otomobiller</a></li>
-                     <li><a href="~/#">Otomobil Değerleme</a></li>
-                     <li><a href="~/#">Detaylı Ekspertiz</a></li>
-                     <li><a href="~/#">Oto Bakım Servisi</a></li>
-                     <li><a href="~/#">Finansman / Kredi</a></li>
-                     <li><a href="~/#">Sigorta İşlemleri</a></li>          
-                    
-               </ul>
+                    <li><a href="~/kullanilmis-otomobiller">Kullanılmış Otomobiller</a></li>
+                    <li><a href="~/otomobil-degerleme">Otomobil Değerleme</a></li>
+                    <li><a href="~/guvenli-alim-satim">Güvenli Alım Satım</a></li>
+                    <li><a href="~/detayli-expertiz">Detaylı Ekspertiz</a></li>
+                    <li><a href="~/oto-bakim-servisi">Oto Bakım Servisi</a></li>
+                    <li><a href="~/finansman-kredi">Finansman / Kredi</a></li>
+                    <li><a href="~/sigorta-islemleri">Sigorta İşlemleri</a></li>
+                </ul>
                 <ul class="footsol sag">
                     <li><a href="~/">ANASAYFA</a></li>
                     <li><a href="#">BLOG</a></li>
-                    <li><a href="#">İLETİŞİM</a></li>
+                    <li><a href="~/iletisim">İLETİŞİM</a></li>
                     <li><a href="#" class="social"><span class="icon-facebook2"></span></a> <a href="#" class="social"><span class="icon-instagram"></span></a> </li>
 
                 </ul>
-               <br class="clearfix" />
+                <br class="clearfix" />
             </div>
 
         </div>
         <div class="footeralt">
-           <div class="container">
+            <div class="container">
                 &copy; 2023 - Özkınacı
-                
+
                 <a href="https://www.bycmedia.com/" class="footerlink" target="_blank" alt="Web Design"><img src="~/tema/images/byc.png" /></a>
             </div>
 
         </div>
     </footer>
-    
+
     <script src="~/tema/js/jquery-3.6.3.min.js"></script>
     <script src="~/tema/js/materialize.min.js"></script>
     <script src="~/tema/js/owl.carousel.min.js"></script>
@@ -152,7 +152,7 @@
             else {
                 $(".oa").addClass('collapsible-header');
             }
-          
+
             $('.preloader-background').delay(0).fadeOut('slow');
             $('.preloader-wrapper').delay(0).fadeOut();
         });
