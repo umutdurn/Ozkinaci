@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <link href="~/tema/css/icons.css" rel="stylesheet" />
     <link href="~/admintema/css/jquery.datatables.min.css" rel="stylesheet" />
+    <link href="~/tema/css/ffancobox.css" rel="stylesheet" />
 </head>
 <body>
     <div class="headerust">
         <div class="container">
-            <a href="#" class="sag"><span class="icon-phone2"></span> 0 (216) 305 40 90</a><a href="#" class="sag"> <span class="icon-mail"></span>info@ozkinaci.com.tr</a>
+            <a href="tel:902163054090" class="sag"><span class="icon-phone2"></span> 0 (216) 305 40 90</a><a href="mail:info@ozkinaci.com.tr" class="sag"> <span class="icon-mail"></span>info@ozkinaci.com.tr</a>
             <br class="clearfix" />
         </div>
     </div>
@@ -54,7 +55,18 @@
                 <div id="slide-out" class="sidenav">
                     <ul class="collapsible">
                         <li><a href="/" class="menua">ANASAYFA</a></li>
-
+                        <li><a href="~/kullanilmis-otomobiller">KULLANILMIŞ OTOMOBİLLER</a></li>
+                        <li class='drop'>
+                            <a class="collapsible-header oa"><span>HİZMETLERİMİZ</span><span class="arrow-down"></span></a>
+                            <ul class="collapsible-body">
+                                <li><a href="~/otomobil-degerleme">Otomobil Değerleme</a></li>
+                                <li><a href="~/guvenli-alim-satim">Güvenli Alım Satım</a></li>
+                                <li><a href="~/detayli-expertiz">Detaylı Ekspertiz</a></li>
+                                <li><a href="~/oto-bakim-servisi">Oto Bakım Servisi</a></li>
+                                <li><a href="~/finansman-kredi">Finansman / Kredi</a></li>
+                                <li><a href="~/sigorta-islemleri">Sigorta İşlemleri</a></li>
+                            </ul>
+                        </li>
                         <li class='drop'>
                             <a class="collapsible-header oa">
                                 <span>KURUMSAL</span><span class="arrow-down"></span>
@@ -63,18 +75,6 @@
                                 <li><a href="~/hakkimizda">Hakkımızda</a></li>
                                 <li><a href="#">Genel Politika ve Sertifikalar</a></li>
 
-                            </ul>
-                        </li>
-                        <li class='drop'>
-                            <a class="collapsible-header oa"><span>HİZMETLERİMİZ</span><span class="arrow-down"></span></a>
-                            <ul class="collapsible-body">
-                                <li><a href="~/kullanilmis-otomobiller">Kullanılmış Otomobiller</a></li>
-                                <li><a href="~/otomobil-degerleme">Otomobil Değerleme</a></li>
-                                <li><a href="~/guvenli-alim-satim">Güvenli Alım Satım</a></li>
-                                <li><a href="~/detayli-expertiz">Detaylı Ekspertiz</a></li>
-                                <li><a href="~/oto-bakim-servisi">Oto Bakım Servisi</a></li>
-                                <li><a href="~/finansman-kredi">Finansman / Kredi</a></li>
-                                <li><a href="~/sigorta-islemleri">Sigorta İşlemleri</a></li>
                             </ul>
                         </li>
                         <li><a href="~/iletisim" class="menua">İLETİŞİM</a></li>
@@ -97,12 +97,12 @@
                 <ul class="footsol">
                     <li><img src="~/tema/images/flogo.png" width="250" /></li>
                     <li><h3>İLETİŞİM DETAYLARI</h3></li>
-                    <li><i class="fa-solid fa-phone"></i>Telephone: 0 (216) 305 40 90 </li>
+                    <li><i class="fa-solid fa-phone"></i>Telephone: <a href="tel:902163054090"> 0 (216) 305 40 90</a> </li>
                     <li>
-                        <i class="fa-solid fa-location-dot"></i> Zümrütevler, Vişne Sk. No:10, 34852 Maltepe/İstanbul
+                        <i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps?ll=40.935744%2C29.142349&z=16&t=m&hl=tr&gl=TR&mapclient=embed&q=Vi%C5%9Fne+Sk.+No%3A10+Z%C3%BCmr%C3%BCtevler+34852+Maltepe%2F%C4%B0stanbul" target="_blank"> Zümrütevler, Vişne Sk. No:10, 34852 Maltepe /İstanbul</a>
                     </li>
-                    <li><i class="fa-solid fa-mobile-screen"></i>GSM: +90 532 465 54 48</li>
-                    <li><i class="fa-solid fa-envelope"></i>Mail: info@ozkinaci.com.tr</li>
+                    <li><i class="fa-solid fa-mobile-screen"></i>GSM:<a href="tel:+905324655448"> +90 532 465 54 48</a></li>
+                    <li><i class="fa-solid fa-envelope"></i>Mail:<a href="mailto:info@ozkinaci.com.tr"> info@ozkinaci.com.tr</a></li>
 
                 </ul>
                 <ul class="footsol orta">
@@ -142,6 +142,7 @@
     <script src="~/admintema/js/jquery.datatables.min.js"></script>
     <script src="~/admintema/js/datatables.rowreorder.min.js"></script>
     <script src="~/admintema/js/datatables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@@fancyapps/ui@@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script>
         $(document).ready(function () {
             $('.collapsible').collapsible();

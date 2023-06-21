@@ -31,8 +31,84 @@ namespace B7.Controllers
             _advertService = advertService;
         }
 
+        class BrandIds {
+
+            public int Id { get; set; }
+
+        }
+
         public IActionResult Index()
         {
+
+            var carBrands = _carBrandService.GetAllInclude();
+
+            List<BrandIds> brandIds = new List<BrandIds>();
+
+            brandIds.Add(new BrandIds { Id = 5 });
+            brandIds.Add(new BrandIds { Id = 7 });
+            brandIds.Add(new BrandIds { Id = 11 });
+            brandIds.Add(new BrandIds { Id = 12});
+            brandIds.Add(new BrandIds { Id = 14 });
+            brandIds.Add(new BrandIds { Id = 15 });
+            brandIds.Add(new BrandIds { Id = 17 });
+            brandIds.Add(new BrandIds { Id = 19 });
+            brandIds.Add(new BrandIds { Id = 21 });
+            brandIds.Add(new BrandIds { Id = 22 });
+            brandIds.Add(new BrandIds { Id = 23 });
+            brandIds.Add(new BrandIds { Id = 24 });
+            brandIds.Add(new BrandIds { Id = 25 });
+            brandIds.Add(new BrandIds { Id = 26 });
+            brandIds.Add(new BrandIds { Id = 28 });
+            brandIds.Add(new BrandIds { Id = 29 });
+            brandIds.Add(new BrandIds { Id = 30 });
+            brandIds.Add(new BrandIds { Id = 31 });
+            brandIds.Add(new BrandIds { Id = 32 });
+            brandIds.Add(new BrandIds { Id = 34 });
+            brandIds.Add(new BrandIds { Id = 35 });
+            brandIds.Add(new BrandIds { Id = 38 });
+            brandIds.Add(new BrandIds { Id = 39 });
+            brandIds.Add(new BrandIds { Id = 41 });
+            brandIds.Add(new BrandIds { Id = 43 });
+            brandIds.Add(new BrandIds { Id = 44 });
+            brandIds.Add(new BrandIds { Id = 45 });
+            brandIds.Add(new BrandIds { Id = 47 });
+            brandIds.Add(new BrandIds { Id = 48 });
+            brandIds.Add(new BrandIds { Id = 49 });
+            brandIds.Add(new BrandIds { Id = 51 });
+            brandIds.Add(new BrandIds { Id = 53 });
+            brandIds.Add(new BrandIds { Id = 57 });
+            brandIds.Add(new BrandIds { Id = 58 });
+            brandIds.Add(new BrandIds { Id = 59 });
+            brandIds.Add(new BrandIds { Id = 60 });
+            brandIds.Add(new BrandIds { Id = 61 });
+            brandIds.Add(new BrandIds { Id = 63 });
+            brandIds.Add(new BrandIds { Id = 64 });
+            brandIds.Add(new BrandIds { Id = 65 });
+            brandIds.Add(new BrandIds { Id = 66 });
+            brandIds.Add(new BrandIds { Id = 67 });
+            brandIds.Add(new BrandIds { Id = 73 });
+            brandIds.Add(new BrandIds { Id = 74 });
+            brandIds.Add(new BrandIds { Id = 79 });
+
+            foreach (var brand in carBrands)
+            {
+                bool ifBrand = false;
+
+                for (int i = 0; i < brandIds.Count; i++) {
+
+                    if (brand.Id == brandIds[i].Id)
+                    {
+                        ifBrand = true;
+                    }
+                
+                }
+
+                if (!ifBrand)
+                {
+                    _carBrandService.Remove(brand);
+                }
+            }
+
             var showcase = _advertService.ShowcaseInclude();
 
             return View(showcase);

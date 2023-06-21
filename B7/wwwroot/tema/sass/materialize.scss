@@ -147,7 +147,7 @@ header {
                 margin: 0px;
 
                 .menua, .oa {
-                    padding: 15px 25px;
+                    padding: 15px 15px;
                     cursor: pointer;
                     height: 50px;
                     display: block;
@@ -213,7 +213,7 @@ header {
 
 
         .oa {
-            padding: 15px 33px 15px 25px !important;
+            padding: 15px 33px 15px 15px !important;
 
             &:hover {
                 border-bottom: 3px solid #004ca9;
@@ -1479,8 +1479,9 @@ background-image: url('../images/projects/mining-projects.jpg');
     text-align: center;
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover;
-    height: 270px;
+    background-size:cover;
+    height: 350px;
+    margin:0 auto;
     border-bottom: 5px solid #0a66c2;
 
     @media screen and (max-width:850px) {
@@ -1491,8 +1492,6 @@ background-image: url('../images/projects/mining-projects.jpg');
 }
 .fnskre{
     background-image: url('../images/finansmankredi.jpg');
-    height:270px;
-
 }
 .dtexp {
     background-image: url('../images/detayliexpertiz.jpg');
@@ -2097,4 +2096,55 @@ background-image: url('../images/projects/mining-projects.jpg');
 .gvnlialmstm {
     background-image: url('../images/guvenlialimsatim.jpg');
     height: 270px;
+}
+#dialog-content {
+    border-radius:5px;
+    .degerle-info {
+        i {
+            background-color: #46bad9;
+            color: #fff;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            font-size: 60px;
+            border-radius: 50%;
+            text-align: center;
+            display: block;
+            margin: auto auto 20px auto;
+        }
+
+        p {
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: square !important;
+            list-style-type: square !important;
+
+            li {
+                margin-left: 20px;
+                margin-bottom: 5px;
+                list-style: square !important;
+                list-style-type: square !important;
+            }
+        }
+    }
+}
+.vehicle-info {
+    padding: 30px;
+    background-color: #f0f0f0;
+
+    ul {
+        list-style: circle;
+        display: block;
+        margin-top: 15px;
+        li{
+            width:100%;
+            margin:0px;
+            border:none;
+            border-radius:0px;
+            display:block;
+        }
+    }
 }
