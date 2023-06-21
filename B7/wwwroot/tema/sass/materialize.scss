@@ -336,8 +336,8 @@ header {
         height: 450px;
     }
 
-    @media screen and (max-width:414px) {
-        height: 200px;
+    @media screen and (max-width:650px) {
+        height: 245px;
     }
 
     .slideText {
@@ -505,8 +505,18 @@ header {
                     height: 450px;
                 }
 
-                @media screen and (max-width:414px) {
-                    height: 200px;
+                @media screen and (max-width:600px) {
+                    display: none;
+                }
+            }
+
+            .mbl {
+                display: none;
+                object-fit: unset;
+                height: 245px;
+
+                @media screen and (max-width:600px) {
+                    display: block;
                 }
             }
         }
@@ -545,7 +555,8 @@ header {
         margin-left: -145px;
 
         @media screen and (max-width:414px) {
-            bottom: -5%;
+            bottom: 1%;
+            margin-left: -160px;
         }
 
         #ileri, #geri {
