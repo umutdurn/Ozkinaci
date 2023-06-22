@@ -399,6 +399,10 @@ header {
 
             span {
                 display: block;
+
+                @media screen and (max-width:414px) {
+                  display:inline;
+                }
             }
 
             .teklifAl {
@@ -417,12 +421,12 @@ header {
                 font-size: 15px;
 
                 .normal {
-                    font-size: 18px;
+                    font-size: 15px;
                     font-weight: 300;
                 }
 
                 .buyuk {
-                    font-size: 20px;
+                    font-size: 18px;
                     font-weight: 500;
                 }
             }
@@ -461,7 +465,8 @@ header {
             }
 
             @media screen and (max-width:414px) {
-                font-size: 14px !important;
+                font-size: 12px !important;
+                margin: 5px 0 0 0;
             }
         }
     }
@@ -512,8 +517,8 @@ header {
 
             .mbl {
                 display: none;
-                object-fit: unset;
-                height: 245px;
+                object-fit: contain;
+                height: 233px;
 
                 @media screen and (max-width:600px) {
                     display: block;
@@ -555,7 +560,7 @@ header {
         margin-left: -145px;
 
         @media screen and (max-width:414px) {
-            bottom: 1%;
+            bottom: 5%;
             margin-left: -160px;
         }
 
@@ -1479,19 +1484,25 @@ background-image: url('../images/projects/mining-projects.jpg');
     text-align: center;
     background-position: center center;
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
     height: 350px;
-    margin:0 auto;
+    margin: 0 auto;
     border-bottom: 5px solid #0a66c2;
 
     @media screen and (max-width:850px) {
-        height: 100px;
-        background-size: 100%;
-        background-position: 0 bottom;
+        height: 180px;
+        background-size: 158%;
+        background-position: center bottom;
     }
 }
-.fnskre{
+.fnskre {
     background-image: url('../images/finansmankredi.jpg');
+
+    @media screen and (max-width:850px) {
+        height: 122px;
+        background-size: 158%;
+        background-position: center bottom;
+    }
 }
 .dtexp {
     background-image: url('../images/detayliexpertiz.jpg');
@@ -1504,6 +1515,14 @@ background-image: url('../images/projects/mining-projects.jpg');
 .sgrt {
     background-image: url('../images/sigortaislemleri.jpg');
    
+}
+.gvnlialmstm {
+    background-image: url('../images/guvenlialimsatim.jpg');
+
+    @media screen and (max-width:850px) {
+        height: 184px;
+       
+    }
 }
 .page {
     font-family: "Roboto",sans-serif;
@@ -2093,10 +2112,7 @@ background-image: url('../images/projects/mining-projects.jpg');
         }
     }
 }
-.gvnlialmstm {
-    background-image: url('../images/guvenlialimsatim.jpg');
-    height: 350px;
-}
+
 #dialog-content {
     border-radius:5px;
     .degerle-info {
