@@ -43,21 +43,7 @@
                     }
                 </td>
                 <td>
-                    @if (advert.Color == "0")
-                    {
-                        @:Siyah
-                    }
-                    else if (advert.Color == "1")
-                    {
-                        @:Beyaz
-                    }
-                    else if (advert.Color == "2")
-                    {
-                        @:Kırmızı
-                    }else if (advert.Color == "3")
-                    {
-                        @:Sarı
-                    }
+                    @advert.Color.Name
                 </td>
                 <td><a href="UpdateToCar/@advert.Id">Düzenle</a></td>
                 <td><a href="DeleteToCar/@advert.Id" onclick="return confirmRemove();">Sil</a></td>

@@ -16,9 +16,10 @@ namespace B7.Controllers
         private readonly IEquipmentService _equipmentService;
         private readonly IAdvertService _advertService;
         private readonly IService<Admin> _adminService;
+        private readonly IService<Color> _colorService;
         private readonly IService<Expertiz> _expertizService;
 
-        public AdminController(IService<Gallery> imageGallery, IAdvertService advertService, IService<CarBrand> carBrand, ICarModelService carModelService, IService<Category> categoryService, IEquipmentService equipmentService, IService<Admin> adminService, IService<Expertiz> expertizService)
+        public AdminController(IService<Gallery> imageGallery, IAdvertService advertService, IService<CarBrand> carBrand, ICarModelService carModelService, IService<Category> categoryService, IEquipmentService equipmentService, IService<Admin> adminService, IService<Expertiz> expertizService, IService<Color> colorService)
         {
             _imageGallery = imageGallery;
             _advertService = advertService;
@@ -28,6 +29,7 @@ namespace B7.Controllers
             _equipmentService = equipmentService;
             _adminService = adminService;
             _expertizService = expertizService;
+            _colorService = colorService;
         }
 
         public IActionResult Index()
@@ -49,6 +51,19 @@ namespace B7.Controllers
             }
 
             ViewBag.CarBrand = brandList;
+
+            var colors = _colorService.GetAll();
+
+            List<SelectListItem> colorList = new List<SelectListItem>();
+
+            foreach (var color in colors)
+            {
+
+                colorList.Add(new SelectListItem { Text = color.Name, Value = color.Id.ToString() });
+
+            }
+
+            ViewBag.Colors = colorList;
 
             return View();
         }
@@ -128,6 +143,23 @@ namespace B7.Controllers
                 }
             }
 
+            var colors = _colorService.GetAll();
+
+            List<SelectListItem> colorList = new List<SelectListItem>();
+
+            foreach (var color in colors)
+            {
+                if (advert.Color.Id == color.Id)
+                {
+                    colorList.Add(new SelectListItem { Text = color.Name, Value = color.Id.ToString(), Selected = true });
+                }
+                else
+                {
+                    colorList.Add(new SelectListItem { Text = color.Name, Value = color.Id.ToString() });
+                }
+            }
+
+            ViewBag.Colors = colorList;
             ViewBag.CarModel = modelList;
             ViewBag.CarBrand = brandList;
             ViewBag.Equipment = equipmentList;
@@ -162,7 +194,32 @@ namespace B7.Controllers
             }
             else
             {
-                advert.Showcase = true;
+                advert.Showcase = false;
+            }
+
+            if (Request.Form["Guarantee"].ToString() == "on")
+            {
+                advert.Guarantee = true;
+            }
+            else
+            {
+                advert.Guarantee = false;
+            }
+
+            if (Request.Form["AddColor"].ToString() == "on")
+            {
+                Color color = new Color();
+                color.Name = Request.Form["AddColorText"].ToString();
+
+                await _colorService.AddAsync(color);
+
+                advert.Color = color;
+            }
+            else
+            {
+                var color = await _colorService.FirstOfDefaultAsync(x => x.Id == Convert.ToInt32(Request.Form["Color"].ToString()));
+
+                advert.Color = color;
             }
 
             advert.Gallery = Gallerys;
@@ -217,7 +274,6 @@ namespace B7.Controllers
             advert.ValveNumber = getAdvert.ValveNumber;
             advert.CaseType = getAdvert.CaseType;
             advert.EnginePower = getAdvert.EnginePower;
-            advert.Color = getAdvert.Color;
             advert.TypeOfTransfer = getAdvert.TypeOfTransfer;
             advert.Price = getAdvert.Price;
 
@@ -242,6 +298,20 @@ namespace B7.Controllers
             else
             {
                 advert.Showcase = false;
+            }
+
+            if (Request.Form["AddColor"].ToString() == "on")
+            {
+                Color color = new Color();
+                color.Name = Request.Form["AddColorText"].ToString();
+
+                advert.Color = color;
+            }
+            else
+            {
+                var color = await _colorService.FirstOfDefaultAsync(x => x.Id == Convert.ToInt32(Request.Form["Color"].ToString()));
+
+                advert.Color = color;
             }
 
             string Images = Request.Form["Images"].ToString();

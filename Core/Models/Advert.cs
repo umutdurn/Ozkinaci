@@ -32,11 +32,12 @@ namespace Core.Models
         public int ValveNumber { get; set; } // Supap Adedi
         public string CaseType { get; set; } // Kasa tipi
         public string EnginePower { get; set; } // Motor Gücü
-        public string Color { get; set; } // Araç Rengi
+        public Color Color { get; set; } // Araç Rengi
         public string TypeOfTransfer { get; set; } // Aktarma Türü
         public decimal Price { get; set; }
         public ICollection<Gallery> Gallery { get; set; }
         public Expertiz? Expertiz { get; set; }
+        public bool Guarantee { get; set; }
 
     }
 }

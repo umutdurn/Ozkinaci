@@ -68,8 +68,8 @@ body {
 }
 .logo {
     float: left;
-    width: 350px;
-    margin: 10px 0px 5px 0;
+    width: 250px;
+    margin: 5px 0px 5px 0;
 
     @media only screen and (max-width: 780px) {
         width: 230px;
@@ -127,7 +127,7 @@ header {
         display: block;
         float: right;
         left: 0;
-        top: 6px;
+        top: -6px;
         margin: 0;
         transform: none !important;
         height: 52px;
@@ -1094,7 +1094,7 @@ background-image: url('../images/projects/mining-projects.jpg');
 }
 .anasyfKutular {
     background: url(../images/kutularback.png) 30px center repeat-x;
-    margin: 50px 0px;
+    margin: 20px 0px;
     width: 100%;
 
     @media screen and (max-width:414px) {
@@ -1303,7 +1303,7 @@ background-image: url('../images/projects/mining-projects.jpg');
 .aracAlSatBanner {
     background: #fff;
     padding: 20px 0px 0px 0px;
-    margin: 120px 0px 50px 0px;
+    margin: 80px 0px 50px 0px;
 
     @media screen and (max-width:414px) {
         margin: 70px 0px 30px 0px;
@@ -1806,7 +1806,7 @@ background-image: url('../images/projects/mining-projects.jpg');
         box-shadow: 0px 0px 4px 0px #cfcfcf;
         border-radius: 5px;
         padding: 10px 20px;
-        height: 573px;
+        height: 570px;
         width: 90%;
         display: inline-block;
         text-align: left;
@@ -1815,6 +1815,7 @@ background-image: url('../images/projects/mining-projects.jpg');
             border-radius: 0px 0px 5px 5px;
             width:100%;
         }
+
 
         .price {
             display: block;
@@ -1829,8 +1830,8 @@ background-image: url('../images/projects/mining-projects.jpg');
 
             li {
                 border-bottom: 1px solid #f0f0f0;
-                padding-bottom: 13px;
-                margin-bottom: 13px;
+                padding-bottom: 9px;
+                margin-bottom: 6px;
 
                 span {
                     display: block;
@@ -2163,4 +2164,7 @@ background-image: url('../images/projects/mining-projects.jpg');
             display:block;
         }
     }
+}
+.slideS{
+    position:relative;
 }

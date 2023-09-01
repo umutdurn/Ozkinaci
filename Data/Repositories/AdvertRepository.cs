@@ -25,6 +25,7 @@ namespace Data.Repositories
                                        .ThenInclude(x => x.CarBrand)
                                        .Include(x => x.Gallery)
                                        .Include(x => x.Equipment)
+                                       .Include(x => x.Color)
                                        .ToList();
         }
 
@@ -37,6 +38,7 @@ namespace Data.Repositories
                                        .ThenInclude(x => x.Equipment)
                                        .Include(x => x.Gallery)
                                        .Include(x => x.Expertiz)
+                                       .Include(x => x.Color)
                                        .FirstOrDefault(x => x.Id == id);
         }
 
@@ -47,6 +49,7 @@ namespace Data.Repositories
                                         .ThenInclude(x => x.CarBrand)
                                         .Include(x => x.Gallery)
                                         .Include(x => x.Equipment)
+                                        .Include(x => x.Color)
                                         .ToList();
         }
     }

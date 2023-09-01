@@ -4,6 +4,7 @@ using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230623063014_colorAdd")]
+    partial class colorAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,8 +61,9 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ColorId")
-                        .HasColumnType("int");
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CylinderNumber")
                         .HasColumnType("int");
@@ -93,9 +97,6 @@ namespace Data.Migrations
 
                     b.Property<int>("Gear")
                         .HasColumnType("int");
-
-                    b.Property<bool>("Guarantee")
-                        .HasColumnType("bit");
 
                     b.Property<float>("Km")
                         .HasColumnType("real");
@@ -131,8 +132,6 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CarModelId");
-
-                    b.HasIndex("ColorId");
 
                     b.HasIndex("EquipmentId");
 
@@ -355,12 +354,6 @@ namespace Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Core.Models.Color", "Color")
-                        .WithMany()
-                        .HasForeignKey("ColorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Core.Models.Equipment", "Equipment")
                         .WithMany()
                         .HasForeignKey("EquipmentId");
@@ -370,8 +363,6 @@ namespace Data.Migrations
                         .HasForeignKey("ExpertizId");
 
                     b.Navigation("CarModel");
-
-                    b.Navigation("Color");
 
                     b.Navigation("Equipment");
 

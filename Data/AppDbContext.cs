@@ -22,6 +22,7 @@ namespace Data
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<Admin> Admin { get; set; }
         public DbSet<Expertiz> Expertiz { get; set; }
+        public DbSet<Color> Color { get; set; }
 
 
     }

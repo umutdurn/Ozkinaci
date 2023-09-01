@@ -40,46 +40,18 @@
                         <div class="clearfix"></div>
                     </li>
                     <li>
-                        <span class="dt">KASA TİPİ</span>
-                        <span class="dd">
-                            @if (Model.CaseType == "0")
-                            {
-                                @:HATCHBACK
-                            }
-                            else
-                            {
-                                @:SEDAN
-                            }
-                        </span>
+                        <span class="dt">MARKA</span>
+                        <span class="dd">@Model.CarModel.CarBrand.Name</span>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <span class="dt">MODEL</span>
+                        <span class="dd">@Model.CarModel.Name</span>
                         <div class="clearfix"></div>
                     </li>
                     <li>
                         <span class="dt">MODEL YILI</span>
                         <span class="dd">@Model.Year</span>
-                        <div class="clearfix"></div>
-                    </li>
-                    <li>
-                        <span class="dt">KİLOMETRE</span>
-                        <span class="dd">@Model.Km.ToString("#,#")</span>
-                        <div class="clearfix"></div>
-                    </li>
-                    <li>
-                        <span class="dt">MOTOR GÜCÜ</span>
-                        <span class="dd">@Model.EnginePower HP</span>
-                        <div class="clearfix"></div>
-                    </li>
-                    <li>
-                        <span class="dt">VİTES TİPİ</span>
-                        <span class="dd">
-                            @if (Model.Gear == 0)
-                            {
-                                @:OTOMATİK
-                            }
-                            else
-                            {
-                                @:VİTESLİ
-                            }
-                        </span>
                         <div class="clearfix"></div>
                     </li>
                     <li>
@@ -101,13 +73,74 @@
                         <div class="clearfix"></div>
                     </li>
                     <li>
-                        <span class="dt">YAKIT TÜKETİMİ</span>
-                        <span class="dd">@Model.FuelConsumption L</span>
+                        <span class="dt">VİTES TİPİ</span>
+                        <span class="dd">
+                            @if (Model.Gear == 0)
+                            {
+                                @:OTOMATİK
+                            }
+                            else
+                            {
+                                @:VİTESLİ
+                            }
+                        </span>
                         <div class="clearfix"></div>
                     </li>
                     <li>
-                        <span class="dt">AKTARMA TÜRÜ</span>
+                        <span class="dt">KİLOMETRE</span>
+                        <span class="dd">@Model.Km.ToString("#,#")</span>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <span class="dt">KASA TİPİ</span>
+                        <span class="dd">
+                            @if (Model.CaseType == "0")
+                            {
+                                @:HATCHBACK
+                            }
+                            else
+                            {
+                                @:SEDAN
+                            }
+                        </span>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <span class="dt">MOTOR GÜCÜ</span>
+                        <span class="dd">@Model.EnginePower HP</span>
+                        <div class="clearfix"></div>
+                    </li>
+                    
+                    
+                    <li>
+                        <span class="dt">MOTOR HACMİ</span>
+                        <span class="dd">@Model.CylinderVolume cc</span>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <span class="dt">ÇEKİŞ</span>
                         <span class="dd">@Model.TypeOfTransfer</span>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <span class="dt">RENK</span>
+                        <span class="dd">@Model.Color.Name</span>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <span class="dt">GARANTİ</span>
+                        <span class="dd">
+
+                            @if (Model.Guarantee)
+                            {
+                                @:Evet  
+                            }
+                            else
+                            {
+                                @:Hayır    
+                            }
+
+                        </span>
                         <div class="clearfix"></div>
                     </li>
                 </ul>

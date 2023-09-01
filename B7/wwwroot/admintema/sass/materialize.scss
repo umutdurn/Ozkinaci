@@ -43,13 +43,15 @@
 .sidenav-trigger {
 
     @media screen and (min-width:900px) {
-       display:none;
+        display: none;
     }
 }
+
 .sidenav {
-    .collapsible-header{
-        position:relative;
+    .collapsible-header {
+        position: relative;
     }
+
     .active {
         .arrow {
             -webkit-transform: rotate(45deg) translate(-5px, -5px);
@@ -100,18 +102,20 @@
         }
     }
 }
+
 .adminright {
     float: left;
     width: calc(100% - 200px);
     padding: 30px;
     margin-left: 210px;
 
-    @media screen and (max-width:900px){
-        margin-left:0px;
-        float:none;
-        width:100%;
+    @media screen and (max-width:900px) {
+        margin-left: 0px;
+        float: none;
+        width: 100%;
     }
 }
+
 .input-field {
     margin: 10px 0;
     width: 460px;
@@ -270,9 +274,11 @@
         font-size: 12px;
     }
 }
-.uzn{
-    width:100%;
+
+.uzn {
+    width: 100%;
 }
+
 #fotoDisDiv {
     float: left;
     width: 140px;
@@ -281,6 +287,7 @@
     margin: 39px 0 21px 0;
     min-height: 50px;
 }
+
 #fotoDisDiv #fotoDiv {
     width: 127px;
     height: 90px;
@@ -289,6 +296,7 @@
     margin-bottom: 10px;
     border: 2px dotted #f1f1f1;
 }
+
 #fotoDisDiv a {
     position: absolute;
     background: url(../images/carpi.png) center center no-repeat;
@@ -299,19 +307,23 @@
     margin-left: -15px;
     top: -10px;
 }
+
 .dispnone {
     display: none !important;
 }
-table tr{
-    cursor:pointer;
+
+table tr {
+    cursor: pointer;
 }
-.productform{
-    h2{
-        font-size:25px;
-        margin:10px 0px;
-        padding:0px;
+
+.productform {
+    h2 {
+        font-size: 25px;
+        margin: 10px 0px;
+        padding: 0px;
     }
 }
+
 .expertInfo {
     margin: 50px 0px;
     padding: 0px;
@@ -326,6 +338,7 @@ table tr{
         }
     }
 }
+
 .expert {
     width: 476px;
     height: 545px;
@@ -421,15 +434,40 @@ table tr{
         }
     }
 }
+
 .sidenav-trigger {
     color: #000;
     margin: 20px;
-    display:block;
-    text-align:right;
+    display: block;
+    text-align: right;
+
     i {
         font-size: 50px;
     }
 }
-.table li{
-    display:inline-block;
+
+.table li {
+    display: inline-block;
+}
+
+.input-field {
+    
+    p{
+        padding:0px;
+        margin:0px;
+        label{
+            width:100%;
+        }
+    }
+    span{
+        padding:initial;
+    }
+    .addColorDiv {
+        width: 100% !important;
+
+        input[type=text] {
+            width: 100% !important;
+            float: none !important;
+        }
+    }
 }

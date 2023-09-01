@@ -241,7 +241,11 @@
                 <div class="arac">
                     <div class="aracFoto">
                         <a href="~/arac/@item.Id">
-                            <img src="~/tema/images/upload/@item.Gallery.First().Image">
+                            @if (item.Gallery.Count > 0)
+                            {
+                                <img src="~/tema/images/upload/@item.Gallery.First().Image">
+                            }
+                            
                         </a>
                     </div>
                     <div class="aracBilgiler">
@@ -288,6 +292,11 @@
     </div>
 </div>
 @section Scripts{
+    <style>
+        .ddnone{
+            z-index:9 !important;
+        }
+    </style>
     <script type="text/javascript">
         /*Slider*/
 
@@ -383,13 +392,21 @@
                 /* Slider Değiştir */
                 var slide = "slide" + interval;
 
-                $(".slideS").addClass("animate__animated animate__fadeOut");
-                $("." + slide).removeClass("animate__animated animate__fadeOut");
-                $("." + slide).addClass("animate__animated animate__fadeIn");
+                setTimeout(function () {
+                    $(".slideS").addClass("animate__animated animate__fadeOut");
+                    $("." + slide).removeClass("animate__animated animate__fadeOut");
+                    $("." + slide).addClass("animate__animated animate__fadeIn");
 
-                $(".slideS .slideText").addClass("animate__animated animate__fadeOutDown");
-                $("." + slide + " .slideText").removeClass("animate__animated animate__fadeOutDown");
-                $("." + slide + " .slideText").addClass("animate__animated animate__fadeInUp");
+                    $(".slideS .slideText").addClass("animate__animated animate__fadeOutDown");
+                    $("." + slide + " .slideText").removeClass("animate__animated animate__fadeOutDown");
+                    $("." + slide + " .slideText").addClass("animate__animated animate__fadeInUp");
+                }, 500);
+                
+
+                setTimeout(function () {
+                    $(".slideS").removeClass("ddnone");
+                    $("." + slide).addClass("ddnone");
+                }, 1000);
 
                 clearInterval(inter);
                 timer();
